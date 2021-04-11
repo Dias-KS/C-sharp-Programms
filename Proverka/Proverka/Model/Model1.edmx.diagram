@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a2ff2194d0724a1c85df56725667538d" Name="Diagram1">
+        <EntityTypeShape EntityType="ForProverkaModel.CurrentCity" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ForProverkaModel.Magazine" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="ForProverkaModel.Role" Width="1.5" PointX="9.25" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ForProverkaModel.SignIn" Width="1.5" PointX="9.5" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ForProverkaModel.sysdiagrams" Width="1.5" PointX="10.125" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ForProverkaModel.TypeMagazine" Width="1.5" PointX="5.5" PointY="2" IsExpanded="true" />
+        <AssociationConnector Association="ForProverkaModel.FK_Magazine_City_CurrentCity_ID" ManuallyRouted="false" />
+        <AssociationConnector Association="ForProverkaModel.FK_Magazine_Type_TypeMagazine_ID" ManuallyRouted="false" />
+        <AssociationConnector Association="ForProverkaModel.FK_SignIn_Role_RoleID" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

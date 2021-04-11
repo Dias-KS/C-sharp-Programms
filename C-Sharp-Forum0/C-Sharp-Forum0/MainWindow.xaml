@@ -1,0 +1,46 @@
+﻿<Window x:Class="C_Sharp_Forum0.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:C_Sharp_Forum0"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" 
+                    VerticalAlignment="Center"
+                    Orientation="Horizontal">
+            
+            <Button x:Name="btnEnter"
+                    FontSize="18"
+                    Width="150"
+                    Height="50"
+                    Content="Войти"/>
+
+            <Button x:Name="btnDelete"   
+                    Margin="20 0 0 0"
+                    FontSize="18"
+                    Width="150"
+                    Height="50"
+                    Content="Очистить" 
+                    Click="btnDelete_Click"/>
+            
+        </StackPanel>
+
+        <StackPanel Margin="0 0 0 100"
+                    VerticalAlignment="Center">
+
+            <TextBox x:Name="textbox1" 
+                         Width="320"
+                         Height="30"
+                         FontSize="20" />
+
+        </StackPanel>
+            
+            
+         
+
+
+        
+    </Grid>
+</Window>

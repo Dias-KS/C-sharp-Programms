@@ -1,0 +1,14 @@
+D:\Programming\C#\WPF\WpfDB\WpfDB\bin\Debug\WpfDB.exe.config
+D:\Programming\C#\WPF\WpfDB\WpfDB\bin\Debug\WpfDB.exe
+D:\Programming\C#\WPF\WpfDB\WpfDB\bin\Debug\WpfDB.pdb
+D:\Programming\C#\WPF\WpfDB\WpfDB\obj\Debug\MainWindow.g.cs
+D:\Programming\C#\WPF\WpfDB\WpfDB\obj\Debug\App.g.cs
+D:\Programming\C#\WPF\WpfDB\WpfDB\obj\Debug\WpfDB_MarkupCompile.cache
+D:\Programming\C#\WPF\WpfDB\WpfDB\obj\Debug\WpfDB_MarkupCompile.lref
+D:\Programming\C#\WPF\WpfDB\WpfDB\obj\Debug\MainWindow.baml
+D:\Programming\C#\WPF\WpfDB\WpfDB\obj\Debug\WpfDB.g.resources
+D:\Programming\C#\WPF\WpfDB\WpfDB\obj\Debug\WpfDB.Properties.Resources.resources
+D:\Programming\C#\WPF\WpfDB\WpfDB\obj\Debug\WpfDB.csproj.GenerateResource.cache
+D:\Programming\C#\WPF\WpfDB\WpfDB\obj\Debug\WpfDB.csproj.CoreCompileInputs.cache
+D:\Programming\C#\WPF\WpfDB\WpfDB\obj\Debug\WpfDB.exe
+D:\Programming\C#\WPF\WpfDB\WpfDB\obj\Debug\WpfDB.pdb

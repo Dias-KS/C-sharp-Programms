@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GeografiaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NameCountry" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Region" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Capital" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Square" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="AdvancedOr" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IDNationality" Type="Int32" Nullable="false" />
+    <Property Name="IDPopulation" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Nationality" Relationship="Self.FK_Country_IDNationality_Nationality_ID" FromRole="Country" ToRole="Nationality" />
+    <NavigationProperty Name="Population" Relationship="Self.FK_Country_IDPopulation_Population_ID" FromRole="Country" ToRole="Population" />
+  </EntityType>
+  <EntityType Name="Language">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Nationalities" Relationship="Self.FK_Nationality_IDLanguage_Language_ID" FromRole="Language" ToRole="Nationality" />
+  </EntityType>
+  <EntityType Name="Nationality">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDNameOfNationality" Type="Int32" Nullable="false" />
+    <Property Name="IDLanguage" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Countries" Relationship="Self.FK_Country_IDNationality_Nationality_ID" FromRole="Nationality" ToRole="Country" />
+    <NavigationProperty Name="Language" Relationship="Self.FK_Nationality_IDLanguage_Language_ID" FromRole="Nationality" ToRole="Language" />
+    <NavigationProperty Name="NationalityName" Relationship="Self.FK_Nationality_IDNameOfNationality_NationalityName_ID" FromRole="Nationality" ToRole="NationalityName" />
+  </EntityType>
+  <EntityType Name="NationalityName">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Nationalities" Relationship="Self.FK_Nationality_IDNameOfNationality_NationalityName_ID" FromRole="NationalityName" ToRole="Nationality" />
+  </EntityType>
+  <EntityType Name="Population">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NumberOfPeople" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Countries" Relationship="Self.FK_Country_IDPopulation_Population_ID" FromRole="Population" ToRole="Country" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="IDRole" />
+    </Key>
+    <Property Name="IDRole" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="SignIns" Relationship="Self.FK_SignIin_RoleID_Role_IDRole" FromRole="Role" ToRole="SignIn" />
+  </EntityType>
+  <EntityType Name="SignIn">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RoleID" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Role" Relationship="Self.FK_SignIin_RoleID_Role_IDRole" FromRole="SignIn" ToRole="Role" />
+  </EntityType>
+  <Association Name="FK_Country_IDNationality_Nationality_ID">
+    <End Role="Nationality" Type="Self.Nationality" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Country" Type="Self.Country" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Nationality">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Country">
+        <PropertyRef Name="IDNationality" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Country_IDPopulation_Population_ID">
+    <End Role="Population" Type="Self.Population" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Country" Type="Self.Country" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Population">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Country">
+        <PropertyRef Name="IDPopulation" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Nationality_IDLanguage_Language_ID">
+    <End Role="Language" Type="Self.Language" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Nationality" Type="Self.Nationality" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Language">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Nationality">
+        <PropertyRef Name="IDLanguage" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Nationality_IDNameOfNationality_NationalityName_ID">
+    <End Role="NationalityName" Type="Self.NationalityName" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Nationality" Type="Self.Nationality" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NationalityName">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Nationality">
+        <PropertyRef Name="IDNameOfNationality" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SignIin_RoleID_Role_IDRole">
+    <End Role="Role" Type="Self.Role" Multiplicity="1" />
+    <End Role="SignIn" Type="Self.SignIn" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="IDRole" />
+      </Principal>
+      <Dependent Role="SignIn">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="GeografiaEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Countries" EntityType="Self.Country" />
+    <EntitySet Name="Languages" EntityType="Self.Language" />
+    <EntitySet Name="Nationalities" EntityType="Self.Nationality" />
+    <EntitySet Name="NationalityNames" EntityType="Self.NationalityName" />
+    <EntitySet Name="Populations" EntityType="Self.Population" />
+    <EntitySet Name="Roles" EntityType="Self.Role" />
+    <EntitySet Name="SignIns" EntityType="Self.SignIn" />
+    <AssociationSet Name="FK_Country_IDNationality_Nationality_ID" Association="Self.FK_Country_IDNationality_Nationality_ID">
+      <End Role="Nationality" EntitySet="Nationalities" />
+      <End Role="Country" EntitySet="Countries" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Country_IDPopulation_Population_ID" Association="Self.FK_Country_IDPopulation_Population_ID">
+      <End Role="Population" EntitySet="Populations" />
+      <End Role="Country" EntitySet="Countries" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Nationality_IDLanguage_Language_ID" Association="Self.FK_Nationality_IDLanguage_Language_ID">
+      <End Role="Language" EntitySet="Languages" />
+      <End Role="Nationality" EntitySet="Nationalities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Nationality_IDNameOfNationality_NationalityName_ID" Association="Self.FK_Nationality_IDNameOfNationality_NationalityName_ID">
+      <End Role="NationalityName" EntitySet="NationalityNames" />
+      <End Role="Nationality" EntitySet="Nationalities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SignIin_RoleID_Role_IDRole" Association="Self.FK_SignIin_RoleID_Role_IDRole">
+      <End Role="Role" EntitySet="Roles" />
+      <End Role="SignIn" EntitySet="SignIns" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

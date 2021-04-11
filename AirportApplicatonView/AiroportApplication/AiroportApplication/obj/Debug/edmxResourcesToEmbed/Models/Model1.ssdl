@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище dbAiroportModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Airplane">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NumberAirplane" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IDTypeAirplane" Type="int" Nullable="false" />
+    <Property Name="NumberOfSeats" Type="int" Nullable="false" />
+    <Property Name="SpeedOfFlight" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IDRoute" Type="int" Nullable="false" />
+    <Property Name="Picture" Type="image" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="IDRole" />
+    </Key>
+    <Property Name="IDRole" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Route">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NumberRoute" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Distance" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PointOfDeparture" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PointOfDestination" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IDRouteInfo" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RouteInfo">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DateTimeDeparture" Type="datetime" Nullable="false" />
+    <Property Name="DateTimeArrival" Type="datetime" Nullable="false" />
+    <Property Name="CountSaleTicket" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SignIn">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="RoleID" Type="nchar" MaxLength="1" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TypeAirplane">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Airplane_IDTypeAirplane_TypeAirplane_ID">
+    <End Role="TypeAirplane" Type="Self.TypeAirplane" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Airplane" Type="Self.Airplane" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TypeAirplane">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Airplane">
+        <PropertyRef Name="IDTypeAirplane" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Route_IDRouteInfo_RouteInfo_ID">
+    <End Role="RouteInfo" Type="Self.RouteInfo" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Route" Type="Self.Route" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RouteInfo">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Route">
+        <PropertyRef Name="IDRouteInfo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SignIn_RoleID_Role_IDRole">
+    <End Role="Role" Type="Self.Role" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="SignIn" Type="Self.SignIn" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="IDRole" />
+      </Principal>
+      <Dependent Role="SignIn">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PK_Airplane_IDRoute_Route_ID">
+    <End Role="Route" Type="Self.Route" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Airplane" Type="Self.Airplane" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Route">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Airplane">
+        <PropertyRef Name="IDRoute" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище dbAiroportModelContainer">
+    <EntitySet Name="Airplane" EntityType="Self.Airplane" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Route" EntityType="Self.Route" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RouteInfo" EntityType="Self.RouteInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SignIn" EntityType="Self.SignIn" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TypeAirplane" EntityType="Self.TypeAirplane" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Airplane_IDTypeAirplane_TypeAirplane_ID" Association="Self.FK_Airplane_IDTypeAirplane_TypeAirplane_ID">
+      <End Role="TypeAirplane" EntitySet="TypeAirplane" />
+      <End Role="Airplane" EntitySet="Airplane" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Route_IDRouteInfo_RouteInfo_ID" Association="Self.FK_Route_IDRouteInfo_RouteInfo_ID">
+      <End Role="RouteInfo" EntitySet="RouteInfo" />
+      <End Role="Route" EntitySet="Route" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SignIn_RoleID_Role_IDRole" Association="Self.FK_SignIn_RoleID_Role_IDRole">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="SignIn" EntitySet="SignIn" />
+    </AssociationSet>
+    <AssociationSet Name="PK_Airplane_IDRoute_Route_ID" Association="Self.PK_Airplane_IDRoute_Route_ID">
+      <End Role="Route" EntitySet="Route" />
+      <End Role="Airplane" EntitySet="Airplane" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

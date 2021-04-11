@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище dbAiroportModelContainer" CdmEntityContainer="dbAiroportEntities">
+    <EntitySetMapping Name="Airplane">
+      <EntityTypeMapping TypeName="dbAiroportModel.Airplane">
+        <MappingFragment StoreEntitySet="Airplane">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="NumberAirplane" ColumnName="NumberAirplane" />
+          <ScalarProperty Name="IDTypeAirplane" ColumnName="IDTypeAirplane" />
+          <ScalarProperty Name="NumberOfSeats" ColumnName="NumberOfSeats" />
+          <ScalarProperty Name="SpeedOfFlight" ColumnName="SpeedOfFlight" />
+          <ScalarProperty Name="IDRoute" ColumnName="IDRoute" />
+          <ScalarProperty Name="Picture" ColumnName="Picture" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Role">
+      <EntityTypeMapping TypeName="dbAiroportModel.Role">
+        <MappingFragment StoreEntitySet="Role">
+          <ScalarProperty Name="IDRole" ColumnName="IDRole" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Route">
+      <EntityTypeMapping TypeName="dbAiroportModel.Route">
+        <MappingFragment StoreEntitySet="Route">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="NumberRoute" ColumnName="NumberRoute" />
+          <ScalarProperty Name="Distance" ColumnName="Distance" />
+          <ScalarProperty Name="PointOfDeparture" ColumnName="PointOfDeparture" />
+          <ScalarProperty Name="PointOfDestination" ColumnName="PointOfDestination" />
+          <ScalarProperty Name="IDRouteInfo" ColumnName="IDRouteInfo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RouteInfo">
+      <EntityTypeMapping TypeName="dbAiroportModel.RouteInfo">
+        <MappingFragment StoreEntitySet="RouteInfo">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="DateTimeDeparture" ColumnName="DateTimeDeparture" />
+          <ScalarProperty Name="DateTimeArrival" ColumnName="DateTimeArrival" />
+          <ScalarProperty Name="CountSaleTicket" ColumnName="CountSaleTicket" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SignIn">
+      <EntityTypeMapping TypeName="dbAiroportModel.SignIn">
+        <MappingFragment StoreEntitySet="SignIn">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TypeAirplane">
+      <EntityTypeMapping TypeName="dbAiroportModel.TypeAirplane">
+        <MappingFragment StoreEntitySet="TypeAirplane">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

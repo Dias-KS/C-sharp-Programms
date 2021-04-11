@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbGeografModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Region" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Capital" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Square" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Economy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IDPopulation" Type="Int32" Nullable="false" />
+    <Property Name="IDEthnic" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Ethnic" Relationship="Self.FK_Country_Ethnic" FromRole="Country" ToRole="Ethnic" />
+    <NavigationProperty Name="Population" Relationship="Self.FK_Country_Population" FromRole="Country" ToRole="Population" />
+  </EntityType>
+  <EntityType Name="Ethnic">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDNationality" Type="Int32" Nullable="false" />
+    <Property Name="IDLanguage" Type="Int32" Nullable="false" />
+    <Property Name="TotalNumber" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Countries" Relationship="Self.FK_Country_Ethnic" FromRole="Ethnic" ToRole="Country" />
+    <NavigationProperty Name="Language" Relationship="Self.FK_Ethnic_Language" FromRole="Ethnic" ToRole="Language" />
+    <NavigationProperty Name="Natinolity" Relationship="Self.FK_Ethnic_Natinolity" FromRole="Ethnic" ToRole="Natinolity" />
+  </EntityType>
+  <EntityType Name="Language">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Ethnics" Relationship="Self.FK_Ethnic_Language" FromRole="Language" ToRole="Ethnic" />
+  </EntityType>
+  <EntityType Name="Natinolity">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ttile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Ethnics" Relationship="Self.FK_Ethnic_Natinolity" FromRole="Natinolity" ToRole="Ethnic" />
+  </EntityType>
+  <EntityType Name="Population">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Count" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Countries" Relationship="Self.FK_Country_Population" FromRole="Population" ToRole="Country" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_Country_Ethnic">
+    <End Role="Ethnic" Type="Self.Ethnic" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Country" Type="Self.Country" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ethnic">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Country">
+        <PropertyRef Name="IDEthnic" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Country_Population">
+    <End Role="Population" Type="Self.Population" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Country" Type="Self.Country" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Population">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Country">
+        <PropertyRef Name="IDPopulation" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ethnic_Language">
+    <End Role="Language" Type="Self.Language" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Ethnic" Type="Self.Ethnic" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Language">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Ethnic">
+        <PropertyRef Name="IDLanguage" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ethnic_Natinolity">
+    <End Role="Natinolity" Type="Self.Natinolity" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Ethnic" Type="Self.Ethnic" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Natinolity">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Ethnic">
+        <PropertyRef Name="IDNationality" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="dbGeografEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Countries" EntityType="Self.Country" />
+    <EntitySet Name="Ethnics" EntityType="Self.Ethnic" />
+    <EntitySet Name="Languages" EntityType="Self.Language" />
+    <EntitySet Name="Natinolities" EntityType="Self.Natinolity" />
+    <EntitySet Name="Populations" EntityType="Self.Population" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <AssociationSet Name="FK_Country_Ethnic" Association="Self.FK_Country_Ethnic">
+      <End Role="Ethnic" EntitySet="Ethnics" />
+      <End Role="Country" EntitySet="Countries" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Country_Population" Association="Self.FK_Country_Population">
+      <End Role="Population" EntitySet="Populations" />
+      <End Role="Country" EntitySet="Countries" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ethnic_Language" Association="Self.FK_Ethnic_Language">
+      <End Role="Language" EntitySet="Languages" />
+      <End Role="Ethnic" EntitySet="Ethnics" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ethnic_Natinolity" Association="Self.FK_Ethnic_Natinolity">
+      <End Role="Natinolity" EntitySet="Natinolities" />
+      <End Role="Ethnic" EntitySet="Ethnics" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

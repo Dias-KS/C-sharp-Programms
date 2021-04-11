@@ -1,0 +1,192 @@
+﻿<Page x:Class="WpfAuthSystem.Views.Pages.AdminEditPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfAuthSystem.Views.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AdminEditPage">
+
+    <Grid>
+        <!--ForBoxAndBlock-->
+
+        <!--Наименование компании-->
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Margin="0 0 0 320">
+
+
+            <TextBlock Text="Наименование компании :"
+                       Width="150"
+                       Margin="0 10 5 15"/>
+
+            <TextBox x:Name="txtNameCompany"
+                     Width="200"
+                     Height="30"/>
+
+        </StackPanel>
+
+        <!--Дата регистрации-->
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Margin="45 0 0 240">
+
+
+            <TextBlock Text="Дата регистрации :"
+                       Width="110"
+                       Margin="0 10 5 15"/>
+
+            <TextBox x:Name="txtDateRegistration"
+                     Width="200"
+                     Margin="0 0 0 0"
+                     Height="30"/>
+        </StackPanel>
+
+        <!--Вид собственности-->
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Margin="35 0 0 160">
+
+
+            <TextBlock Text="Вид собственности :"
+                       Width="115"
+                       Margin="0 10 5 15"/>
+
+            <TextBox x:Name="txtTypeOfProperty"
+                     Width="200"
+                     Margin="0 0 0 0"
+                     Height="30"/>
+        </StackPanel>
+
+
+        <!--Число работников-->
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Margin="35 0 0 80">
+
+
+            <TextBlock Text="Число работников :"
+                       Width="110"
+                       Margin="0 10 5 15"/>
+
+            <TextBox x:Name="txtQuantityOfEmployeers"
+                     Width="200"
+                     Margin="0 0 0 0"
+                     Height="30"/>
+        </StackPanel>
+
+
+        <!--Основной вид продукции-->
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Margin="-5 0 0 0">
+
+
+            <TextBlock Text="Основной вид продукции :"
+                       Width="150"
+                       Margin="0 10 5 15"/>
+
+            <TextBox x:Name="txtMainTypeProduct"
+                     Width="200"
+                     Margin="0 0 0 0"
+                     Height="30"/>
+        </StackPanel>
+
+
+        <!--Является ли передовым-->
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Margin="7 80 0 0">
+
+
+            <TextBlock Text="Является ли передовым :"
+                       Width="140"
+                       Margin="0 10 5 15"/>
+
+            <TextBox x:Name="txtAdvancedOr"
+                     Width="200"
+                     Margin="0 0 0 0"
+                     Height="30"/>
+        </StackPanel>
+
+
+        <!--Прибыль-->
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Margin="90 160 0 0">
+
+
+            <TextBlock Text="Прибыль :"
+                       Width="60"
+                       Margin="0 10 5 15"/>
+
+            <TextBox x:Name="txtPrice"
+                     Width="200"
+                     Margin="0 0 0 0"
+                     Height="30"/>
+        </StackPanel>
+
+
+        <!--Примечание-->
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Margin="70 240 0 0">
+
+
+            <TextBlock Text="Примечание :"
+                       Width="80"
+                       Margin="0 10 5 15"/>
+
+            <TextBox x:Name="txtComment"
+                     Width="200"
+                     Margin="0 0 0 0"
+                     Height="30"/>
+
+        </StackPanel>
+
+
+        <!--ForButtons-->
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Margin="155 355 0 0">
+
+            <Button x:Name="btnEdit"
+                    Content="Изменить"
+                    Width="100"
+                    Height="30"
+                    Margin="0 0 5 0"
+                    FontSize="12" Click="btnEdit_Click"/>
+
+            <Button x:Name="btnDelete"
+                    Content="Очистить"
+                    Width="100"
+                    Height="30"
+                    FontSize="12" Click="btnDelete_Click_1" />
+
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Margin="10 10 0 0">
+
+            <Button x:Name="btnBack"
+                    Width="80"
+                    Content="Назад"
+                    Height="30"
+                    FontSize="12"
+                    Click="btnBack_Click"/>
+
+        </StackPanel>
+    </Grid>
+</Page>

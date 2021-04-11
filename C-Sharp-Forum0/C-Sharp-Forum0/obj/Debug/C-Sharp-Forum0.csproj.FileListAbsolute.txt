@@ -1,0 +1,15 @@
+D:\Programming\C#\WPF\C-Sharp-Forum0\C-Sharp-Forum0\bin\Debug\C-Sharp-Forum0.exe.config
+D:\Programming\C#\WPF\C-Sharp-Forum0\C-Sharp-Forum0\bin\Debug\C-Sharp-Forum0.exe
+D:\Programming\C#\WPF\C-Sharp-Forum0\C-Sharp-Forum0\bin\Debug\C-Sharp-Forum0.pdb
+D:\Programming\C#\WPF\C-Sharp-Forum0\C-Sharp-Forum0\obj\Debug\C-Sharp-Forum0.csprojAssemblyReference.cache
+D:\Programming\C#\WPF\C-Sharp-Forum0\C-Sharp-Forum0\obj\Debug\MainWindow.g.cs
+D:\Programming\C#\WPF\C-Sharp-Forum0\C-Sharp-Forum0\obj\Debug\App.g.cs
+D:\Programming\C#\WPF\C-Sharp-Forum0\C-Sharp-Forum0\obj\Debug\C-Sharp-Forum0_MarkupCompile.cache
+D:\Programming\C#\WPF\C-Sharp-Forum0\C-Sharp-Forum0\obj\Debug\C-Sharp-Forum0_MarkupCompile.lref
+D:\Programming\C#\WPF\C-Sharp-Forum0\C-Sharp-Forum0\obj\Debug\MainWindow.baml
+D:\Programming\C#\WPF\C-Sharp-Forum0\C-Sharp-Forum0\obj\Debug\C-Sharp-Forum0.g.resources
+D:\Programming\C#\WPF\C-Sharp-Forum0\C-Sharp-Forum0\obj\Debug\C_Sharp_Forum0.Properties.Resources.resources
+D:\Programming\C#\WPF\C-Sharp-Forum0\C-Sharp-Forum0\obj\Debug\C-Sharp-Forum0.csproj.GenerateResource.cache
+D:\Programming\C#\WPF\C-Sharp-Forum0\C-Sharp-Forum0\obj\Debug\C-Sharp-Forum0.csproj.CoreCompileInputs.cache
+D:\Programming\C#\WPF\C-Sharp-Forum0\C-Sharp-Forum0\obj\Debug\C-Sharp-Forum0.exe
+D:\Programming\C#\WPF\C-Sharp-Forum0\C-Sharp-Forum0\obj\Debug\C-Sharp-Forum0.pdb

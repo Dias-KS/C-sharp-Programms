@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbAiroportModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Airplane">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NumberAirplane" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IDTypeAirplane" Type="Int32" Nullable="false" />
+    <Property Name="NumberOfSeats" Type="Int32" Nullable="false" />
+    <Property Name="SpeedOfFlight" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IDRoute" Type="Int32" Nullable="false" />
+    <Property Name="Picture" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="TypeAirplane" Relationship="Self.FK_Airplane_IDTypeAirplane_TypeAirplane_ID" FromRole="Airplane" ToRole="TypeAirplane" />
+    <NavigationProperty Name="Route" Relationship="Self.PK_Airplane_IDRoute_Route_ID" FromRole="Airplane" ToRole="Route" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="IDRole" />
+    </Key>
+    <Property Name="IDRole" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="SignIn" Relationship="Self.FK_SignIn_RoleID_Role_IDRole" FromRole="Role" ToRole="SignIn" />
+  </EntityType>
+  <EntityType Name="Route">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NumberRoute" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Distance" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PointOfDeparture" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PointOfDestination" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IDRouteInfo" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Airplane" Relationship="Self.PK_Airplane_IDRoute_Route_ID" FromRole="Route" ToRole="Airplane" />
+    <NavigationProperty Name="RouteInfo" Relationship="Self.FK_Route_IDRouteInfo_RouteInfo_ID" FromRole="Route" ToRole="RouteInfo" />
+  </EntityType>
+  <EntityType Name="RouteInfo">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DateTimeDeparture" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DateTimeArrival" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CountSaleTicket" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Route" Relationship="Self.FK_Route_IDRouteInfo_RouteInfo_ID" FromRole="RouteInfo" ToRole="Route" />
+  </EntityType>
+  <EntityType Name="SignIn">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RoleID" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Role" Relationship="Self.FK_SignIn_RoleID_Role_IDRole" FromRole="SignIn" ToRole="Role" />
+  </EntityType>
+  <EntityType Name="TypeAirplane">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Airplane" Relationship="Self.FK_Airplane_IDTypeAirplane_TypeAirplane_ID" FromRole="TypeAirplane" ToRole="Airplane" />
+  </EntityType>
+  <Association Name="FK_Airplane_IDTypeAirplane_TypeAirplane_ID">
+    <End Role="TypeAirplane" Type="Self.TypeAirplane" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Airplane" Type="Self.Airplane" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TypeAirplane">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Airplane">
+        <PropertyRef Name="IDTypeAirplane" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PK_Airplane_IDRoute_Route_ID">
+    <End Role="Route" Type="Self.Route" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Airplane" Type="Self.Airplane" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Route">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Airplane">
+        <PropertyRef Name="IDRoute" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SignIn_RoleID_Role_IDRole">
+    <End Role="Role" Type="Self.Role" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="SignIn" Type="Self.SignIn" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="IDRole" />
+      </Principal>
+      <Dependent Role="SignIn">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Route_IDRouteInfo_RouteInfo_ID">
+    <End Role="RouteInfo" Type="Self.RouteInfo" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Route" Type="Self.Route" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RouteInfo">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Route">
+        <PropertyRef Name="IDRouteInfo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="dbAiroportEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Airplane" EntityType="Self.Airplane" />
+    <EntitySet Name="Role" EntityType="Self.Role" />
+    <EntitySet Name="Route" EntityType="Self.Route" />
+    <EntitySet Name="RouteInfo" EntityType="Self.RouteInfo" />
+    <EntitySet Name="SignIn" EntityType="Self.SignIn" />
+    <EntitySet Name="TypeAirplane" EntityType="Self.TypeAirplane" />
+    <AssociationSet Name="FK_Airplane_IDTypeAirplane_TypeAirplane_ID" Association="Self.FK_Airplane_IDTypeAirplane_TypeAirplane_ID">
+      <End Role="TypeAirplane" EntitySet="TypeAirplane" />
+      <End Role="Airplane" EntitySet="Airplane" />
+    </AssociationSet>
+    <AssociationSet Name="PK_Airplane_IDRoute_Route_ID" Association="Self.PK_Airplane_IDRoute_Route_ID">
+      <End Role="Route" EntitySet="Route" />
+      <End Role="Airplane" EntitySet="Airplane" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SignIn_RoleID_Role_IDRole" Association="Self.FK_SignIn_RoleID_Role_IDRole">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="SignIn" EntitySet="SignIn" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Route_IDRouteInfo_RouteInfo_ID" Association="Self.FK_Route_IDRouteInfo_RouteInfo_ID">
+      <End Role="RouteInfo" EntitySet="RouteInfo" />
+      <End Role="Route" EntitySet="Route" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

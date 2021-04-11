@@ -1,0 +1,42 @@
+﻿<Page x:Class="VeterenarnayaKlinika.Views.Pages.MenuPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:VeterenarnayaKlinika.Views.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="MenuPage">
+
+    <Grid>
+        <StackPanel Orientation="Vertical"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+
+            <Button x:Name="btnSale"
+                    Width="200"
+                    Height="40"
+                    Click="btnSale_Click"
+                    Margin="0 0 0 10"
+                    Content="Продажи"
+                    FontSize="16"/>
+
+            <Button x:Name="btnRecording"
+                    
+                    Height="40"
+                    Click="btnRecording_Click"
+                    Content="Запись"
+                    FontSize="16"
+                    Margin="0 0 0 10"/>
+
+            <Button x:Name="btnExit"
+                    Width="200"
+                    Height="40"
+                    Click="btnExit_Click"
+                    Content="Выход"
+                    FontSize="16"/>
+
+        </StackPanel>
+                    
+    </Grid>
+</Page>

@@ -1,0 +1,17 @@
+D:\Programming\C#\WPF\VideoRentalApp\VideoRentalApp\bin\Debug\VideoRentalApp.exe.config
+D:\Programming\C#\WPF\VideoRentalApp\VideoRentalApp\bin\Debug\VideoRentalApp.exe
+D:\Programming\C#\WPF\VideoRentalApp\VideoRentalApp\bin\Debug\VideoRentalApp.pdb
+D:\Programming\C#\WPF\VideoRentalApp\VideoRentalApp\obj\Debug\VideoRentalApp.csprojAssemblyReference.cache
+D:\Programming\C#\WPF\VideoRentalApp\VideoRentalApp\obj\Debug\Views\Pages\AuthPage.g.cs
+D:\Programming\C#\WPF\VideoRentalApp\VideoRentalApp\obj\Debug\Views\Windows\MainWindow.g.cs
+D:\Programming\C#\WPF\VideoRentalApp\VideoRentalApp\obj\Debug\App.g.cs
+D:\Programming\C#\WPF\VideoRentalApp\VideoRentalApp\obj\Debug\VideoRentalApp_MarkupCompile.cache
+D:\Programming\C#\WPF\VideoRentalApp\VideoRentalApp\obj\Debug\VideoRentalApp_MarkupCompile.lref
+D:\Programming\C#\WPF\VideoRentalApp\VideoRentalApp\obj\Debug\Views\Pages\AuthPage.baml
+D:\Programming\C#\WPF\VideoRentalApp\VideoRentalApp\obj\Debug\Views\Windows\MainWindow.baml
+D:\Programming\C#\WPF\VideoRentalApp\VideoRentalApp\obj\Debug\VideoRentalApp.g.resources
+D:\Programming\C#\WPF\VideoRentalApp\VideoRentalApp\obj\Debug\VideoRentalApp.Properties.Resources.resources
+D:\Programming\C#\WPF\VideoRentalApp\VideoRentalApp\obj\Debug\VideoRentalApp.csproj.GenerateResource.cache
+D:\Programming\C#\WPF\VideoRentalApp\VideoRentalApp\obj\Debug\VideoRentalApp.csproj.CoreCompileInputs.cache
+D:\Programming\C#\WPF\VideoRentalApp\VideoRentalApp\obj\Debug\VideoRentalApp.exe
+D:\Programming\C#\WPF\VideoRentalApp\VideoRentalApp\obj\Debug\VideoRentalApp.pdb

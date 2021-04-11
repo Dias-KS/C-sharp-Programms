@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище dbProductionModelContainer" CdmEntityContainer="dbProductionEntities">
+    <EntitySetMapping Name="Company">
+      <EntityTypeMapping TypeName="dbProductionModel.Company">
+        <MappingFragment StoreEntitySet="Company">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="NameCompany" ColumnName="NameCompany" />
+          <ScalarProperty Name="Adress" ColumnName="Adress" />
+          <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+          <ScalarProperty Name="YearRelease" ColumnName="YearRelease" />
+          <ScalarProperty Name="VolumeRelease" ColumnName="VolumeRelease" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Material">
+      <EntityTypeMapping TypeName="dbProductionModel.Material">
+        <MappingFragment StoreEntitySet="Material">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="NameMaterial" ColumnName="NameMaterial" />
+          <ScalarProperty Name="TypeMaterial" ColumnName="TypeMaterial" />
+          <ScalarProperty Name="UnitOfMeasurement" ColumnName="UnitOfMeasurement" />
+          <ScalarProperty Name="PriceUnit" ColumnName="PriceUnit" />
+          <ScalarProperty Name="NoteUse" ColumnName="NoteUse" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Product">
+      <EntityTypeMapping TypeName="dbProductionModel.Product">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="NameProduct" ColumnName="NameProduct" />
+          <ScalarProperty Name="TypeOr" ColumnName="TypeOr" />
+          <ScalarProperty Name="YearVolumeRelease" ColumnName="YearVolumeRelease" />
+          <ScalarProperty Name="IDMaterial" ColumnName="IDMaterial" />
+          <ScalarProperty Name="IDCompany" ColumnName="IDCompany" />
+          <ScalarProperty Name="IDSpecification" ColumnName="IDSpecification" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Specification">
+      <EntityTypeMapping TypeName="dbProductionModel.Specification">
+        <MappingFragment StoreEntitySet="Specification">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="QuantityMaterial" ColumnName="QuantityMaterial" />
+          <ScalarProperty Name="DateInstallSpecification" ColumnName="DateInstallSpecification" />
+          <ScalarProperty Name="DateCancel" ColumnName="DateCancel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

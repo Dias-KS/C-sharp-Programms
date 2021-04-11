@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище dbProgrammProductsModelContainer" CdmEntityContainer="dbProgrammProductsEntities">
+    <EntitySetMapping Name="ApplicationArea">
+      <EntityTypeMapping TypeName="dbProgrammProductsModel.ApplicationArea">
+        <MappingFragment StoreEntitySet="ApplicationArea">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Product">
+      <EntityTypeMapping TypeName="dbProgrammProductsModel.Product">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="NameProduct" ColumnName="NameProduct" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="IDType" ColumnName="IDType" />
+          <ScalarProperty Name="Firm" ColumnName="Firm" />
+          <ScalarProperty Name="ReleaseDate" ColumnName="ReleaseDate" />
+          <ScalarProperty Name="IDApplicationArea" ColumnName="IDApplicationArea" />
+          <ScalarProperty Name="CostOfLicense" ColumnName="CostOfLicense" />
+          <ScalarProperty Name="QuantityDownoload" ColumnName="QuantityDownoload" />
+          <ScalarProperty Name="IDUser" ColumnName="IDUser" />
+          <ScalarProperty Name="IDService" ColumnName="IDService" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Service">
+      <EntityTypeMapping TypeName="dbProgrammProductsModel.Service">
+        <MappingFragment StoreEntitySet="Service">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CostOfInstallation" ColumnName="CostOfInstallation" />
+          <ScalarProperty Name="DateOfInstallation" ColumnName="DateOfInstallation" />
+          <ScalarProperty Name="DateOfDeinstallation" ColumnName="DateOfDeinstallation" />
+          <ScalarProperty Name="QuantityLicense" ColumnName="QuantityLicense" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TypeProduct">
+      <EntityTypeMapping TypeName="dbProgrammProductsModel.TypeProduct">
+        <MappingFragment StoreEntitySet="TypeProduct">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User">
+      <EntityTypeMapping TypeName="dbProgrammProductsModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="NameUser" ColumnName="NameUser" />
+          <ScalarProperty Name="Region" ColumnName="Region" />
+          <ScalarProperty Name="ScopeOfApplication" ColumnName="ScopeOfApplication" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
