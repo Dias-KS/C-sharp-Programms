@@ -1,0 +1,109 @@
+﻿<Page x:Class="AiroportApplication.Views.Pages.AuthPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AiroportApplication.Views.Pages"
+      mc:Ignorable="d" d:DesignWidth="800" 
+      Title="AuthPage" Height="450"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
+      
+    <Grid>
+
+        <StackPanel HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch">
+
+            <Image Source="/Img/bgForAuth1.jpg"/>
+
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Margin="0 10 0 0">
+
+            <Button x:Name="btnLogin"
+                    Width="100"
+                    Content="Войти"
+                    Margin="0 0 5 0"
+                    Height="25"
+                    FontSize="12"
+                    Click="btnLogin_Click"
+                    IsDefault="True"/>
+
+            <Button x:Name="btnClean"
+                    Width="100"
+                    Content="Очистить"
+                    Click="btnClean_Click"
+                    Height="25"
+                    FontSize="12"/>
+
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Margin="0 70 0 0">
+
+            <Button x:Name="btnExit"
+                    Content="Выход"
+                    Width="205"
+                    Click="btnExit_Click"
+                    FontSize="12"
+                    Height="25"
+                    IsCancel="True"/>
+
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Margin="0 0 260 100">
+
+            <TextBlock Text="Логин: "
+                       Margin="16 0 0 15"
+                       Width="60"/>
+            
+            <TextBlock Text="Пароль: "
+                       Width="60"
+                       Margin="0 10 0 0"/>
+
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Margin="0 0 0 120">
+
+            <TextBox x:Name="txtLogin"
+                     Width="205"
+                     Margin="0 0 0 5"
+                     Foreground="Black"
+                     materialDesign:HintAssist.Hint = "Введите логин "
+                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                     Text="Dias"/>
+
+            <PasswordBox x:Name="pswPassword"
+                         Width="205"
+                         Foreground="Black"
+                         materialDesign:HintAssist.Hint = "Введите пароль "
+                         Password="787898"
+                        Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"/>
+                         
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top"
+                    Margin="0 60 0 0">
+
+            <TextBlock Text="Airport Application"
+                       FontFamily="Tempus Sans ITC"
+                       Foreground="Red"
+                       FontSize="30"/>
+
+        </StackPanel>
+
+    </Grid>
+    
+</Page>

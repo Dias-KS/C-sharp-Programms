@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ed275a825a6b4db9b762491be95a77aa" Name="Diagram1" ZoomLevel="73">
+        <EntityTypeShape EntityType="dbAiroportModel.Airplane" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbAiroportModel.Role" Width="1.5" PointX="5.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbAiroportModel.Route" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbAiroportModel.RouteInfo" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbAiroportModel.SignIn" Width="1.5" PointX="8" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbAiroportModel.TypeAirplane" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
+        <AssociationConnector Association="dbAiroportModel.FK_Airplane_IDTypeAirplane_TypeAirplane_ID" ManuallyRouted="false" />
+        <AssociationConnector Association="dbAiroportModel.PK_Airplane_IDRoute_Route_ID" ManuallyRouted="false" />
+        <AssociationConnector Association="dbAiroportModel.FK_SignIn_RoleID_Role_IDRole" ManuallyRouted="false" />
+        <AssociationConnector Association="dbAiroportModel.FK_Route_IDRouteInfo_RouteInfo_ID" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
