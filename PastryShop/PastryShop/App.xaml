@@ -30,10 +30,17 @@
             <Setter Property="Margin" Value="0 0 0 5"/>
         </Style>
 
-        <Style TargetType="TextBox" >
+        <Style TargetType="TextBox" x:Key="txbReg">
             <Setter Property="Background" Value="AliceBlue"/>
             <Setter Property="BorderBrush" Value="Blue"/>
             <Setter Property="Width" Value="150"/>
+            <Setter Property="Height" Value="20"/>
+        </Style>
+
+        <Style TargetType="TextBox" x:Key="txbAdd" >
+            <Setter Property="Background" Value="AliceBlue"/>
+            <Setter Property="BorderBrush" Value="Blue"/>
+            <Setter Property="Width" Value="100"/>
             <Setter Property="Height" Value="20"/>
         </Style>
 

@@ -39,7 +39,7 @@ namespace PastryShop.Views.Pages
                 {
                     case "A":
                         MessageBox.Show("Добро пожаловать Админ " + txtLogin.Text + "!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
-                        NavigationService.Navigate(new RegPage());
+                        NavigationService.Navigate(new dbViewPage());
                         break;
 
                     case "U":

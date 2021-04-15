@@ -9,6 +9,10 @@
       Title="Окно регистрации">
 
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="199*"/>
+            <ColumnDefinition Width="201*"/>
+        </Grid.ColumnDefinitions>
 
         <StackPanel HorizontalAlignment="Left"
                     VerticalAlignment="Top"
@@ -21,9 +25,9 @@
 
 
         </StackPanel>
-        
+
         <StackPanel HorizontalAlignment="Center"
-                    VerticalAlignment="Center">
+                    VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="260,190">
 
             <StackPanel Orientation="Horizontal">
 
@@ -31,7 +35,8 @@
                 <TextBlock Text="Введите логин: "
                            Width="130"/>
 
-                <TextBox x:Name="txbLogin" />
+                <TextBox x:Name="txbLogin" 
+                         Style="{StaticResource txbReg}"/>
 
             </StackPanel>
 
@@ -57,13 +62,13 @@
                              PasswordChanged="pswPasswordDouble_PasswordChanged"/>
 
             </StackPanel>
-            
+
         </StackPanel>
 
         <StackPanel HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     Orientation="Vertical"
-                    Margin="130 135 0 0">
+                    Margin="390,265,260,130" Grid.ColumnSpan="2">
 
             <Button x:Name="btnRegistration"
                     Width="150"
@@ -77,8 +82,8 @@
                     Click="btnClean_Click"
                     Content="Очистить"
                     Height="25"/>
-            
+
         </StackPanel>
-       
+
     </Grid>
 </Page>

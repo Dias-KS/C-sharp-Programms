@@ -23,5 +23,6 @@ namespace PastryShop.Models
         public string Keyboard { get; set; }
         public string Mouse { get; set; }
         public string Headphones { get; set; }
+        public string Image { get; set; }
     }
 }

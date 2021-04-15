@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\Programming\C#\WPF\AirportApplicationViews\AiroportApplication\AiroportApplication\obj\Debug\
+D:\Programming\C#\WPF\AirportApplicatonView\AiroportApplication\AiroportApplication\obj\Debug\
 AiroportApplication
 none
 false
 DEBUG;TRACE
-D:\Programming\C#\WPF\AirportApplicationViews\AiroportApplication\AiroportApplication\App.xaml
+D:\Programming\C#\WPF\AirportApplicatonView\AiroportApplication\AiroportApplication\App.xaml
 51143946670
 21628168987
-19-1431683828
-201810157399
+202020924101
+20-1997730142
 Views\Pages\AddPage.xaml;Views\Pages\AuthPage.xaml;Views\Pages\dbViewPage.xaml;Views\Pages\EditPage.xaml;Views\Windows\MainWindow.xaml;
 
-False
+True
 

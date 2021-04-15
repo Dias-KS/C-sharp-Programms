@@ -21,7 +21,8 @@
                     Content="Войти"
                     Click="btnLogin_Click"
                     Margin="0 0 5 0"
-                    Style="{StaticResource btnLogin}"/>
+                    Style="{StaticResource btnLogin}"
+                    IsDefault="True"/>
 
            
 
@@ -48,7 +49,8 @@
             <Button x:Name="btnExit"
                     Width="205"
                     Content="Выход"
-                    Click="btnExit_Click"/>
+                    Click="btnExit_Click"
+                    IsCancel="True"/>
 
         </StackPanel>
 

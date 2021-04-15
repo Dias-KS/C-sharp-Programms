@@ -13,6 +13,7 @@
           <ScalarProperty Name="Keyboard" ColumnName="Keyboard" />
           <ScalarProperty Name="Mouse" ColumnName="Mouse" />
           <ScalarProperty Name="Headphones" ColumnName="Headphones" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

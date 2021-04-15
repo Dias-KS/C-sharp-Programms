@@ -1,12 +1,13 @@
-﻿<Page x:Class="PastryShop.Views.Pages.dbViewPage"
+﻿
+    <Page x:Class="PastryShop.Views.Pages.dbViewPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:PastryShop.Views.Pages"
-      mc:Ignorable="d" 
+      mc:Ignorable="d" Loaded="Page_Loaded"
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="dbViewPage">
+      Title="Просмотр данных">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -29,23 +30,67 @@
                                Margin="0 0 10 0"/>
                     
                     <TextBox x:Name="txbSearch"
-                             Width="150"/>
+                             Width="150" TextChanged="txbSearch_TextChanged"/>
 
 
                 </StackPanel>
             </Grid>
 
             <Grid Grid.Row="1">
-                <ListView>
-                    <ListViewItem>
-                        
-                    </ListViewItem>
+                <ListView x:Name="dbListView"  MouseDoubleClick="dbListView_MouseDoubleClick">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Grid Grid.Column="0">
+                                    
+                                    <Image Width="150"
+                                           Height="100"
+                                           Source="{Binding Image}"/>
+                                </Grid>
+
+                                <Grid Grid.Column="1">
+                                    <Label Content="{Binding MotherBoard}" ContentStringFormat="Материнская плата: {0}" FontSize="12" Margin="10 10 0 30"/>
+                                    <Label Content="{Binding CPU}" ContentStringFormat="Процессор: {0}" FontSize="12" Margin="10 30 0 30"/>
+                                    <Label Content="{Binding GPU}" ContentStringFormat="Видеокарта: {0}" FontSize="12" Margin="10 50 0 30"/>
+                                    <Label Content="{Binding RAM}" ContentStringFormat="Оперативная память: {0}" FontSize="12" Margin="10 70 0 30"/>
+                                </Grid>
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
                 </ListView>
             </Grid>
         </Grid>
 
         <Grid Grid.Column="1">
-            
+            <StackPanel Orientation="Vertical"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Top"
+                        Margin="0 85 0 0">
+
+                <Button x:Name="btnADD"
+                        Width="80"
+                        Height="25"
+                        Content="Добавить"
+                        Click="btnADD_Click"/>
+
+                <Button x:Name="btnEdit"
+                        Width="80"
+                        Height="25"
+                        Content="Изменить"
+                        Margin="0 30 0 30"/>
+
+                <Button x:Name="btnDelete"
+                        Width="80"
+                        Height="25"
+                        Content="Удалить"
+                        Click="btnDelete_Click"/>
+
+            </StackPanel>
         </Grid>
         
     </Grid>

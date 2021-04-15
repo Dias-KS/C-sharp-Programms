@@ -13,6 +13,7 @@
     <Property Name="Keyboard" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Mouse" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Headphones" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Image" Type="nvarchar" MaxLength="1000" />
   </EntityType>
   <EntityType Name="Role">
     <Key>

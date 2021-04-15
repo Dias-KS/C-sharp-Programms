@@ -27,3 +27,7 @@ D:\Programming\C#\WPF\PastryShop\PastryShop\bin\Debug\EntityFramework.SqlServer.
 D:\Programming\C#\WPF\PastryShop\PastryShop\bin\Debug\ru\EntityFramework.resources.dll
 D:\Programming\C#\WPF\PastryShop\PastryShop\obj\Debug\PastryShop_Content.g.cs
 D:\Programming\C#\WPF\PastryShop\PastryShop\obj\Debug\PastryShop.csproj.CopyComplete
+D:\Programming\C#\WPF\PastryShop\PastryShop\obj\Debug\Views\Pages\dbViewPage.g.cs
+D:\Programming\C#\WPF\PastryShop\PastryShop\obj\Debug\Views\Pages\dbViewPage.baml
+D:\Programming\C#\WPF\PastryShop\PastryShop\obj\Debug\Views\Pages\EditPage.g.cs
+D:\Programming\C#\WPF\PastryShop\PastryShop\obj\Debug\Views\Pages\EditPage.baml

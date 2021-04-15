@@ -18,6 +18,7 @@
           <Property Name="Keyboard" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Mouse" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Headphones" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Image" Type="nvarchar" MaxLength="1000" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -74,6 +75,7 @@
           <Property Name="Keyboard" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Mouse" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Headphones" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Image" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -132,6 +134,7 @@
                 <ScalarProperty Name="Keyboard" ColumnName="Keyboard" />
                 <ScalarProperty Name="Mouse" ColumnName="Mouse" />
                 <ScalarProperty Name="Headphones" ColumnName="Headphones" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
