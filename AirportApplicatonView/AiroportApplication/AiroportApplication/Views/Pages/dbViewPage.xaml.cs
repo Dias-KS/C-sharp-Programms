@@ -75,9 +75,11 @@ namespace AiroportApplication.Views.Pages
 
                     if (MessageBox.Show("Вы уверены, что хотите удалить данный элемент?", "Уведомление", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                     {
+
                         ConnectClass.db.Airplane.Remove(removeAirplane);
                         ConnectClass.db.SaveChanges();
                         Page_Loaded(null, null);
+
                     }
 
                     else
@@ -99,10 +101,6 @@ namespace AiroportApplication.Views.Pages
         {
 
             listViewData.ItemsSource = ConnectClass.db.Airplane.ToList();
-
-            //cmbSort1.Items.Add("255");
-            //cmbSort1.Items.Add("232");
-            //cmbSort1.Items.Add("121");
 
             cmbSort1.ItemsSource = ConnectClass.db.Airplane.ToList();
             cmbSort1.DisplayMemberPath = "NumberOfSeats";

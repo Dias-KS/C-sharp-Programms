@@ -61,7 +61,8 @@
 
             <TextBox x:Name="txtLogin"
                      Width="205"
-                     Margin="0 0 0 4"/>
+                     Margin="0 0 0 4"
+                     Style="{StaticResource txbReg}"/>
 
             <PasswordBox x:Name="pswPassword"
                          Width="205"/>

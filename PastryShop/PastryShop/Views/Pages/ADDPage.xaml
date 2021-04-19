@@ -10,8 +10,8 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="60*"/>
-            <ColumnDefinition Width="40*"/>
+            <ColumnDefinition Width="99*"/>
+            <ColumnDefinition Width="61*"/>
         </Grid.ColumnDefinitions>
 
         <Grid Grid.Column="0">
@@ -27,18 +27,18 @@
                         Click="btnBack_Click"/>
 
             </StackPanel>
-            
+
             <StackPanel Orientation="Vertical"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Top"
                         Margin="30 100 0 0">
 
                 <StackPanel Orientation="Horizontal">
-                    
+
                     <TextBlock Text="Процессор: " 
                                Margin="0 0 5 0"
                                Width="80"/>
-                    
+
                     <TextBox x:Name="txbCPU"
                              Style="{StaticResource txbAdd}"/>
 
@@ -62,8 +62,8 @@
 
                     <TextBlock Text="Оперативка: " 
                                Margin="0 0 5 0"
-                               Width="80"  /> 
-                            
+                               Width="80"  />
+
 
                     <TextBox x:Name="txbRAM"
                              Style="{StaticResource txbAdd}"/>
@@ -159,19 +159,23 @@
                         Click="btnClean_Click"/>
 
             </StackPanel>
-            
+
         </Grid>
 
         <Grid Grid.Column="1">
 
             <StackPanel HorizontalAlignment="Right"
                         VerticalAlignment="Center"
-                        Margin="0 0 60 100">
-                
-                <Image x:Name="PictureBox"
-                       Width="200"
-                       Height="180"/>
+                        Margin="0 30 60 100">
 
+                <Border BorderBrush="black" BorderThickness="3px">
+
+                    <Image x:Name="PictureBox"
+                           Width="200"
+                           Height="180" />
+
+
+                </Border>
                 <Button Width="100"
                         Height="20"
                         Content="Выбрать"
@@ -179,9 +183,9 @@
                         Click="Button_Click"/>
 
             </StackPanel>
-            
+
         </Grid>
-        
+
 
     </Grid>
 </Page>

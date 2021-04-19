@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-D:\Programming\C#\WPF\ProizvPraktikaWpfApp\ProizvPraktikaWpfApp\obj\Debug\
+D:\Programming\C#\WPF\ProizvPraktikaWpfAppm\ProizvPraktikaWpfApp\ProizvPraktikaWpfApp\obj\Debug\
 ProizvPraktikaWpfApp
 none
 false
 DEBUG;TRACE
-D:\Programming\C#\WPF\ProizvPraktikaWpfApp\ProizvPraktikaWpfApp\App.xaml
+D:\Programming\C#\WPF\ProizvPraktikaWpfAppm\ProizvPraktikaWpfApp\ProizvPraktikaWpfApp\App.xaml
 6-444075524
 2-1556844510
 21803401920
-20-230339769
+20-1136987941
 View\Pages\Admin\AdminAddPage.xaml;View\Pages\Admin\AdminEditPage.xaml;View\Pages\Admin\AdminGetInfoPage.xaml;View\Pages\Admin\AdminViewPage.xaml;View\Pages\AuthPage.xaml;View\Windows\MainWindow.xaml;
 
 True

@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="ed275a825a6b4db9b762491be95a77aa" Name="Diagram1" ZoomLevel="73">
+      <Diagram DiagramId="00f811e1afb2414d9e70b5a6fa2f3c03" Name="Diagram1">
         <EntityTypeShape EntityType="dbAiroportModel.Airplane" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="dbAiroportModel.Role" Width="1.5" PointX="5.75" PointY="5.125" IsExpanded="true" />
         <EntityTypeShape EntityType="dbAiroportModel.Route" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />

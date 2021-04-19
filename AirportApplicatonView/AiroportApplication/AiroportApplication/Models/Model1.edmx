@@ -15,7 +15,7 @@
           <Property Name="NumberOfSeats" Type="int" Nullable="false" />
           <Property Name="SpeedOfFlight" Type="nvarchar(max)" Nullable="false" />
           <Property Name="IDRoute" Type="int" Nullable="false" />
-          <Property Name="Picture" Type="image" />
+          <Property Name="Picture" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -155,7 +155,7 @@
           <Property Name="NumberOfSeats" Type="Int32" Nullable="false" />
           <Property Name="SpeedOfFlight" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="IDRoute" Type="Int32" Nullable="false" />
-          <Property Name="Picture" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Picture" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="TypeAirplane" Relationship="Self.FK_Airplane_IDTypeAirplane_TypeAirplane_ID" FromRole="Airplane" ToRole="TypeAirplane" />
           <NavigationProperty Name="Route" Relationship="Self.PK_Airplane_IDRoute_Route_ID" FromRole="Airplane" ToRole="Route" />
         </EntityType>

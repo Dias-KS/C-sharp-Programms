@@ -20,7 +20,7 @@ namespace AiroportApplication.Models
         public int NumberOfSeats { get; set; }
         public string SpeedOfFlight { get; set; }
         public int IDRoute { get; set; }
-        public byte[] Picture { get; set; }
+        public string Picture { get; set; }
     
         public virtual TypeAirplane TypeAirplane { get; set; }
         public virtual Route Route { get; set; }

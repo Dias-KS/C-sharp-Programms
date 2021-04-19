@@ -78,6 +78,7 @@ namespace PastryShop.Views.Pages
                     //encoder.Save(stream);
                     //newComputer.Image = stream.ToArray();   
                 }
+
                 newComputer.Image = file.FileName;
 
                 ConnectClass.db.Computer.Add(newComputer);
@@ -87,9 +88,9 @@ namespace PastryShop.Views.Pages
             }
 
 
-            catch
+            catch (Exception ex)
             {
-
+                MessageBox.Show(ex.Message, ex.Source, MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 

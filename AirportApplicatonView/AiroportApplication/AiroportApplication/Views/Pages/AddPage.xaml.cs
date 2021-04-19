@@ -30,6 +30,9 @@ namespace AiroportApplication.Views.Pages
             cmbTypeAirplane.ItemsSource = ConnectClass.db.TypeAirplane.Select(item => item.Title).ToList();
         }
 
+
+        OpenFileDialog file = new OpenFileDialog();
+
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();
@@ -81,15 +84,19 @@ namespace AiroportApplication.Views.Pages
                 var currentTypeAirplane = ConnectClass.db.TypeAirplane.FirstOrDefault(item => item.Title == cmbTypeAirplane.Text);
                 newAirplane.IDTypeAirplane = currentTypeAirplane.ID;
 
+                
+
                 {
 
-                    MemoryStream stream = new MemoryStream();
-                    JpegBitmapEncoder encoder = new JpegBitmapEncoder();
-                    encoder.Frames.Add(BitmapFrame.Create((BitmapImage)PictureBox.Source));
-                    encoder.Save(stream);
-                    newAirplane.Picture = stream.ToArray();
+                    //MemoryStream stream = new MemoryStream();
+                    //JpegBitmapEncoder encoder = new JpegBitmapEncoder();
+                    //encoder.Frames.Add(BitmapFrame.Create((BitmapImage)PictureBox.Source));
+                    //encoder.Save(stream);
+                    //newAirplane.Picture = stream.ToArray();
 
                 }
+
+                newAirplane.Picture = file.FileName;
 
                 ConnectClass.db.Airplane.Add(newAirplane);
                 ConnectClass.db.Route.Add(newRoute);
@@ -116,5 +123,9 @@ namespace AiroportApplication.Views.Pages
                 PictureBox.Source = bitmap;
             }
         }
+
+        ///
     }
 }
+
+

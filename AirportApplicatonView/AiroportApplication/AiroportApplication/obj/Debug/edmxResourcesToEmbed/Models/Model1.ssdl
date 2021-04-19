@@ -10,7 +10,7 @@
     <Property Name="NumberOfSeats" Type="int" Nullable="false" />
     <Property Name="SpeedOfFlight" Type="nvarchar(max)" Nullable="false" />
     <Property Name="IDRoute" Type="int" Nullable="false" />
-    <Property Name="Picture" Type="image" />
+    <Property Name="Picture" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="Role">
     <Key>

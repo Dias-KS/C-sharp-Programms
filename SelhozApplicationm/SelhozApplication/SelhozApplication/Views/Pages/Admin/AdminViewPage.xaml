@@ -56,21 +56,16 @@
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
                             Margin="0 0 180 0">
-                    
-                <Button x:Name="btnCalculate"
-                          Content="Вычислить"
-                          Width="110"
-                          Margin="5 0 5 10"
-                          Height="30"
-                          Click="btnCalculate_Click"/>
+
+                    <CheckBox Margin="0 5 0 8"></CheckBox>
                 
                 
                     <TextBlock Text="Обьем дохода на одного работника"
-                               Margin="10 8 0 0"/>
+                               Margin="10 8 0 10"/>
 
                 </StackPanel>
                 <CheckBox x:Name="chk4"
-                          Content="Список продуктов, для которых закупочная цена ниже себестоимости производителя "
+                          Content="Список продуктов"
                           IsChecked="False" Checked="chk4_Checked"
                           Unchecked="chk4_Unchecked"
                           Margin="0 0 0 10"/>
@@ -79,18 +74,7 @@
 
             </StackPanel>
 
-            <StackPanel Orientation="Horizontal"
-                        HorizontalAlignment="Right"
-                        VerticalAlignment="Center">
-
-                <Button x:Name="btnGetInfo"
-                        Width="110"
-                        Content="Подробнее"
-                        Click="btnGetInfo_Click"
-                        Margin="0 0 10 0"
-                        Height="30"/>
-
-            </StackPanel>
+            
 
 
             <StackPanel Orientation="Horizontal"
@@ -123,15 +107,31 @@
                     <DataGridTextColumn Header="ID" Binding="{Binding ID}" Width="0.4*"/>
                     <DataGridTextColumn Header="Название компании" Binding="{Binding NameCompany}" Width="1.2*"/>
                     <DataGridTextColumn Header="Дата регистрации" Binding="{Binding DateOfRegistration, StringFormat={}{0:dd MMMM yyyy}}" Width="1.1*"/>
-                    <DataGridTextColumn Header="Вид собственности" Binding="{Binding TypeOfProperty}" Width="1.1*"/>
+                    
                     <DataGridTextColumn Header="Число работников" Binding="{Binding NumberOfEmployees}" Width="1.1*"/>
                     <DataGridTextColumn Header="Основной вид продукции" Binding="{Binding MainTypeProduct}" Width="1.4*"/>
                     <DataGridTextColumn Header="Явл. ли передовым" Binding="{Binding AdvancedOr}" Width="1.1*"/>
                     <DataGridTextColumn Header="Прибыль" Binding="{Binding Price}" Width="0.8*"/>
-                    <DataGridTextColumn Header="Примечание" Binding="{Binding Comment}" Width="0.9*"/>
+                    
+                    
                     
                 </DataGrid.Columns>
+                
+                
+                
             </DataGrid>
+
+
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Margin="0 220 0 0">
+
+                <TextBlock Text="C#: WPF + SQL" FontSize="50" FontFamily="Javanese Text"
+                           />
+
+            </StackPanel>
+
         </Grid>
         
         <Grid Grid.Row="2"
@@ -139,7 +139,8 @@
 
             <StackPanel Orientation="Horizontal"
                      HorizontalAlignment="Center"
-                     VerticalAlignment="Center">
+                     VerticalAlignment="Center"
+                        Margin="0 0 0 0">
                 
             
                 <Button x:Name="btnAdd"
@@ -162,6 +163,21 @@
                         Height="30"/>
 
             </StackPanel>
+
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center">
+
+                <Button x:Name="btnGetInfo"
+                        Width="110"
+                        Content="Подробнее"
+                        Click="btnGetInfo_Click"
+                        Margin="0 0 10 0"
+                        Height="30"/>
+
+            </StackPanel>
+
+            
         </Grid>
 
 

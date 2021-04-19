@@ -16,6 +16,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
+
+
 namespace AiroportApplication.Views.Pages
 {
     /// <summary>
@@ -25,7 +28,6 @@ namespace AiroportApplication.Views.Pages
     {
 
         private Airplane selectedItem;
-
 
         public EditPage()
         {
@@ -51,12 +53,42 @@ namespace AiroportApplication.Views.Pages
             dtDateTimeArrival.SelectedDate = selectedItem.Route.RouteInfo.DateTimeArrival;
             dtDateTimeDeparture.SelectedDate = selectedItem.Route.RouteInfo.DateTimeDeparture;
 
+
             cmbTypeAirplane.SelectedItem = selectedItem.TypeAirplane.Title;
+
+
+            if(selectedItem.Picture != "")
+            {
+
+                PictureBox.Source = new BitmapImage(new Uri(selectedItem.Picture));
+
+            }
 
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
+
+            var editAir = ConnectClass.db.Airplane.FirstOrDefault(item => item.ID == selectedItem.ID);
+
+            editAir.NumberAirplane = txtNumberAirplane.Text;
+            editAir.SpeedOfFlight = txtSpeedOfFlight.Text;
+            editAir.NumberOfSeats =  Convert.ToInt32(txtNumberOfSeats.Text);
+
+            editAir.Route.NumberRoute = txtNumberRoute.Text;
+            editAir.Route.Distance = txtDistance.Text;
+            editAir.Route.PointOfDeparture = txtPointOfDeparture.Text;
+            editAir.Route.PointOfDestination = txtPointOfDestination.Text;
+
+            editAir.Route.RouteInfo.DateTimeArrival = Convert.ToDateTime(dtDateTimeArrival.SelectedDate);
+            editAir.Route.RouteInfo.DateTimeDeparture = Convert.ToDateTime(dtDateTimeDeparture.SelectedDate);
+
+            editAir.TypeAirplane.Title = cmbTypeAirplane.Text;
+
+            editAir.Picture = file.FileName;
+
+            ConnectClass.db.SaveChanges();
+            MessageBox.Show("Вы успешно изменили данные!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
 
         }
 
@@ -82,16 +114,16 @@ namespace AiroportApplication.Views.Pages
             NavigationService.GoBack();
         }
 
+        OpenFileDialog file = new OpenFileDialog();
+
         private void btnLoad_Click(object sender, RoutedEventArgs e)
         {
 
-            OpenFileDialog file = new OpenFileDialog();
-            file.Filter = "Image (*.png; *.jpg; *.jpeg;) | *.png; *.jpg; *.jpeg";
+            file.Filter = "Image(*.jpg; *.jpeg; *.png; | *.jpg; *.jpeg; *.png;)";
 
             if(file.ShowDialog() == true)
             {
-                BitmapImage bitmap = new BitmapImage(new Uri(file.FileName));
-                PictureBox.Source = bitmap;
+                PictureBox.Source = new BitmapImage(new Uri(file.FileName));
             }
 
         }

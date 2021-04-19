@@ -40,8 +40,10 @@ namespace PastryShop.Views.Pages
 
         public EditPage(Computer selectedItem)
         {
+
             InitializeComponent();
             this.selectedItem = selectedItem;
+
 
             txbCPU.Text = selectedItem.CPU;
             txbGPU.Text = selectedItem.GPU;
@@ -49,12 +51,28 @@ namespace PastryShop.Views.Pages
             txbHeadphones.Text = selectedItem.Headphones;
             txbKeyboard.Text = selectedItem.Keyboard;
             txbMotherBoard.Text = selectedItem.MotherBoard;
+
+
             txbMouse.Text = selectedItem.Mouse;
             txbRAM.Text = selectedItem.RAM;
 
-            PictureBox.Source = new BitmapImage(new Uri(selectedItem.Image));
+
+            if (selectedItem.Image == null)
+            {
+
+                PictureBox.Source = null;
+                
+            }
+
+            else
+            {
+
+                PictureBox.Source = new BitmapImage(new Uri(selectedItem.Image));
+                    
+            }
 
         }
+
 
 
         OpenFileDialog newOpenFile = new OpenFileDialog();

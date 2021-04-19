@@ -178,6 +178,7 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Безымянный.png" />
+    <Resource Include="Images\block1.jpg" />
     <Content Include="Models\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>

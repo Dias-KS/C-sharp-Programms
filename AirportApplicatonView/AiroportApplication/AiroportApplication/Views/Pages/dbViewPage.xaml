@@ -61,11 +61,10 @@
                         HorizontalAlignment="Right"
                         VerticalAlignment="Center"
                         Margin="0 0 120 0">
-
                 <ComboBox x:Name="cmbSort1"
-                         Width="100" SelectionChanged="cmbSort1_SelectionChanged"
+                         Width="100" SelectionChanged="cmbSort1_SelectionChanged" />
                           
-                         />
+                         
 
             </StackPanel>
 

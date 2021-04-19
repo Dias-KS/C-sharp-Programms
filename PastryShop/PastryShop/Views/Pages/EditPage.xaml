@@ -6,12 +6,12 @@
       xmlns:local="clr-namespace:PastryShop.Views.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="EditPage">
+      Title="Редактирование данных">
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="60*"/>
-            <ColumnDefinition Width="40*"/>
+            <ColumnDefinition Width="123*"/>
+            <ColumnDefinition Width="77*"/>
         </Grid.ColumnDefinitions>
 
         <Grid Grid.Column="0">
@@ -166,11 +166,15 @@
 
             <StackPanel HorizontalAlignment="Right"
                         VerticalAlignment="Center"
-                        Margin="0 0 60 100">
+                        Margin="0 30 60 100">
 
-                <Image x:Name="PictureBox"
+                <Border BorderBrush="Black" BorderThickness="3px">
+
+                    <Image x:Name="PictureBox"
                        Width="200"
                        Height="180"/>
+
+                </Border>
 
                 <Button Width="100"
                         Height="20"
