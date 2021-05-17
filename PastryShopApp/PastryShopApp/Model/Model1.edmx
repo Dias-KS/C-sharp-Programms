@@ -1,0 +1,506 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище PastryShopdDBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ClientAndOrder">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClientRegisterID" Type="int" />
+          <Property Name="OrderRegisterID" Type="int" />
+        </EntityType>
+        <EntityType Name="ClientMoreInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Adress" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Telephone" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ClientRegister">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DateRegistration" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="DateAccept" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="DateReadness" Type="datetime2" Precision="7" />
+          <Property Name="IDClientMoreInfo" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrderRegister">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameProduct" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Count" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Price" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Picture" Type="image" />
+          <Property Name="IDTypeProduct" Type="int" Nullable="false" />
+          <Property Name="IDStatus" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="IDRole" />
+          </Key>
+          <Property Name="IDRole" Type="nchar" MaxLength="1" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SignIn">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PictureUA" Type="image" />
+          <Property Name="RoleID" Type="nchar" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StatusOrder">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TypeProduct">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_CLientAndOrder_IDClientRegister_ClientRegister_ID">
+          <End Role="ClientRegister" Type="Self.ClientRegister" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ClientAndOrder" Type="Self.ClientAndOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientRegister">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ClientAndOrder">
+              <PropertyRef Name="ClientRegisterID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientAndOrder_IDOorderRegister_OrderRegister_ID">
+          <End Role="OrderRegister" Type="Self.OrderRegister" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ClientAndOrder" Type="Self.ClientAndOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderRegister">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ClientAndOrder">
+              <PropertyRef Name="OrderRegisterID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientMoreInfo_ID">
+          <End Role="ClientMoreInfo" Type="Self.ClientMoreInfo" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ClientRegister" Type="Self.ClientRegister" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientMoreInfo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ClientRegister">
+              <PropertyRef Name="IDClientMoreInfo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderRegister_IDStatus_StatusOrder_ID">
+          <End Role="StatusOrder" Type="Self.StatusOrder" Multiplicity="1" />
+          <End Role="OrderRegister" Type="Self.OrderRegister" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusOrder">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OrderRegister">
+              <PropertyRef Name="IDStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderRegister_IDTypeProduct_TypeProduct_ID">
+          <End Role="TypeProduct" Type="Self.TypeProduct" Multiplicity="1" />
+          <End Role="OrderRegister" Type="Self.OrderRegister" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeProduct">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OrderRegister">
+              <PropertyRef Name="IDTypeProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SignIn_RoleID_Role_IDRole">
+          <End Role="Role" Type="Self.Role" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="SignIn" Type="Self.SignIn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="IDRole" />
+            </Principal>
+            <Dependent Role="SignIn">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище PastryShopdDBModelContainer">
+          <EntitySet Name="ClientAndOrder" EntityType="Self.ClientAndOrder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClientMoreInfo" EntityType="Self.ClientMoreInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClientRegister" EntityType="Self.ClientRegister" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderRegister" EntityType="Self.OrderRegister" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SignIn" EntityType="Self.SignIn" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StatusOrder" EntityType="Self.StatusOrder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypeProduct" EntityType="Self.TypeProduct" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CLientAndOrder_IDClientRegister_ClientRegister_ID" Association="Self.FK_CLientAndOrder_IDClientRegister_ClientRegister_ID">
+            <End Role="ClientRegister" EntitySet="ClientRegister" />
+            <End Role="ClientAndOrder" EntitySet="ClientAndOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientAndOrder_IDOorderRegister_OrderRegister_ID" Association="Self.FK_ClientAndOrder_IDOorderRegister_OrderRegister_ID">
+            <End Role="OrderRegister" EntitySet="OrderRegister" />
+            <End Role="ClientAndOrder" EntitySet="ClientAndOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientMoreInfo_ID" Association="Self.FK_ClientMoreInfo_ID">
+            <End Role="ClientMoreInfo" EntitySet="ClientMoreInfo" />
+            <End Role="ClientRegister" EntitySet="ClientRegister" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderRegister_IDStatus_StatusOrder_ID" Association="Self.FK_OrderRegister_IDStatus_StatusOrder_ID">
+            <End Role="StatusOrder" EntitySet="StatusOrder" />
+            <End Role="OrderRegister" EntitySet="OrderRegister" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderRegister_IDTypeProduct_TypeProduct_ID" Association="Self.FK_OrderRegister_IDTypeProduct_TypeProduct_ID">
+            <End Role="TypeProduct" EntitySet="TypeProduct" />
+            <End Role="OrderRegister" EntitySet="OrderRegister" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SignIn_RoleID_Role_IDRole" Association="Self.FK_SignIn_RoleID_Role_IDRole">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="SignIn" EntitySet="SignIn" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PastryShopdDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ClientAndOrder">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientRegisterID" Type="Int32" />
+          <Property Name="OrderRegisterID" Type="Int32" />
+          <NavigationProperty Name="ClientRegister" Relationship="Self.FK_CLientAndOrder_IDClientRegister_ClientRegister_ID" FromRole="ClientAndOrder" ToRole="ClientRegister" />
+          <NavigationProperty Name="OrderRegister" Relationship="Self.FK_ClientAndOrder_IDOorderRegister_OrderRegister_ID" FromRole="ClientAndOrder" ToRole="OrderRegister" />
+        </EntityType>
+        <EntityType Name="ClientMoreInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Adress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Telephone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ClientRegister" Relationship="Self.FK_ClientMoreInfo_ID" FromRole="ClientMoreInfo" ToRole="ClientRegister" />
+        </EntityType>
+        <EntityType Name="ClientRegister">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DateRegistration" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="DateAccept" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="DateReadness" Type="DateTime" Precision="7" />
+          <Property Name="IDClientMoreInfo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ClientAndOrder" Relationship="Self.FK_CLientAndOrder_IDClientRegister_ClientRegister_ID" FromRole="ClientRegister" ToRole="ClientAndOrder" />
+          <NavigationProperty Name="ClientMoreInfo" Relationship="Self.FK_ClientMoreInfo_ID" FromRole="ClientRegister" ToRole="ClientMoreInfo" />
+        </EntityType>
+        <EntityType Name="OrderRegister">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameProduct" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Count" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Price" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Picture" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="IDTypeProduct" Type="Int32" Nullable="false" />
+          <Property Name="IDStatus" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ClientAndOrder" Relationship="Self.FK_ClientAndOrder_IDOorderRegister_OrderRegister_ID" FromRole="OrderRegister" ToRole="ClientAndOrder" />
+          <NavigationProperty Name="StatusOrder" Relationship="Self.FK_OrderRegister_IDStatus_StatusOrder_ID" FromRole="OrderRegister" ToRole="StatusOrder" />
+          <NavigationProperty Name="TypeProduct" Relationship="Self.FK_OrderRegister_IDTypeProduct_TypeProduct_ID" FromRole="OrderRegister" ToRole="TypeProduct" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="IDRole" />
+          </Key>
+          <Property Name="IDRole" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="SignIn" Relationship="Self.FK_SignIn_RoleID_Role_IDRole" FromRole="Role" ToRole="SignIn" />
+        </EntityType>
+        <EntityType Name="SignIn">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PictureUA" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="RoleID" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_SignIn_RoleID_Role_IDRole" FromRole="SignIn" ToRole="Role" />
+        </EntityType>
+        <EntityType Name="StatusOrder">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="OrderRegister" Relationship="Self.FK_OrderRegister_IDStatus_StatusOrder_ID" FromRole="StatusOrder" ToRole="OrderRegister" />
+        </EntityType>
+        <EntityType Name="TypeProduct">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="OrderRegister" Relationship="Self.FK_OrderRegister_IDTypeProduct_TypeProduct_ID" FromRole="TypeProduct" ToRole="OrderRegister" />
+        </EntityType>
+        <Association Name="FK_CLientAndOrder_IDClientRegister_ClientRegister_ID">
+          <End Role="ClientRegister" Type="Self.ClientRegister" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ClientAndOrder" Type="Self.ClientAndOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientRegister">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ClientAndOrder">
+              <PropertyRef Name="ClientRegisterID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientAndOrder_IDOorderRegister_OrderRegister_ID">
+          <End Role="OrderRegister" Type="Self.OrderRegister" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ClientAndOrder" Type="Self.ClientAndOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderRegister">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ClientAndOrder">
+              <PropertyRef Name="OrderRegisterID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientMoreInfo_ID">
+          <End Role="ClientMoreInfo" Type="Self.ClientMoreInfo" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ClientRegister" Type="Self.ClientRegister" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientMoreInfo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ClientRegister">
+              <PropertyRef Name="IDClientMoreInfo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderRegister_IDStatus_StatusOrder_ID">
+          <End Role="StatusOrder" Type="Self.StatusOrder" Multiplicity="1" />
+          <End Role="OrderRegister" Type="Self.OrderRegister" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusOrder">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OrderRegister">
+              <PropertyRef Name="IDStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderRegister_IDTypeProduct_TypeProduct_ID">
+          <End Role="TypeProduct" Type="Self.TypeProduct" Multiplicity="1" />
+          <End Role="OrderRegister" Type="Self.OrderRegister" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeProduct">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="OrderRegister">
+              <PropertyRef Name="IDTypeProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SignIn_RoleID_Role_IDRole">
+          <End Role="Role" Type="Self.Role" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="SignIn" Type="Self.SignIn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="IDRole" />
+            </Principal>
+            <Dependent Role="SignIn">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PastryShopdDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ClientAndOrder" EntityType="Self.ClientAndOrder" />
+          <EntitySet Name="ClientMoreInfo" EntityType="Self.ClientMoreInfo" />
+          <EntitySet Name="ClientRegister" EntityType="Self.ClientRegister" />
+          <EntitySet Name="OrderRegister" EntityType="Self.OrderRegister" />
+          <EntitySet Name="Role" EntityType="Self.Role" />
+          <EntitySet Name="SignIn" EntityType="Self.SignIn" />
+          <EntitySet Name="StatusOrder" EntityType="Self.StatusOrder" />
+          <EntitySet Name="TypeProduct" EntityType="Self.TypeProduct" />
+          <AssociationSet Name="FK_CLientAndOrder_IDClientRegister_ClientRegister_ID" Association="Self.FK_CLientAndOrder_IDClientRegister_ClientRegister_ID">
+            <End Role="ClientRegister" EntitySet="ClientRegister" />
+            <End Role="ClientAndOrder" EntitySet="ClientAndOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientAndOrder_IDOorderRegister_OrderRegister_ID" Association="Self.FK_ClientAndOrder_IDOorderRegister_OrderRegister_ID">
+            <End Role="OrderRegister" EntitySet="OrderRegister" />
+            <End Role="ClientAndOrder" EntitySet="ClientAndOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientMoreInfo_ID" Association="Self.FK_ClientMoreInfo_ID">
+            <End Role="ClientMoreInfo" EntitySet="ClientMoreInfo" />
+            <End Role="ClientRegister" EntitySet="ClientRegister" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderRegister_IDStatus_StatusOrder_ID" Association="Self.FK_OrderRegister_IDStatus_StatusOrder_ID">
+            <End Role="StatusOrder" EntitySet="StatusOrder" />
+            <End Role="OrderRegister" EntitySet="OrderRegister" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderRegister_IDTypeProduct_TypeProduct_ID" Association="Self.FK_OrderRegister_IDTypeProduct_TypeProduct_ID">
+            <End Role="TypeProduct" EntitySet="TypeProduct" />
+            <End Role="OrderRegister" EntitySet="OrderRegister" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SignIn_RoleID_Role_IDRole" Association="Self.FK_SignIn_RoleID_Role_IDRole">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="SignIn" EntitySet="SignIn" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище PastryShopdDBModelContainer" CdmEntityContainer="PastryShopdDBEntities">
+          <EntitySetMapping Name="ClientAndOrder">
+            <EntityTypeMapping TypeName="PastryShopdDBModel.ClientAndOrder">
+              <MappingFragment StoreEntitySet="ClientAndOrder">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ClientRegisterID" ColumnName="ClientRegisterID" />
+                <ScalarProperty Name="OrderRegisterID" ColumnName="OrderRegisterID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClientMoreInfo">
+            <EntityTypeMapping TypeName="PastryShopdDBModel.ClientMoreInfo">
+              <MappingFragment StoreEntitySet="ClientMoreInfo">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Adress" ColumnName="Adress" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClientRegister">
+            <EntityTypeMapping TypeName="PastryShopdDBModel.ClientRegister">
+              <MappingFragment StoreEntitySet="ClientRegister">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="DateRegistration" ColumnName="DateRegistration" />
+                <ScalarProperty Name="DateAccept" ColumnName="DateAccept" />
+                <ScalarProperty Name="DateReadness" ColumnName="DateReadness" />
+                <ScalarProperty Name="IDClientMoreInfo" ColumnName="IDClientMoreInfo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderRegister">
+            <EntityTypeMapping TypeName="PastryShopdDBModel.OrderRegister">
+              <MappingFragment StoreEntitySet="OrderRegister">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NameProduct" ColumnName="NameProduct" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Picture" ColumnName="Picture" />
+                <ScalarProperty Name="IDTypeProduct" ColumnName="IDTypeProduct" />
+                <ScalarProperty Name="IDStatus" ColumnName="IDStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="PastryShopdDBModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="IDRole" ColumnName="IDRole" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SignIn">
+            <EntityTypeMapping TypeName="PastryShopdDBModel.SignIn">
+              <MappingFragment StoreEntitySet="SignIn">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="PictureUA" ColumnName="PictureUA" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StatusOrder">
+            <EntityTypeMapping TypeName="PastryShopdDBModel.StatusOrder">
+              <MappingFragment StoreEntitySet="StatusOrder">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypeProduct">
+            <EntityTypeMapping TypeName="PastryShopdDBModel.TypeProduct">
+              <MappingFragment StoreEntitySet="TypeProduct">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

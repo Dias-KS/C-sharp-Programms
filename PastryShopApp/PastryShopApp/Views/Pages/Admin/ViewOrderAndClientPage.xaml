@@ -1,0 +1,217 @@
+﻿<Page x:Class="PastryShopApp.Views.Pages.Admin.ViewOrderAndClientPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PastryShopApp.Views.Pages.Admin"
+      mc:Ignorable="d" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      d:DesignHeight="450" d:DesignWidth="800" Loaded="Page_Loaded"
+      Title="ViewOrderAndClientPage">
+
+    <Grid>
+        <StackPanel HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch" Grid.RowSpan="2" Grid.ColumnSpan="2">
+
+            <Image Source="../../../Images/i01_i01_BackForAdminMenu3.jpg" />
+
+        </StackPanel>
+
+
+
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70*"/>
+                <RowDefinition Height="337*"/>
+                <RowDefinition Height="30*"/>
+            </Grid.RowDefinitions>
+
+
+            <Grid Grid.Row="0">
+
+                <StackPanel HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Margin="10 10 0 0">
+
+                    <Button x:Name="btnBack"
+                        Style="{StaticResource MaterialDesignFloatingActionButton}"
+                        ToolTip="Back"
+                        Width="40"
+                        Height="40"
+                        Click="btnBack_Click">
+
+                        <materialDesign:PackIcon 
+                        Kind="ArrowBack" 
+                        Height="24" 
+                        Width="24"/>
+
+                    </Button>
+
+                </StackPanel>
+
+                <StackPanel HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Orientation="Horizontal">
+
+                    <Border Width="250"
+                            Height="50"
+                            Background="White"
+                            CornerRadius="30"
+                            Margin="0 15 0 0">
+
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="20" Color="Black" ShadowDepth="0"/>
+                        </Border.Effect>
+
+                        <TextBox x:Name="txbSearch"
+                                 Width="200"
+                                 Margin="0 0 0 10"
+                                 materialDesign:HintAssist.Hint="Поиск : "  
+                                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                 TextChanged="txbSearch_TextChanged"/>
+
+
+                    </Border>
+
+                    <Button x:Name="btnClean"
+                            Width="40"
+                            Height="40"
+                            Style="{StaticResource MaterialDesignFloatingActionButton}"
+                            ToolTip="Clean"
+                            Margin="10 15 0 0"
+                            Click="btnClean_Click">
+
+
+                        <materialDesign:PackIcon 
+                        Kind="Cached" 
+                        Height="24" 
+                        Width="24"/>
+
+                    </Button>
+
+
+                </StackPanel>
+
+            </Grid>
+
+            <Grid Grid.Row="1">
+
+
+                <Border Background="White"
+                        CornerRadius="20"
+                        Margin="12 22 12 12">
+
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="20" Color="Black" ShadowDepth="0"/>
+                    </Border.Effect>
+
+
+                    <ListView x:Name="listViewData"
+                          MouseDoubleClick="listViewData_MouseDoubleClick"
+                           Grid.RowSpan="3">
+
+                        <ListView.ItemTemplate>
+
+                            <DataTemplate >
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="300"/>
+                                        <ColumnDefinition Width="360"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Grid Grid.Column="0">
+                                        <Ellipse Width="120" Height="120">
+
+                                            <Ellipse.Fill>
+
+
+                                                <ImageBrush Stretch="Fill"
+                                                            ImageSource="{Binding PictureUA}"/>
+
+
+                                            </Ellipse.Fill>
+
+                                        </Ellipse>
+
+
+
+                                    </Grid>
+
+                                    <Grid Grid.Column="1">
+                                        <Label Content="{Binding ClientRegister.FirstName}" ContentStringFormat="Имя: {0}" FontSize="10" Margin="10 10 0 30" />
+                                        <Label Content="{Binding ClientRegister.LastName}" ContentStringFormat="Фамилия: {0}" FontSize="10" Margin="10 30 0 10" />
+                                        <Label Content="{Binding ClientRegister.DateRegistration}" ContentStringFormat="Дата регистрации: {0}" FontSize="10" Margin="10 50 0 10"/>
+                                        <Label Content="{Binding ClientRegister.DateAccept}" ContentStringFormat="Дата принятия заказа: {0}" FontSize="10" Margin="10 70 0 10"/>
+                                        <Label Content="{Binding ClientRegister.DateReadness}" ContentStringFormat="Дата готовности заказа: {0}" FontSize="10" Margin="10 90 0 10"/>
+                                        <Label Content="{Binding ClientRegister.ClientMoreInfo.Adress}" ContentStringFormat="Адресс: {0}" FontSize="10" Margin="10 110 0 10"/>
+                                    </Grid>
+
+                                    <Grid Grid.Column="2"
+                                          HorizontalAlignment="Right">
+
+
+                                        <StackPanel Orientation="Vertical" >
+
+
+                                            <Button x:Name="btnEdit"
+                                            Width="30"
+                                            Height="30"
+                                            Style="{StaticResource MaterialDesignFloatingActionButton}"
+                                            VerticalAlignment="Top"
+                                            HorizontalAlignment="Right"
+                                            Margin="0 10 0 0"
+                                            Click="btnEdit_Click">
+
+                                                <materialDesign:PackIcon 
+                                                    Kind="Edit" 
+                                                    Height="20" 
+                                                    Width="20"/>
+
+                                            </Button>
+
+                                            <Button x:Name="btnRemove"
+                                            Width="30"
+                                            Height="30"
+                                            Style="{StaticResource MaterialDesignFloatingActionButton}"
+                                            VerticalAlignment="Bottom"
+                                            HorizontalAlignment="Right"
+                                            Margin="0 30 0 0"
+                                            Click="btnRemove_Click">
+
+                                                <materialDesign:PackIcon 
+                                                    Kind="DeleteOutline" 
+                                                    Height="20" 
+                                                    Width="20"/>
+
+                                            </Button>
+
+                                        </StackPanel>
+                                    </Grid>
+
+
+                                </Grid>
+
+
+
+
+                            </DataTemplate>
+
+
+
+                        </ListView.ItemTemplate>
+
+
+                    </ListView>
+
+                </Border>
+            </Grid>
+
+            <Grid Grid.Row="2">
+
+
+            </Grid>
+
+        </Grid>
+
+    </Grid>
+</Page>

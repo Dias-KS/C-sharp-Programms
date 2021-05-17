@@ -99,51 +99,67 @@ namespace AiroportApplication.Views.Pages
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            //var sss = listViewData.ItemsSource = ConnectClass.db.Airplane.Where(item => item.NumberOfSeats.ToString().Contains(cmbSort1.Text)).ToList();
+
 
             listViewData.ItemsSource = ConnectClass.db.Airplane.ToList();
+            cmbSort1.ItemsSource = ConnectClass.db.Airplane.Select(item => item.NumberOfSeats).ToList();
 
-            cmbSort1.ItemsSource = ConnectClass.db.Airplane.ToList();
-            cmbSort1.DisplayMemberPath = "NumberOfSeats";
+
+            //cmbSort1.ItemsSource = ConnectClass.db.Airplane.ToList();
+            //cmbSort1.DisplayMemberPath = "NumberOfSeats";
 
         }
 
 
         private void txtSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
-            listViewData.ItemsSource = ConnectClass.db.Airplane.Where(item => item.NumberAirplane.Contains(txtSearch.Text)).ToList();
+            listViewData.ItemsSource = ConnectClass.db.Airplane.Where(item => item.NumberOfSeats.ToString().Contains(cmbSort1.Text) && item.NumberAirplane.Contains(txtSearch.Text)).ToList();
         }
 
         private void cmbSort1_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            try
+
+
+            Page_Loaded(null, null);
+            listViewData.ItemsSource = ConnectClass.db.Airplane.Where(item => item.NumberOfSeats.ToString().Contains(cmbSort1.Text)).ToList();
+           
+
+            //    try
+            //    {
+
+            //        var Current = cmbSort1.SelectedItem as Airplane;
+
+            //        Sort(Current.ID);
+
+            //    }
+
+            //    catch (Exception)
+            //    {
+
+            //    }
+
+            //}
+
+            void Sort(int id = -1)
             {
 
-                var Current = cmbSort1.SelectedItem as Airplane;
+                var data = ConnectClass.db.Airplane.ToList();
 
-                Sort(Current.ID);
+                if (id != -1)
+                {
+                    data = data.Where(x => x.ID == id).ToList();
+                }
 
-            }
-
-            catch (Exception)
-            {
+                listViewData.ItemsSource = data;
 
             }
 
         }
 
-        void Sort(int id = -1)
+        private void btnSearch_Click(object sender, RoutedEventArgs e)
         {
-
-            var data = ConnectClass.db.Airplane.ToList();
-
-            if (id != -1)
-            {
-                data = data.Where(x => x.ID == id).ToList();
-            }
-
-            listViewData.ItemsSource = data;
-
+            MessageBox.Show("Серёга лох!!!", "Уведомление!", MessageBoxButton.OK, MessageBoxImage.Error);
         }
-
     }
 }
