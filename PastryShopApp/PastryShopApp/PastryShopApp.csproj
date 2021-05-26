@@ -119,6 +119,9 @@
     <Compile Include="Views\Pages\Admin\AdminMenuPage.xaml.cs">
       <DependentUpon>AdminMenuPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Pages\Admin\EditOrderAndClientPage.xaml.cs">
+      <DependentUpon>EditOrderAndClientPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Pages\Admin\EditUserPage.xaml.cs">
       <DependentUpon>EditUserPage.xaml</DependentUpon>
     </Compile>
@@ -127,6 +130,9 @@
     </Compile>
     <Compile Include="Views\Pages\Admin\RegUserPage.xaml.cs">
       <DependentUpon>RegUserPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\Admin\ViewOrderAndClientMorePage.xaml.cs">
+      <DependentUpon>ViewOrderAndClientMorePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Pages\Admin\ViewOrderAndClientPage.xaml.cs">
       <DependentUpon>ViewOrderAndClientPage.xaml</DependentUpon>
@@ -139,6 +145,21 @@
     </Compile>
     <Compile Include="Views\Pages\AuthPage.xaml.cs">
       <DependentUpon>AuthPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\User\EditOrderAndClientPageU.xaml.cs">
+      <DependentUpon>EditOrderAndClientPageU.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\User\RegOrderAndClientPageU.xaml.cs">
+      <DependentUpon>RegOrderAndClientPageU.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\User\UserMenuPage.xaml.cs">
+      <DependentUpon>UserMenuPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\User\ViewOrderAndClientMorePageU.xaml.cs">
+      <DependentUpon>ViewOrderAndClientMorePageU.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\User\ViewOrderAndClientPageU.xaml.cs">
+      <DependentUpon>ViewOrderAndClientPageU.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -183,6 +204,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Pages\Admin\EditOrderAndClientPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Pages\Admin\EditUserPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -192,6 +217,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Pages\Admin\RegUserPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Pages\Admin\ViewOrderAndClientMorePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -211,14 +240,32 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Pages\User\EditOrderAndClientPageU.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Pages\User\RegOrderAndClientPageU.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Pages\User\UserMenuPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Pages\User\ViewOrderAndClientMorePageU.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Pages\User\ViewOrderAndClientPageU.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Windows\MainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Pages\User\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Images\BackForAdminMenu1.jpg" />
   </ItemGroup>
@@ -231,7 +278,6 @@
   <ItemGroup>
     <Resource Include="Images\i01_i01_BackForAdminMenu3.jpg" />
     <Resource Include="Images\BackForAuth2.jpg" />
-    <Resource Include="Images\BackForAuth.jpg" />
     <Resource Include="Images\i01_BackForAuthCopy.jpg" />
     <Resource Include="Images\BackForAuthCopy2.jpg" />
     <Resource Include="Images\PastryIcon %282%29.ico" />
@@ -240,6 +286,7 @@
     <Resource Include="Images\i01_BackForAdminMenu1.jpg" />
     <Resource Include="Images\Ordered1.png" />
     <Resource Include="Images\User1.png" />
+    <Resource Include="Images\Order.png" />
     <Content Include="Model\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>

@@ -1,12 +1,12 @@
-﻿<Page x:Class="PastryShopApp.Views.Pages.Admin.AdminMenuPage"
+﻿<Page x:Class="PastryShopApp.Views.Pages.User.UserMenuPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:PastryShopApp.Views.Pages.Admin" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local="clr-namespace:PastryShopApp.Views.Pages.User" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="AdminMenuPage">
+      Title="UserMenuPage">
 
     <Grid>
         <StackPanel HorizontalAlignment="Stretch"
@@ -26,34 +26,15 @@
                     Width="40"
                     Height="40"
                     Click="btnBack_Click">
-                
+
                 <materialDesign:PackIcon 
                     Kind="ArrowBack" 
                     Height="24" 
                     Width="24"/>
-                
-            </Button>
-                        
-                      
-        </StackPanel>
-
-        <StackPanel HorizontalAlignment="Right"
-                    VerticalAlignment="Top"
-                    Margin="0 10 60 0">
-
-            <Button x:Name="btnInfo"
-                    Style="{StaticResource MaterialDesignFloatingActionButton}"
-                    ToolTip="Information"
-                    Width="40"
-                    Height="40"
-                    Click="btnInfo_Click">
-
-                <materialDesign:PackIcon 
-                    Kind="InformationVariant"  
-                    Height="24" 
-                    Width="24"/>
 
             </Button>
+
+
         </StackPanel>
 
         <StackPanel HorizontalAlignment="Right"
@@ -74,18 +55,32 @@
 
             </Button>
 
+        </StackPanel>
 
+
+        <StackPanel HorizontalAlignment="Right"
+                    VerticalAlignment="Top"
+                    Margin="0 10 60 0">
+
+            <Button x:Name="btnInfo"
+                    Style="{StaticResource MaterialDesignFloatingActionButton}"
+                    ToolTip="Information"
+                    Width="40"
+                    Height="40"
+                    Click="btnInfo_Click">
+
+                <materialDesign:PackIcon 
+                    Kind="InformationVariant"  
+                    Height="24" 
+                    Width="24"/>
+
+            </Button>
         </StackPanel>
 
         <StackPanel HorizontalAlignment="Center"
                     VerticalAlignment="Center">
 
-            <Button x:Name="btnRegistration"
-                    Width="230"
-                    Height="35"
-                    Content="Регистрация пользователя"
-                    Click="btnRegistration_Click"/>
-
+            
             <Button x:Name="btnRegClient"
                     Width="230"
                     Height="35"

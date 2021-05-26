@@ -17,20 +17,24 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace PastryShopApp.Views.Pages.Admin
+namespace PastryShopApp.Views.Pages.User
 {
     /// <summary>
-    /// Логика взаимодействия для RegOrderAndClientPage.xaml
+    /// Логика взаимодействия для RegOrderAndClientPageU.xaml
     /// </summary>
-    public partial class RegOrderAndClientPage : Page
+    public partial class RegOrderAndClientPageU : Page
     {
-        public RegOrderAndClientPage()
+        public RegOrderAndClientPageU()
         {
             InitializeComponent();
             cmbStatus.ItemsSource = ConnectClass.db.StatusOrder.Select(item => item.Title).ToList();
             cmbTypeProduct.ItemsSource = ConnectClass.db.TypeProduct.Select(item => item.Title).ToList();
         }
 
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
+        }
 
         private void btnCleanOne_Click(object sender, RoutedEventArgs e)
         {
@@ -43,9 +47,36 @@ namespace PastryShopApp.Views.Pages.Admin
 
         }
 
-        private void btnAddOne_Click(object sender, RoutedEventArgs e)
+        private void btnCleanTwo_Click(object sender, RoutedEventArgs e)
         {
 
+            txbCount.Text = "";
+            txbPrice.Text = "";
+            cmbStatus.SelectedItem = null;
+            cmbTypeProduct.SelectedItem = null;
+            dtDateReadness.SelectedDate = null;
+            txbNameProduct.Text = "";
+        }
+
+
+        private void btnCleanThree_Click(object sender, RoutedEventArgs e)
+        {
+            PictureBox.Source = null; 
+        }
+
+        private void btnLoad_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog file = new OpenFileDialog();
+            file.Filter = "Image (*.jpg; *.png; *.jpeg;) | *.jpg; *.png; *.jpeg;";
+            if (file.ShowDialog() == true)
+            {
+                BitmapImage bitmap = new BitmapImage(new Uri(file.FileName));
+                PictureBox.Source = bitmap;
+            }
+        }
+
+        private void btnAddOne_Click(object sender, RoutedEventArgs e)
+        {
             try
             {
 
@@ -97,39 +128,6 @@ namespace PastryShopApp.Views.Pages.Admin
                 MessageBox.Show(ex.Message, ex.Source, MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
-        }
-
-        private void btnCleanTwo_Click(object sender, RoutedEventArgs e)
-        {
-            txbCount.Text = "";
-            txbPrice.Text = "";
-            cmbStatus.SelectedItem = null;
-            cmbTypeProduct.SelectedItem = null;
-            dtDateReadness.SelectedDate = null;
-            txbNameProduct.Text = "";
-        }
-
-       
-
-        private void btnBack_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.GoBack();
-        }
-
-        private void btnLoad_Click(object sender, RoutedEventArgs e)
-        {
-            OpenFileDialog file = new OpenFileDialog();
-            file.Filter = "Image (*.jpg; *.png; *.jpeg;) | *.jpg; *.png; *.jpeg;";
-            if (file.ShowDialog() == true)
-            {
-                BitmapImage bitmap = new BitmapImage(new Uri(file.FileName));
-                PictureBox.Source = bitmap;
-            }
-        }
-
-        private void btnCleanThree_Click(object sender, RoutedEventArgs e)
-        {
-            PictureBox.Source = null;
         }
 
         private void btnExit_Click(object sender, RoutedEventArgs e)

@@ -1,12 +1,12 @@
-﻿<Page x:Class="PastryShopApp.Views.Pages.Admin.RegOrderAndClientPage"
+﻿<Page x:Class="PastryShopApp.Views.Pages.Admin.EditOrderAndClientPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:PastryShopApp.Views.Pages.Admin"
       mc:Ignorable="d" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-      d:DesignHeight="450" d:DesignWidth="800" 
-      Title="RegOrderAndClientPage">
+      d:DesignHeight="450" d:DesignWidth="800" Loaded="Page_Loaded"
+      Title="EditOrderAndClientPage">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -150,9 +150,9 @@
                 </Border.Effect>
 
                 <StackPanel Orientation="Vertical"
-                             HorizontalAlignment="Center"
-                             VerticalAlignment="Center" 
-                             Height="360">
+                         HorizontalAlignment="Center"
+                         VerticalAlignment="Center" 
+                         Height="360">
 
                     <TextBlock Text="Данные о заказе :   "
                                Margin="20 0 0 0"
@@ -160,39 +160,39 @@
                                Style="{StaticResource MaterialDesignHeadline6TextBlock}"/>
 
                     <TextBox x:Name="txbNameProduct"
-                             Width="150"
-                             materialDesign:HintAssist.Hint = "Название продукта "
-                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                             />
+                         Width="150"
+                         materialDesign:HintAssist.Hint = "Название продукта "
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                         />
 
                     <TextBox x:Name="txbCount"
-                             Width="150"
-                             materialDesign:HintAssist.Hint = "Количество "
-                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                             Margin="0 10 0 10"/>
+                         Width="150"
+                         materialDesign:HintAssist.Hint = "Количество "
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                         Margin="0 10 0 10"/>
 
                     <TextBox x:Name="txbPrice"
-                             Width="150"
-                             materialDesign:HintAssist.Hint = "Цена "
-                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                         Width="150"
+                         materialDesign:HintAssist.Hint = "Цена "
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
 
                     <ComboBox x:Name="cmbTypeProduct"
-                              Width="150"
-                              materialDesign:HintAssist.Hint = "Тип продукта "
-                              Style="{StaticResource MaterialDesignFloatingHintComboBox}"
-                              Margin="0 10 0 10"/>
+                          Width="150"
+                          materialDesign:HintAssist.Hint = "Тип продукта "
+                          Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                          Margin="0 10 0 10"/>
 
                     <ComboBox x:Name="cmbStatus"
-                              Width="150"
-                              materialDesign:HintAssist.Hint = "Статус заказа "
-                              Style="{StaticResource MaterialDesignFloatingHintComboBox}"
-                              />
+                          Width="150"
+                          materialDesign:HintAssist.Hint = "Статус заказа "
+                          Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                          />
 
                     <DatePicker x:Name="dtDateReadness"
-                                Width="150"
-                                materialDesign:HintAssist.Hint = "Дата готовности заказа "
-                                Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
-                                Margin="0 10 0 10"/>
+                            Width="150"
+                            materialDesign:HintAssist.Hint = "Дата готовности заказа "
+                            Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
+                            Margin="0 10 0 10"/>
 
                     <StackPanel Orientation="Horizontal"
                                 HorizontalAlignment="Right">
@@ -223,6 +223,7 @@
 
             <Grid Grid.Column="2">
 
+
                 <StackPanel HorizontalAlignment="Right"
                         VerticalAlignment="Top"
                         Margin="0 10 10 0">
@@ -237,38 +238,38 @@
                         <materialDesign:PackIcon 
                             Kind="Close"  
                             Height="24" 
-                            Width="24"/>    
+                            Width="24"/>
 
                     </Button>
 
                 </StackPanel>
 
                 <Border Background="White"
-                        Width="200"
-                        Height="Auto"
-                        Margin="7,0,113,0"
-                        CornerRadius="0"
-                        BorderThickness="0" Grid.Column="1">
+                    Width="200"
+                    Height="Auto"
+                    Margin="7,0,113,0"
+                    CornerRadius="0"
+                    BorderThickness="0" Grid.Column="1">
 
                     <Border.Effect>
                         <DropShadowEffect BlurRadius="30" Color="Black" ShadowDepth="0"/>
                     </Border.Effect>
 
                     <StackPanel HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                Height="360">
+                            VerticalAlignment="Center"
+                            Height="360">
 
 
                         <TextBlock Text="Фото заказа : "
-                                   Margin="50 0 0 0"
-                                   FontSize="15"
-                                   Style="{StaticResource MaterialDesignHeadline6TextBlock}"/>
+                               Margin="50 0 0 0"
+                               FontSize="15"
+                               Style="{StaticResource MaterialDesignHeadline6TextBlock}"/>
 
                         <Image x:Name="PictureBox"
-                                Width="190"
-                                Height="190"
-                                Margin="0 40 0 0"
-                               Source="../../../Images/Order.png" />
+                            Width="190"
+                            Height="190"
+                            Margin="0 40 0 0"
+                           Source="../../../Images/Order.png" />
 
 
                         <StackPanel Orientation="Horizontal">
@@ -277,11 +278,11 @@
 
 
                             <Button x:Name="btnCleanThree"
-                                    Width="30"
-                                    Height="30"
-                                    Margin="10 55 0 0"
-                                    Click="btnCleanThree_Click"
-                                    Style="{StaticResource MaterialDesignFloatingActionButton}"  >
+                                Width="30"
+                                Height="30"
+                                Margin="10 55 0 0"
+                                Click="btnCleanThree_Click"
+                                Style="{StaticResource MaterialDesignFloatingActionButton}"  >
 
 
                                 <materialDesign:PackIcon 

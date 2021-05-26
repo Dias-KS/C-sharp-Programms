@@ -25,13 +25,7 @@ namespace PastryShopApp.Views.Pages.Admin
         public ViewUserPage()
         {
             InitializeComponent();
-        }
-
-        
-
-        private void listViewData_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-
+           
         }
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
@@ -46,7 +40,9 @@ namespace PastryShopApp.Views.Pages.Admin
 
         private void txbSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
-          listViewData.ItemsSource = ConnectClass.db.SignIn.Where(item => item.FirstName.Contains(txbSearch.Text) || item.LastName.Contains(txbSearch.Text)).ToArray();
+
+            listViewData.ItemsSource = ConnectClass.db.SignIn.Where(item => item.FirstName.Contains(txbSearch.Text) || item.LastName.Contains(txbSearch.Text)).ToList();
+            
         }
         private void btnClean_Click(object sender, RoutedEventArgs e)
         {
@@ -89,7 +85,14 @@ namespace PastryShopApp.Views.Pages.Admin
                 MessageBox.Show("Вы не выбрали ни одного элемента!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
+        private void btnExit_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("Вы уверены что хотите закрыть программу?", "Уведомление", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                Application.Current.Shutdown();
+            }
+        }
     }
 }
 
-//

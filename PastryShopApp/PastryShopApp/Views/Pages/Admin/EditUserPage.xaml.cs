@@ -190,8 +190,14 @@ namespace PastryShopApp.Views.Pages.Admin
         {
             cmbRole.ItemsSource = ConnectClass.db.Role.Select(item => item.IDRole).ToList();
 
-            
+        }
 
+        private void btnExit_Click(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("Вы уверены что хотите закрыть программу?", "Уведомление", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                Application.Current.Shutdown();
+            }
         }
     }
 }

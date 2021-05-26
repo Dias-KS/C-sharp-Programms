@@ -1,5 +1,6 @@
 ﻿using PastryShopApp.Classes;
 using PastryShopApp.Views.Pages.Admin;
+using PastryShopApp.Views.Pages.User;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,7 +44,7 @@ namespace PastryShopApp.Views.Pages
 
                     case "U":
                         MessageBox.Show("Добро пожаловать, пользователь " + txbFirstName.Text + "!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
-                        //NavigationService.Navigate(new AdminMenuPage());
+                        NavigationService.Navigate(new UserMenuPage());
                         break;
 
 

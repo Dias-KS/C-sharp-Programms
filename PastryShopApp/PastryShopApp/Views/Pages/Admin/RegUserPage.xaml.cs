@@ -86,6 +86,7 @@ namespace PastryShopApp.Views.Pages.Admin
                             RoleID = "A"
                         };
 
+
                         MemoryStream stream = new MemoryStream();
                         JpegBitmapEncoder encorder = new JpegBitmapEncoder();
                         encorder.Frames.Add(BitmapFrame.Create((BitmapImage)PictureBoxUA.ImageSource));
@@ -204,6 +205,14 @@ namespace PastryShopApp.Views.Pages.Admin
         private void btnCleanTwo_Click(object sender, RoutedEventArgs e)
         {
             PictureBoxUA.ImageSource = null;
+        }
+
+        private void btnExit_Click(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("Вы уверены что хотите закрыть программу?", "Уведомление", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                Application.Current.Shutdown();
+            }
         }
     }
 }
