@@ -1,0 +1,130 @@
+﻿<Page x:Class="GuardApp.Views.Pages.User.UserViewPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:GuardApp.Views.Pages.User"
+      mc:Ignorable="d" Loaded="Page_Loaded" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      d:DesignHeight="650" d:DesignWidth="1200"
+      Title="UserViewPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="56*"/>
+            <RowDefinition Height="335*"/>
+            <RowDefinition Height="80*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <StackPanel HorizontalAlignment="Right"
+                    VerticalAlignment="Top"
+                    Margin="0 10 10 0">
+
+                <Button x:Name="btnExit"
+                    Style="{StaticResource MaterialDesignFloatingActionButton}"
+                    ToolTip="Exit"
+                    Width="40"
+                    Height="40"
+                    Background="Red"
+                    Foreground="White"
+                    Click="btnExit_Click">
+
+                    <materialDesign:PackIcon 
+                    Kind="Close" 
+                    Height="24" 
+                    Width="24"/>
+
+                </Button>
+
+            </StackPanel>
+
+            <StackPanel HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Margin="10 10 0 0">
+
+                <Button x:Name="btnBack"
+                    Style="{StaticResource MaterialDesignFloatingActionButton}"
+                    ToolTip="Back"
+                    Width="40"
+                    Height="40"
+                    Background="Red"
+                    Foreground="White"
+                    Click="btnBack_Click">
+
+                    <materialDesign:PackIcon 
+                    Kind="ArrowBack" 
+                    Height="24" 
+                    Width="24"/>
+
+                </Button>
+
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Margin="600 0 0 0">
+
+                <TextBox x:Name="txbSearch"
+                         Width="200"
+                         materialDesign:HintAssist.Hint = "Поиск: "
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                         TextChanged="txbSearch_TextChanged"/>
+
+
+            </StackPanel>
+
+            <StackPanel HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+
+                <TextBlock Text="Данные охранника: "
+                           FontSize="24"/>
+
+            </StackPanel>
+
+        </Grid>
+
+        <Grid Grid.Row="1">
+
+            <DataGrid x:Name="dataView"
+                      Margin="10"
+                      AutoGenerateColumns="False"
+                      ColumnWidth="*">
+
+                <DataGrid.Columns>
+
+                    <DataGridTextColumn Header="ID" Binding="{Binding IDGuard}" Width="10*"/>
+                    <DataGridTextColumn Header="Имя" Binding="{Binding FirstName}"  Width="15*"/>
+                    <DataGridTextColumn Header="Фамилия" Binding="{Binding SurName}"  Width="20*"/>
+                    <DataGridTextColumn Header="Адрес" Binding="{Binding RegAdress}" Width="20*" />
+                    <DataGridTextColumn Header="Телефон" Binding="{Binding PhoneNumber}"  Width="20*"/>
+                    <DataGridTextColumn Header="Лицензия" Binding="{Binding License.LicenseType}"  Width="20*"/>
+                    <DataGridTextColumn Header="Описание лицензии" Binding="{Binding License.LicenseBriefInfo}"  Width="35*"/>
+                    <DataGridTextColumn Header="Подразделение" Binding="{Binding Podrazdelenie.NameDivision}"  Width="25*"/>
+                    <DataGridTextColumn Header="Модель оружия" Binding="{Binding GuardInfoGun.Model}"  Width="20*"/>
+                    <DataGridTextColumn Header="Тип оружия" Binding="{Binding GuardInfoGun.TypeGun}"  Width="20*"/>
+                    <DataGridTextColumn Header="Дата" Binding="{Binding Schedule.Date}"  Width="15*"/>
+                    <DataGridTextColumn Header="Номер смены" Binding="{Binding Schedule.ShiftNumber}"  Width="25*"/>
+
+                </DataGrid.Columns>
+            </DataGrid>
+
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+
+                <Button x:Name="btnViewMore"
+                        Width="130"
+                        Height="30"
+                        Content="Подробнее"
+                        Margin="0 0 5 0"
+                        FontSize="12"
+                        Click="btnViewMore_Click"/>
+
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Page>

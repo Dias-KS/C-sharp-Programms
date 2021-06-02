@@ -1,0 +1,493 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище dboBUDULAIModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="GuardInfoGun">
+          <Key>
+            <PropertyRef Name="GuardGunID" />
+          </Key>
+          <Property Name="GuardGunID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Model" Type="nvarchar" MaxLength="50" />
+          <Property Name="TypeGun" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="GuardInfoPesonal">
+          <Key>
+            <PropertyRef Name="IDGuard" />
+          </Key>
+          <Property Name="IDGuard" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RegAdress" Type="nvarchar" MaxLength="50" />
+          <Property Name="PhoneNumber" Type="nchar" MaxLength="50" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="SurName" Type="nvarchar" MaxLength="50" />
+          <Property Name="IDLicense" Type="int" />
+          <Property Name="IDGuardGun" Type="int" />
+          <Property Name="IDDivision" Type="int" />
+          <Property Name="IDSchedule" Type="int" />
+          <Property Name="IDObject" Type="int" />
+        </EntityType>
+        <EntityType Name="License">
+          <Key>
+            <PropertyRef Name="IDLicense" />
+          </Key>
+          <Property Name="IDLicense" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LicenseType" Type="int" />
+          <Property Name="LicenseBriefInfo" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Object">
+          <Key>
+            <PropertyRef Name="ObjectID" />
+          </Key>
+          <Property Name="ObjectID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ObjectName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="Adress" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="Podrazdelenie">
+          <Key>
+            <PropertyRef Name="IDDivision" />
+          </Key>
+          <Property Name="IDDivision" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameDivision" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="IDRole" />
+          </Key>
+          <Property Name="IDRole" Type="nchar" MaxLength="1" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Schedule">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date" Type="date" />
+          <Property Name="ShiftNumber" Type="int" />
+        </EntityType>
+        <EntityType Name="SignIn">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="SurName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="RoleID" Type="nchar" MaxLength="1" />
+        </EntityType>
+        <Association Name="FK_GuardInfoPesonal_GuardInfoGun">
+          <End Role="GuardInfoGun" Type="Self.GuardInfoGun" Multiplicity="0..1" />
+          <End Role="GuardInfoPesonal" Type="Self.GuardInfoPesonal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GuardInfoGun">
+              <PropertyRef Name="GuardGunID" />
+            </Principal>
+            <Dependent Role="GuardInfoPesonal">
+              <PropertyRef Name="IDGuardGun" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GuardInfoPesonal_License">
+          <End Role="License" Type="Self.License" Multiplicity="0..1" />
+          <End Role="GuardInfoPesonal" Type="Self.GuardInfoPesonal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="License">
+              <PropertyRef Name="IDLicense" />
+            </Principal>
+            <Dependent Role="GuardInfoPesonal">
+              <PropertyRef Name="IDLicense" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GuardInfoPesonal_Object">
+          <End Role="Object" Type="Self.Object" Multiplicity="0..1" />
+          <End Role="GuardInfoPesonal" Type="Self.GuardInfoPesonal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Object">
+              <PropertyRef Name="ObjectID" />
+            </Principal>
+            <Dependent Role="GuardInfoPesonal">
+              <PropertyRef Name="IDObject" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GuardInfoPesonal_Podrazdelenie">
+          <End Role="Podrazdelenie" Type="Self.Podrazdelenie" Multiplicity="0..1" />
+          <End Role="GuardInfoPesonal" Type="Self.GuardInfoPesonal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Podrazdelenie">
+              <PropertyRef Name="IDDivision" />
+            </Principal>
+            <Dependent Role="GuardInfoPesonal">
+              <PropertyRef Name="IDDivision" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GuardInfoPesonal_Schedule">
+          <End Role="Schedule" Type="Self.Schedule" Multiplicity="0..1" />
+          <End Role="GuardInfoPesonal" Type="Self.GuardInfoPesonal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Schedule">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="GuardInfoPesonal">
+              <PropertyRef Name="IDSchedule" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SignIn_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+          <End Role="SignIn" Type="Self.SignIn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="IDRole" />
+            </Principal>
+            <Dependent Role="SignIn">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище dboBUDULAIModelContainer">
+          <EntitySet Name="GuardInfoGun" EntityType="Self.GuardInfoGun" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GuardInfoPesonal" EntityType="Self.GuardInfoPesonal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="License" EntityType="Self.License" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Object" EntityType="Self.Object" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Podrazdelenie" EntityType="Self.Podrazdelenie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Schedule" EntityType="Self.Schedule" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SignIn" EntityType="Self.SignIn" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_GuardInfoPesonal_GuardInfoGun" Association="Self.FK_GuardInfoPesonal_GuardInfoGun">
+            <End Role="GuardInfoGun" EntitySet="GuardInfoGun" />
+            <End Role="GuardInfoPesonal" EntitySet="GuardInfoPesonal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GuardInfoPesonal_License" Association="Self.FK_GuardInfoPesonal_License">
+            <End Role="License" EntitySet="License" />
+            <End Role="GuardInfoPesonal" EntitySet="GuardInfoPesonal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GuardInfoPesonal_Object" Association="Self.FK_GuardInfoPesonal_Object">
+            <End Role="Object" EntitySet="Object" />
+            <End Role="GuardInfoPesonal" EntitySet="GuardInfoPesonal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GuardInfoPesonal_Podrazdelenie" Association="Self.FK_GuardInfoPesonal_Podrazdelenie">
+            <End Role="Podrazdelenie" EntitySet="Podrazdelenie" />
+            <End Role="GuardInfoPesonal" EntitySet="GuardInfoPesonal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GuardInfoPesonal_Schedule" Association="Self.FK_GuardInfoPesonal_Schedule">
+            <End Role="Schedule" EntitySet="Schedule" />
+            <End Role="GuardInfoPesonal" EntitySet="GuardInfoPesonal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SignIn_Role" Association="Self.FK_SignIn_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="SignIn" EntitySet="SignIn" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dboBUDULAIModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="GuardInfoGun">
+          <Key>
+            <PropertyRef Name="GuardGunID" />
+          </Key>
+          <Property Name="GuardGunID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Model" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TypeGun" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="GuardInfoPesonal" Relationship="Self.FK_GuardInfoPesonal_GuardInfoGun" FromRole="GuardInfoGun" ToRole="GuardInfoPesonal" />
+        </EntityType>
+        <EntityType Name="GuardInfoPesonal">
+          <Key>
+            <PropertyRef Name="IDGuard" />
+          </Key>
+          <Property Name="IDGuard" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RegAdress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SurName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IDLicense" Type="Int32" />
+          <Property Name="IDGuardGun" Type="Int32" />
+          <Property Name="IDDivision" Type="Int32" />
+          <Property Name="IDSchedule" Type="Int32" />
+          <Property Name="IDObject" Type="Int32" />
+          <NavigationProperty Name="GuardInfoGun" Relationship="Self.FK_GuardInfoPesonal_GuardInfoGun" FromRole="GuardInfoPesonal" ToRole="GuardInfoGun" />
+          <NavigationProperty Name="License" Relationship="Self.FK_GuardInfoPesonal_License" FromRole="GuardInfoPesonal" ToRole="License" />
+          <NavigationProperty Name="Object" Relationship="Self.FK_GuardInfoPesonal_Object" FromRole="GuardInfoPesonal" ToRole="Object" />
+          <NavigationProperty Name="Podrazdelenie" Relationship="Self.FK_GuardInfoPesonal_Podrazdelenie" FromRole="GuardInfoPesonal" ToRole="Podrazdelenie" />
+          <NavigationProperty Name="Schedule" Relationship="Self.FK_GuardInfoPesonal_Schedule" FromRole="GuardInfoPesonal" ToRole="Schedule" />
+        </EntityType>
+        <EntityType Name="License">
+          <Key>
+            <PropertyRef Name="IDLicense" />
+          </Key>
+          <Property Name="IDLicense" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LicenseType" Type="Int32" />
+          <Property Name="LicenseBriefInfo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="GuardInfoPesonal" Relationship="Self.FK_GuardInfoPesonal_License" FromRole="License" ToRole="GuardInfoPesonal" />
+        </EntityType>
+        <EntityType Name="Object">
+          <Key>
+            <PropertyRef Name="ObjectID" />
+          </Key>
+          <Property Name="ObjectID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ObjectName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="Adress" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="GuardInfoPesonal" Relationship="Self.FK_GuardInfoPesonal_Object" FromRole="Object" ToRole="GuardInfoPesonal" />
+        </EntityType>
+        <EntityType Name="Podrazdelenie">
+          <Key>
+            <PropertyRef Name="IDDivision" />
+          </Key>
+          <Property Name="IDDivision" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameDivision" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="GuardInfoPesonal" Relationship="Self.FK_GuardInfoPesonal_Podrazdelenie" FromRole="Podrazdelenie" ToRole="GuardInfoPesonal" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="IDRole" />
+          </Key>
+          <Property Name="IDRole" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="SignIn" Relationship="Self.FK_SignIn_Role" FromRole="Role" ToRole="SignIn" />
+        </EntityType>
+        <EntityType Name="Schedule">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="ShiftNumber" Type="Int32" />
+          <NavigationProperty Name="GuardInfoPesonal" Relationship="Self.FK_GuardInfoPesonal_Schedule" FromRole="Schedule" ToRole="GuardInfoPesonal" />
+        </EntityType>
+        <EntityType Name="SignIn">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SurName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RoleID" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_SignIn_Role" FromRole="SignIn" ToRole="Role" />
+        </EntityType>
+        <Association Name="FK_GuardInfoPesonal_GuardInfoGun">
+          <End Role="GuardInfoGun" Type="Self.GuardInfoGun" Multiplicity="0..1" />
+          <End Role="GuardInfoPesonal" Type="Self.GuardInfoPesonal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GuardInfoGun">
+              <PropertyRef Name="GuardGunID" />
+            </Principal>
+            <Dependent Role="GuardInfoPesonal">
+              <PropertyRef Name="IDGuardGun" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GuardInfoPesonal_License">
+          <End Role="License" Type="Self.License" Multiplicity="0..1" />
+          <End Role="GuardInfoPesonal" Type="Self.GuardInfoPesonal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="License">
+              <PropertyRef Name="IDLicense" />
+            </Principal>
+            <Dependent Role="GuardInfoPesonal">
+              <PropertyRef Name="IDLicense" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GuardInfoPesonal_Object">
+          <End Role="Object" Type="Self.Object" Multiplicity="0..1" />
+          <End Role="GuardInfoPesonal" Type="Self.GuardInfoPesonal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Object">
+              <PropertyRef Name="ObjectID" />
+            </Principal>
+            <Dependent Role="GuardInfoPesonal">
+              <PropertyRef Name="IDObject" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GuardInfoPesonal_Podrazdelenie">
+          <End Role="Podrazdelenie" Type="Self.Podrazdelenie" Multiplicity="0..1" />
+          <End Role="GuardInfoPesonal" Type="Self.GuardInfoPesonal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Podrazdelenie">
+              <PropertyRef Name="IDDivision" />
+            </Principal>
+            <Dependent Role="GuardInfoPesonal">
+              <PropertyRef Name="IDDivision" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GuardInfoPesonal_Schedule">
+          <End Role="Schedule" Type="Self.Schedule" Multiplicity="0..1" />
+          <End Role="GuardInfoPesonal" Type="Self.GuardInfoPesonal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Schedule">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="GuardInfoPesonal">
+              <PropertyRef Name="IDSchedule" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SignIn_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+          <End Role="SignIn" Type="Self.SignIn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="IDRole" />
+            </Principal>
+            <Dependent Role="SignIn">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dboBUDULAIEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="GuardInfoGun" EntityType="Self.GuardInfoGun" />
+          <EntitySet Name="GuardInfoPesonal" EntityType="Self.GuardInfoPesonal" />
+          <EntitySet Name="License" EntityType="Self.License" />
+          <EntitySet Name="Object" EntityType="Self.Object" />
+          <EntitySet Name="Podrazdelenie" EntityType="Self.Podrazdelenie" />
+          <EntitySet Name="Role" EntityType="Self.Role" />
+          <EntitySet Name="Schedule" EntityType="Self.Schedule" />
+          <EntitySet Name="SignIn" EntityType="Self.SignIn" />
+          <AssociationSet Name="FK_GuardInfoPesonal_GuardInfoGun" Association="Self.FK_GuardInfoPesonal_GuardInfoGun">
+            <End Role="GuardInfoGun" EntitySet="GuardInfoGun" />
+            <End Role="GuardInfoPesonal" EntitySet="GuardInfoPesonal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GuardInfoPesonal_License" Association="Self.FK_GuardInfoPesonal_License">
+            <End Role="License" EntitySet="License" />
+            <End Role="GuardInfoPesonal" EntitySet="GuardInfoPesonal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GuardInfoPesonal_Object" Association="Self.FK_GuardInfoPesonal_Object">
+            <End Role="Object" EntitySet="Object" />
+            <End Role="GuardInfoPesonal" EntitySet="GuardInfoPesonal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GuardInfoPesonal_Podrazdelenie" Association="Self.FK_GuardInfoPesonal_Podrazdelenie">
+            <End Role="Podrazdelenie" EntitySet="Podrazdelenie" />
+            <End Role="GuardInfoPesonal" EntitySet="GuardInfoPesonal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GuardInfoPesonal_Schedule" Association="Self.FK_GuardInfoPesonal_Schedule">
+            <End Role="Schedule" EntitySet="Schedule" />
+            <End Role="GuardInfoPesonal" EntitySet="GuardInfoPesonal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SignIn_Role" Association="Self.FK_SignIn_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="SignIn" EntitySet="SignIn" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище dboBUDULAIModelContainer" CdmEntityContainer="dboBUDULAIEntities">
+          <EntitySetMapping Name="GuardInfoGun">
+            <EntityTypeMapping TypeName="dboBUDULAIModel.GuardInfoGun">
+              <MappingFragment StoreEntitySet="GuardInfoGun">
+                <ScalarProperty Name="GuardGunID" ColumnName="GuardGunID" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="TypeGun" ColumnName="TypeGun" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GuardInfoPesonal">
+            <EntityTypeMapping TypeName="dboBUDULAIModel.GuardInfoPesonal">
+              <MappingFragment StoreEntitySet="GuardInfoPesonal">
+                <ScalarProperty Name="IDGuard" ColumnName="IDGuard" />
+                <ScalarProperty Name="RegAdress" ColumnName="RegAdress" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="SurName" ColumnName="SurName" />
+                <ScalarProperty Name="IDLicense" ColumnName="IDLicense" />
+                <ScalarProperty Name="IDGuardGun" ColumnName="IDGuardGun" />
+                <ScalarProperty Name="IDDivision" ColumnName="IDDivision" />
+                <ScalarProperty Name="IDSchedule" ColumnName="IDSchedule" />
+                <ScalarProperty Name="IDObject" ColumnName="IDObject" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="License">
+            <EntityTypeMapping TypeName="dboBUDULAIModel.License">
+              <MappingFragment StoreEntitySet="License">
+                <ScalarProperty Name="IDLicense" ColumnName="IDLicense" />
+                <ScalarProperty Name="LicenseType" ColumnName="LicenseType" />
+                <ScalarProperty Name="LicenseBriefInfo" ColumnName="LicenseBriefInfo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Object">
+            <EntityTypeMapping TypeName="dboBUDULAIModel.Object">
+              <MappingFragment StoreEntitySet="Object">
+                <ScalarProperty Name="ObjectID" ColumnName="ObjectID" />
+                <ScalarProperty Name="ObjectName" ColumnName="ObjectName" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="Adress" ColumnName="Adress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Podrazdelenie">
+            <EntityTypeMapping TypeName="dboBUDULAIModel.Podrazdelenie">
+              <MappingFragment StoreEntitySet="Podrazdelenie">
+                <ScalarProperty Name="IDDivision" ColumnName="IDDivision" />
+                <ScalarProperty Name="NameDivision" ColumnName="NameDivision" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="dboBUDULAIModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="IDRole" ColumnName="IDRole" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Schedule">
+            <EntityTypeMapping TypeName="dboBUDULAIModel.Schedule">
+              <MappingFragment StoreEntitySet="Schedule">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="ShiftNumber" ColumnName="ShiftNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SignIn">
+            <EntityTypeMapping TypeName="dboBUDULAIModel.SignIn">
+              <MappingFragment StoreEntitySet="SignIn">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="SurName" ColumnName="SurName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
