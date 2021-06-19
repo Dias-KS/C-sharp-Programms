@@ -1,0 +1,133 @@
+﻿<Page x:Class="ChocolateFabricApp.Views.Pages.AuthPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ChocolateFabricApp.Views.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="650" d:DesignWidth="1200"
+      Title="AuthPage">
+
+    <Grid>
+        <StackPanel HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch">
+
+            <Image Source="../../Images/Back1.jpg"  Stretch="Fill"/>
+
+        </StackPanel>
+
+
+        <StackPanel HorizontalAlignment="Center"
+                    VerticalAlignment="Top"
+                    Margin="0 160 0 0">
+            
+            
+        
+            <TextBlock Text="Авторизация: "
+                       FontSize="22"
+                       Foreground="Red"/>
+
+
+        </StackPanel>
+        
+        <StackPanel HorizontalAlignment="Right"
+                    VerticalAlignment="Top"
+                    Margin="0 20 20 0">
+
+           
+                <Button x:Name="btnExit"
+                        Width="40"
+                        Height="30"
+                        Background="Red"
+                        Content="X"
+                        Foreground="White"
+                        FontSize="16"
+                        Click="btnExit_Click"/>
+                
+          
+            
+        </StackPanel>
+        
+        <StackPanel Orientation="Vertical"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+
+
+            <TextBox x:Name="txbFirstName"
+                     Width="200"
+                     Height="23"
+                     BorderBrush="Red"
+                     BorderThickness="0 0 0 1"
+                     Background="Transparent"
+                     FontSize="16"
+                     Text="София"/>
+
+            <TextBox x:Name="txbLastName"
+                     Width="200"
+                     Height="23"
+                     BorderBrush="Red"
+                     BorderThickness="0 0 0 1"
+                     Background="Transparent"
+                     Margin="0 20 0 20"
+                     FontSize="16"
+                     Text="Багирова"/>
+
+            <PasswordBox x:Name="pswPassword"
+                         Width="200"
+                         Height="23"
+                         BorderBrush="Red"
+                         BorderThickness="0 0 0 1"
+                         Background="Transparent"
+                         FontSize="16"
+                         Password="1111"/>
+
+
+        </StackPanel>
+
+        <StackPanel HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Margin="0 0 290 0">
+
+            <TextBlock Text="Имя: "
+                       Foreground="Red"
+                       FontSize="16"/>
+            
+            <TextBlock Text="Фамилия: "
+                       Foreground="Red"
+                       FontSize="16"
+                       Margin="0 18 0 20"/>
+            
+            <TextBlock Text="Пароль: "
+                       Foreground="Red"
+                       FontSize="16"/>
+
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Margin="0 190 0 0">
+
+            <Button x:Name="btnLogin"
+                    Width="100"
+                    Height="40"
+                    Content="Войти"
+                    Background="Red"
+                    Foreground="White"
+                    FontSize="16"
+                    Margin="0 0 5 0"
+                    Click="btnLogin_Click"/>
+
+            <Button x:Name="btnClean"
+                    Width="100"
+                    Height="40"
+                    Content="Очистить"
+                    Background="Red"
+                    Foreground="White"
+                    FontSize="16"
+                    Click="btnClean_Click"/>
+
+        </StackPanel>
+        
+    </Grid>
+</Page>

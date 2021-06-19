@@ -27,9 +27,9 @@ namespace PastryShopApp.Views.Pages.Admin
             InitializeComponent();
         }
 
-        private ClientAndOrder selectedItem;
+        private ClientRegister selectedItem;
 
-        public ViewOrderAndClientMorePage(ClientAndOrder selectedItem)
+        public ViewOrderAndClientMorePage(ClientRegister selectedItem)
         {
             InitializeComponent();
             this.selectedItem = selectedItem;
@@ -55,11 +55,13 @@ namespace PastryShopApp.Views.Pages.Admin
 
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
-            var selectedItem = (ClientAndOrder)listViewData.SelectedItem;
+            ClientAndOrder selectedItem = (ClientAndOrder)listViewData.SelectedItem;
 
             if (selectedItem != null)
             {
-                NavigationService.Navigate(new EditOrderAndClientPage(selectedItem));
+
+                NavigationService.Navigate(new EditOrderAndClientMorePage(selectedItem));
+
             }
 
             else
@@ -95,7 +97,10 @@ namespace PastryShopApp.Views.Pages.Admin
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            listViewData.ItemsSource = ConnectClass.db.ClientAndOrder.Where(item => item.OrderRegisterID == selectedItem.OrderRegister.ID).ToList();
+            listViewData.ItemsSource = ConnectClass.db.ClientAndOrder.Where(x => x.ClientRegisterID == selectedItem.ID).ToList();
+
+            cmbSortTypeProduct.ItemsSource = ConnectClass.db.TypeProduct.Select(item => item.Title).ToList();
+
         }
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
@@ -104,6 +109,37 @@ namespace PastryShopApp.Views.Pages.Admin
             {
                 Application.Current.Shutdown();
             }
+        }
+
+        private void btnAddOrder_Click(object sender, RoutedEventArgs e)
+        {
+            ClientRegister clientRegister = (ClientRegister)listViewData.SelectedItem;
+            if (clientRegister == null)
+            {
+                NavigationService.Navigate(new AddOrderPage(clientRegister));
+            }      
+        }
+
+        private void cmbSortTypeProduct_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (cmbSortTypeProduct.SelectedItem != null)
+            {
+                Page_Loaded(null, null);
+
+                listViewData.ItemsSource = ConnectClass.db.ClientAndOrder.Where(item => item.OrderRegister.TypeProduct.Title.Contains(cmbSortTypeProduct.Text) && item.ClientRegisterID == selectedItem.ID).ToList();
+            }
+
+            else
+            {
+                listViewData.ItemsSource = ConnectClass.db.ClientAndOrder.Where(x => x.ClientRegisterID == selectedItem.ID).ToList();
+            }
+
+            
+        }
+
+        private void btnCleanTwo_Click(object sender, RoutedEventArgs e)
+        {
+            cmbSortTypeProduct.SelectedItem = null;
         }
     }
 }

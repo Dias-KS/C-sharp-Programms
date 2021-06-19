@@ -40,30 +40,30 @@ namespace PastryShopApp.Views.Pages.Admin
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
 
-            var selectedItem = (ClientAndOrder)dataView.SelectedItem;
+            ClientRegister selectedItem = (ClientRegister)dataView.SelectedItem;
 
             if(selectedItem != null)
             {
                 NavigationService.Navigate(new EditOrderAndClientPage(selectedItem));
             }
+
         }
 
         private void btnRemove_Click(object sender, RoutedEventArgs e)
         {
-            ClientAndOrder RemoveClient = (ClientAndOrder)dataView.SelectedItem;
+            ClientRegister RemoveClient = (ClientRegister)dataView.SelectedItem;
           
             if (RemoveClient != null)
             {
                 if (MessageBox.Show("Вы действительно хотите удалить данный элемент?", "Уведомление", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                 {
 
-                    ConnectClass.db.ClientAndOrder.Remove(RemoveClient);
+                    ConnectClass.db.ClientRegister.Remove(RemoveClient);
                     ConnectClass.db.SaveChanges();
                     Page_Loaded(null, null);
 
                 }
 
-               
             }
 
             else
@@ -75,10 +75,8 @@ namespace PastryShopApp.Views.Pages.Admin
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
 
-            //listViewData.ItemsSource = ConnectClass.db.ClientAndOrder.ToList();
-
-            dataView.ItemsSource = ConnectClass.db.ClientAndOrder.ToList();
-
+            dataView.ItemsSource = ConnectClass.db.ClientRegister.ToList();
+           
         }
 
         private void txbSearch_TextChanged_1(object sender, TextChangedEventArgs e)
@@ -88,13 +86,12 @@ namespace PastryShopApp.Views.Pages.Admin
 
         private void btnViewOrder_Click(object sender, RoutedEventArgs e)
         {
+            ClientRegister viewClientAndOorder = (ClientRegister)dataView.SelectedItem;
 
-            var viewOorder = (ClientAndOrder)dataView.SelectedItem;
-
-            if(viewOorder != null)
+            if(viewClientAndOorder != null)
             {
 
-                NavigationService.Navigate(new ViewOrderAndClientMorePage(viewOorder));
+                NavigationService.Navigate(new ViewOrderAndClientMorePage(viewClientAndOorder));
 
             }
 
@@ -103,7 +100,6 @@ namespace PastryShopApp.Views.Pages.Admin
                 MessageBox.Show("Вы не выбрали ни одного элемента!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
-            
         }
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
@@ -111,6 +107,39 @@ namespace PastryShopApp.Views.Pages.Admin
             if (MessageBox.Show("Вы уверены что хотите закрыть программу?", "Уведомление", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
                 Application.Current.Shutdown();
+            }
+        }
+
+        private void addOrderBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+            ClientRegister clientRegister = (ClientRegister)dataView.SelectedItem;
+            if(clientRegister != null)
+            {
+                NavigationService.Navigate(new AddOrderPage(clientRegister));
+            }
+
+            else
+            {
+                MessageBox.Show("Вы не выбрали ни одного элемента!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+        }
+
+        private void dtSortDataAccept_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (dtSortDataAccept.SelectedDate != null)
+            {
+
+                Page_Loaded(null, null);
+
+                dataView.ItemsSource = ConnectClass.db.ClientRegister.Where(item => item.DateAccept == dtSortDataAccept.SelectedDate).ToList();
+
+            }
+
+            else
+            {
+                dataView.ItemsSource = ConnectClass.db.ClientRegister.ToList();
             }
         }
     }

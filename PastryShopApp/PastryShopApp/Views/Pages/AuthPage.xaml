@@ -30,12 +30,9 @@
                         VerticalAlignment="Stretch">
 
                 <Image Source="../../Images/BackForAuth2.jpg" Stretch="Fill"/>
-                
-                
 
             </StackPanel>
 
-            
 
             <Border Width="260"
                     Margin="15"

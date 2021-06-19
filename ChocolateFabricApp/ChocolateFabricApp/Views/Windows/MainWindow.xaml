@@ -1,0 +1,13 @@
+﻿<Window x:Class="ChocolateFabricApp.Views.Windows.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ChocolateFabricApp.Views.Windows"
+        mc:Ignorable="d" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded"
+        Title="Шоколадная фабрика" Height="650" Width="1200"
+        Icon="../../Images/ChocolateIcon.png">
+    <Grid>
+        <Frame x:Name="mainFrame" NavigationUIVisibility="Hidden"/>
+    </Grid>
+</Window>

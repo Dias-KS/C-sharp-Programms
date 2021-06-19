@@ -25,7 +25,6 @@
                 <RowDefinition Height="80*"/>
             </Grid.RowDefinitions>
 
-
             <Grid Grid.Row="0">
 
                 <StackPanel HorizontalAlignment="Right"
@@ -42,7 +41,7 @@
                         <materialDesign:PackIcon 
                             Kind="Close"  
                             Height="24" 
-                            Width="24"/>    
+                            Width="24"/>
 
                     </Button>
 
@@ -71,7 +70,7 @@
                 <StackPanel HorizontalAlignment="Center"
                             VerticalAlignment="Center"
                             Orientation="Horizontal"
-                            Margin="20 0 0 0">
+                            Margin="0 0 180 0">
 
                     <Border Width="250"
                             Height="50"
@@ -113,6 +112,27 @@
 
                 </StackPanel>
 
+                <StackPanel HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Orientation="Horizontal"
+                            Margin="400 20 0 0">
+
+                    <Border Background="White"
+                            Width="150"
+                            Height="40"
+                            CornerRadius="20">
+
+                        <DatePicker  x:Name="dtSortDataAccept"
+                                     SelectedDateFormat="Short"
+                                  Width="100"
+                                  materialDesign:HintAssist.Hint="Дата принятия заказ" Margin="25,7,25,0" VerticalAlignment="Top" Height="25"  
+                                 SelectedDateChanged="dtSortDataAccept_SelectedDateChanged"
+                                  />
+
+                    </Border>
+
+                </StackPanel>
+
             </Grid>
 
             <Grid Grid.Row="1">
@@ -126,136 +146,121 @@
                         <DropShadowEffect BlurRadius="20" Color="Black" ShadowDepth="0"/>
                     </Border.Effect>
 
-
-                    <!--<ListView x:Name="listViewData"
-                              Grid.RowSpan="3">
-
-                        <ListView.ItemTemplate>
-
-                            <DataTemplate >
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="300"/>
-                                        <ColumnDefinition Width="650"/>
-                                    </Grid.ColumnDefinitions>
-
-                                    <Grid Grid.Column="0">
-                                        <Ellipse Width="120" Height="120">
-
-                                            <Ellipse.Fill>
-
-                                                <ImageBrush Stretch="Fill"
-                                                           ImageSource="/Images/User1.png"/>
-
-                                            </Ellipse.Fill>
-
-                                        </Ellipse>
-
-                                    </Grid>
-
-                                    <Grid Grid.Column="1">
-                                        <Label Content="{Binding ClientRegister.FirstName}" ContentStringFormat="Имя: {0}" FontSize="10" Margin="10 10 0 30" />
-                                        <Label Content="{Binding ClientRegister.LastName}" ContentStringFormat="Фамилия: {0}" FontSize="10" Margin="10 30 0 10" />
-                                        <Label Content="{Binding ClientRegister.DateRegistration}" ContentStringFormat="Дата регистрации: {0:dd.MM.yy}" FontSize="10" Margin="10 50 0 10"/>
-                                        <Label Content="{Binding ClientRegister.DateAccept}" ContentStringFormat="Дата принятия заказа: {0:dd.MM.yy}" FontSize="10" Margin="10 70 0 10"/>
-                                        <Label Content="{Binding ClientRegister.ClientMoreInfo.Adress}" ContentStringFormat="Адрес: {0}" FontSize="10" Margin="10 90 0 10"/>
-                                        <Label Content="{Binding ClientRegister.ClientMoreInfo.Telephone}" ContentStringFormat="Телефон: {0}" FontSize="10" Margin="10 110 0 10"/>
-                                        <Label Content="{Binding ClientRegister.DateReadness}" ContentStringFormat="Дата готовности заказа: {0:dd MMM yy}" FontSize="10" Margin="10 130 0 10"/>
-                                    </Grid>
-
-                                    
-                                    <Grid Grid.Column="2"
-                                          HorizontalAlignment="Right"
-                                          >
-
-                                        <StackPanel Orientation="Vertical" 
-                                                    Margin="0 0 0 0"
-                                                    >
-
-                                            <Button x:Name="btnEdit"
-                                                    Width="30"
-                                                    Height="30"
-                                                    Style="{StaticResource MaterialDesignFloatingActionButton}"
-                                                    VerticalAlignment="Top"
-                                                    HorizontalAlignment="Right"
-                                                    Margin="0 10 0 0"
-                                                    Click="btnEdit_Click">
-
-                                                <materialDesign:PackIcon 
-                                                        Kind="Edit" 
-                                                        Height="20" 
-                                                        Width="20"/>    
-
-                                            </Button>
-
-                                            <Button x:Name="btnRemove"
-                                                    Width="30"
-                                                    Height="30"
-                                                    Style="{StaticResource MaterialDesignFloatingActionButton}"
-                                                    VerticalAlignment="Bottom"
-                                                    HorizontalAlignment="Right"
-                                                    Margin="0 75 0 0"
-                                                    Click="btnRemove_Click">
-
-                                                <materialDesign:PackIcon 
-                                                    Kind="DeleteOutline" 
-                                                    Height="20" 
-                                                    Width="20"/>
-
-                                            </Button>
-
-                                        </StackPanel>
-                                        
-                                    </Grid>
-
-
-                                </Grid>
-
-                            </DataTemplate>
-
-                        </ListView.ItemTemplate>
-
-                    </ListView>-->
-
                     <DataGrid x:Name="dataView"
                               AutoGenerateColumns="False"
-                              ColumnWidth="*"> 
+                              ColumnWidth="*">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="ID" Binding="{Binding ID}" Width="10*"/>
-                            <DataGridTextColumn Header="Имя" Binding="{Binding ClientRegister.FirstName}" Width="20*"/>
-                            <DataGridTextColumn Header="Фамилия" Binding="{Binding ClientRegister.LastName}" Width="20*"/>
-                            <DataGridTextColumn Header="Дата регистрации" Binding="{Binding ClientRegister.DateRegistration}" Width="30*"/>
-                            <DataGridTextColumn Header="Дата принятия заказа" Binding="{Binding ClientRegister.DateAccept}" Width="30*"/>
-                            <DataGridTextColumn Header="Адресс" Binding="{Binding ClientRegister.ClientMoreInfo.Adress}" Width="20*"/>
-                            <DataGridTextColumn Header="Телефон" Binding="{Binding ClientRegister.ClientMoreInfo.Telephone}" Width="30*"/>
-                            <DataGridTextColumn Header="Дата готовности заказа" Binding="{Binding ClientRegister.DateReadness}" Width="30*"/>
-                        </DataGrid.Columns>
-                    </DataGrid>
+                            <DataGridTextColumn Header="Имя" Binding="{Binding FirstName}" Width="20*"/>
+                            <DataGridTextColumn Header="Фамилия" Binding="{Binding LastName}" Width="20*"/>
+                            <DataGridTextColumn Header="Дата регистрации" Binding="{Binding DateRegistration}" Width="30*"/>
+                            <DataGridTextColumn Header="Дата принятия заказа" Binding="{Binding DateAccept}" Width="30*"/>
+                            <DataGridTextColumn Header="Адресс" Binding="{Binding ClientMoreInfo.Adress}" Width="20*"/>
+                            <DataGridTextColumn Header="Телефон" Binding="{Binding ClientMoreInfo.Telephone}" Width="25*"/>
+                            <DataGridTextColumn Header="Дата готовности заказа" Binding="{Binding DateReadness, StringFormat={}}"  Width="30*"/>
 
+
+                        </DataGrid.Columns>
+
+                    </DataGrid>
                 </Border>
-                
+
             </Grid>
 
             <Grid Grid.Row="2">
 
+                <StackPanel HorizontalAlignment="Right">
+
+
+                    <Border Background="White"
+                            Width="200"
+                            Height="50"
+                            CornerRadius="25"
+                            Margin="0 30 15 0">
+
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="20" Color="Black" ShadowDepth="0"/>
+                        </Border.Effect>
+
+                        <Button x:Name="btnViewOrder"
+                                Width="160"
+                                Height="35"
+                                Content="Просмотреть заказ"
+                                Click="btnViewOrder_Click"/>
+
+
+
+                    </Border>
+
+                </StackPanel>
+
+                <StackPanel HorizontalAlignment="Left">
+
+                    <Border Background="White"
+                            Width="200"
+                            Height="50"
+                            CornerRadius="25"
+                            Margin="10 30 5 0">
+
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="20" Color="Black" ShadowDepth="0"/>
+                        </Border.Effect>
+
+                        <Button x:Name="addOrderBtn"
+                                Width="160"
+                                Height="35"
+                                Content="Добавить заказ"
+                                Click="addOrderBtn_Click"/>
+                    </Border>
+
+                </StackPanel>
 
                 <Border Background="White"
-                        Width="200"
-                        Height="50"
-                        CornerRadius="25 25 0 0"
-                        Margin="0 40 15 0">
+                            Width="150"
+                            Height="50"
+                            CornerRadius="25"
+                            Margin="0 20 0 0">
+
 
                     <Border.Effect>
                         <DropShadowEffect BlurRadius="20" Color="Black" ShadowDepth="0"/>
                     </Border.Effect>
 
-                    <Button x:Name="btnViewOrder"
-                            Width="160"
-                            Height="35"
-                            Content="Просмотреть заказ"
-                            Click="btnViewOrder_Click"/>
-                    
+                    <StackPanel Orientation="Horizontal" 
+                            Margin="0 0 0 0"
+                            HorizontalAlignment="Center">
+
+                        <Button x:Name="btnEdit"
+                            Width="40"
+                            Height="40"
+                            Style="{StaticResource MaterialDesignFloatingActionButton}"
+                            HorizontalAlignment="Center"
+                            Margin="0 0 0 0"
+                            Click="btnEdit_Click">
+
+                            <materialDesign:PackIcon 
+                                        Kind="Edit" 
+                                        Height="20" 
+                                        Width="20"/>
+
+                        </Button>
+
+                        <Button x:Name="btnRemove"
+                            Width="40"
+                            Height="40"
+                            Style="{StaticResource MaterialDesignFloatingActionButton}"
+                            Margin="40 0 0 0"
+                            Click="btnRemove_Click">
+
+                            <materialDesign:PackIcon 
+                               Kind="Delete" 
+                               Height="19" 
+                               Width="20"/>
+
+                        </Button>
+
+                    </StackPanel>
+
                 </Border>
 
             </Grid>
@@ -263,5 +268,5 @@
         </Grid>
 
     </Grid>
-    
+
 </Page>

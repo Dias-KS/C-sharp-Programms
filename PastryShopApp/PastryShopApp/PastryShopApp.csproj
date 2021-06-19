@@ -116,8 +116,14 @@
     <Compile Include="Model\TypeProduct.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Views\Pages\Admin\AddOrderPage.xaml.cs">
+      <DependentUpon>AddOrderPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Pages\Admin\AdminMenuPage.xaml.cs">
       <DependentUpon>AdminMenuPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\Admin\EditOrderAndClientMorePage.xaml.cs">
+      <DependentUpon>EditOrderAndClientMorePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Pages\Admin\EditOrderAndClientPage.xaml.cs">
       <DependentUpon>EditOrderAndClientPage.xaml</DependentUpon>
@@ -145,6 +151,12 @@
     </Compile>
     <Compile Include="Views\Pages\AuthPage.xaml.cs">
       <DependentUpon>AuthPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\User\AddOrderPageU.xaml.cs">
+      <DependentUpon>AddOrderPageU.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\User\EditOrderAndClientMorePageU.xaml.cs">
+      <DependentUpon>EditOrderAndClientMorePageU.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Pages\User\EditOrderAndClientPageU.xaml.cs">
       <DependentUpon>EditOrderAndClientPageU.xaml</DependentUpon>
@@ -200,7 +212,15 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Views\Pages\Admin\AddOrderPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Pages\Admin\AdminMenuPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Pages\Admin\EditOrderAndClientMorePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -237,6 +257,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Pages\AuthPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Pages\User\AddOrderPageU.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Pages\User\EditOrderAndClientMorePageU.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

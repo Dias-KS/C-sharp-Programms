@@ -116,6 +116,7 @@ namespace PastryShop.Views.Pages
             editComputer.Image = newOpenFile.FileName;
 
             ConnectClass.db.SaveChanges();
+
             MessageBox.Show("Данные успешно изменены!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
 
         }

@@ -29,7 +29,7 @@ namespace PastryShopApp.Views.Pages.Admin
             InitializeComponent();
         }
 
-        private ClientAndOrder selectedItem;
+        private ClientRegister selectedItem;
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
@@ -44,102 +44,39 @@ namespace PastryShopApp.Views.Pages.Admin
             dtDateAccept.SelectedDate = null;
             dtDateRegistration.SelectedDate = null;
             txbAdress.Text = "";
-        }
-
-        private void btnCleanTwo_Click(object sender, RoutedEventArgs e)
-        {
-            txbCount.Text = "";
-            txbPrice.Text = "";
-            cmbStatus.SelectedItem = null;
-            cmbTypeProduct.SelectedItem = null;
             dtDateReadness.SelectedDate = null;
-            txbNameProduct.Text = "";
         }
 
-        private void btnCleanThree_Click(object sender, RoutedEventArgs e)
-        {
-            PictureBox.Source = null;
-        }
-
-        private void btnLoad_Click(object sender, RoutedEventArgs e)
-        {
-            OpenFileDialog open = new OpenFileDialog();
-            open.Filter = "Image(*.png; *.jpg; *.jpeg) | *.png; *.jpg; *.jpeg"; 
-            if(open.ShowDialog() == true)
-            {
-                BitmapImage bitmap = new BitmapImage(new Uri(open.FileName));
-                PictureBox.Source = bitmap;
-
-
-            }
-        }
-
-        public EditOrderAndClientPage(ClientAndOrder selectedItem)
+       
+        public EditOrderAndClientPage(ClientRegister selectedItem)
         {
 
             InitializeComponent();
             this.selectedItem = selectedItem;
 
-            txbFirstname.Text = selectedItem.ClientRegister.FirstName;
-            txbLastName.Text = selectedItem.ClientRegister.LastName;
-            txbAdress.Text = selectedItem.ClientRegister.ClientMoreInfo.Adress;
-            txbTelephone.Text = selectedItem.ClientRegister.ClientMoreInfo.Telephone;
-            txbPrice.Text = selectedItem.OrderRegister.Price;
-            txbNameProduct.Text = selectedItem.OrderRegister.NameProduct;
-            txbCount.Text = selectedItem.OrderRegister.Count;
-            dtDateAccept.SelectedDate = selectedItem.ClientRegister.DateAccept;
-            dtDateReadness.SelectedDate = selectedItem.ClientRegister.DateReadness;
-            dtDateRegistration.SelectedDate = selectedItem.ClientRegister.DateRegistration;
-            cmbStatus.SelectedItem = selectedItem.OrderRegister.StatusOrder.Title;
-            cmbTypeProduct.SelectedItem = selectedItem.OrderRegister.TypeProduct.Title;
-
-            if (selectedItem.OrderRegister.Picture != null)
-            {
-
-                BitmapImage bitmap = new BitmapImage();
-                using (MemoryStream stream = new MemoryStream(selectedItem.OrderRegister.Picture))
-                {
-                    bitmap.BeginInit();
-                    bitmap.CacheOption = BitmapCacheOption.OnLoad;
-                    bitmap.StreamSource = stream;
-                    bitmap.EndInit();
-                }
-
-                PictureBox.Source = bitmap;
-
-            }
+            txbFirstname.Text = selectedItem.FirstName;
+            txbLastName.Text = selectedItem.LastName;
+            txbAdress.Text = selectedItem.ClientMoreInfo.Adress;
+            txbTelephone.Text = selectedItem.ClientMoreInfo.Telephone;
+            dtDateAccept.SelectedDate = selectedItem.DateAccept;
+            dtDateReadness.SelectedDate = selectedItem.DateReadness;
+            dtDateRegistration.SelectedDate = selectedItem.DateRegistration;
+            
 
         }
 
         private void btnAddOne_Click(object sender, RoutedEventArgs e)
         {
 
-            var editOrderAndClient = ConnectClass.db.ClientAndOrder.FirstOrDefault(item => item.ID == selectedItem.ID);
+            var editOrderAndClient = ConnectClass.db.ClientRegister.FirstOrDefault(item => item.ID == selectedItem.ID);
 
-            editOrderAndClient.ClientRegister.FirstName = txbFirstname.Text;
-            editOrderAndClient.ClientRegister.LastName = txbLastName.Text;
-            editOrderAndClient.ClientRegister.ClientMoreInfo.Adress = txbAdress.Text;
-            editOrderAndClient.ClientRegister.ClientMoreInfo.Telephone = txbTelephone.Text;
-            editOrderAndClient.ClientRegister.DateAccept = (DateTime)dtDateAccept.SelectedDate;
-            editOrderAndClient.ClientRegister.DateRegistration = (DateTime)dtDateRegistration.SelectedDate;
-            editOrderAndClient.ClientRegister.DateReadness = dtDateReadness.SelectedDate;
-
-            var currenTypeProduct = ConnectClass.db.TypeProduct.FirstOrDefault(item => item.Title == cmbTypeProduct.Text);
-            editOrderAndClient.OrderRegister.IDTypeProduct = currenTypeProduct.ID;
-
-            var currentStatus = ConnectClass.db.StatusOrder.FirstOrDefault(item => item.Title == cmbStatus.Text);
-            editOrderAndClient.OrderRegister.IDStatus = currentStatus.ID;
-
-            editOrderAndClient.OrderRegister.NameProduct = txbNameProduct.Text;
-            editOrderAndClient.OrderRegister.Price = txbPrice.Text;
-            editOrderAndClient.OrderRegister.Count = txbCount.Text;
-
-
-            MemoryStream stream = new MemoryStream();
-            JpegBitmapEncoder encorder = new JpegBitmapEncoder();
-            encorder.Frames.Add(BitmapFrame.Create((BitmapImage)PictureBox.Source));
-            encorder.Save(stream);
-            editOrderAndClient.OrderRegister.Picture = stream.ToArray();
+            editOrderAndClient.FirstName = txbFirstname.Text;
+            editOrderAndClient.LastName = txbLastName.Text;
+            editOrderAndClient.ClientMoreInfo.Adress = txbAdress.Text;
+            editOrderAndClient.ClientMoreInfo.Telephone = txbTelephone.Text;
+            editOrderAndClient.DateAccept = (DateTime)dtDateAccept.SelectedDate;
+            editOrderAndClient.DateRegistration = (DateTime)dtDateRegistration.SelectedDate;
+            editOrderAndClient.DateReadness = dtDateReadness.SelectedDate;
 
             ConnectClass.db.SaveChanges();
             MessageBox.Show("Вы успешно изменили данные!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -148,8 +85,7 @@ namespace PastryShopApp.Views.Pages.Admin
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            cmbStatus.ItemsSource = ConnectClass.db.StatusOrder.Select(item => item.Title).ToList();
-            cmbTypeProduct.ItemsSource = ConnectClass.db.TypeProduct.Select(item => item.Title).ToList();
+            
         }
 
         private void btnExit_Click(object sender, RoutedEventArgs e)

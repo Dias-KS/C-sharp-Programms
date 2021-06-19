@@ -28,9 +28,9 @@ namespace PastryShopApp.Views.Pages.User
             
         }
 
-        private ClientAndOrder selectedItem;
+        private ClientRegister selectedItem;
 
-        public ViewOrderAndClientMorePageU(ClientAndOrder selectedItem)
+        public ViewOrderAndClientMorePageU(ClientRegister selectedItem)
         {
             InitializeComponent();
             this.selectedItem = selectedItem;
@@ -53,11 +53,11 @@ namespace PastryShopApp.Views.Pages.User
 
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
-            var selectedItem = (ClientAndOrder)listViewData.SelectedItem;
+            ClientAndOrder selectedItem = (ClientAndOrder)listViewData.SelectedItem;
 
             if (selectedItem != null)
             {
-                NavigationService.Navigate(new EditOrderAndClientPageU(selectedItem));
+                NavigationService.Navigate(new EditOrderAndClientMorePageU(selectedItem));
             }
 
             else
@@ -82,7 +82,6 @@ namespace PastryShopApp.Views.Pages.User
                     Page_Loaded(null, null);
                 }
 
-               
             }
 
             else
@@ -93,7 +92,9 @@ namespace PastryShopApp.Views.Pages.User
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            listViewData.ItemsSource = ConnectClass.db.ClientAndOrder.Where(item => item.OrderRegisterID == selectedItem.OrderRegister.ID).ToList();
+            listViewData.ItemsSource = ConnectClass.db.ClientAndOrder.Where(x => x.ClientRegisterID == selectedItem.ID).ToList();
+
+            cmbSortTypeProduct.ItemsSource = ConnectClass.db.TypeProduct.Select(item => item.Title).ToList();
         }
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
@@ -101,6 +102,26 @@ namespace PastryShopApp.Views.Pages.User
             if (MessageBox.Show("Вы уверены что хотите закрыть программу?", "Уведомление", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
                 Application.Current.Shutdown();
+            }
+        }
+
+        private void btnCleanTwo_Click(object sender, RoutedEventArgs e)
+        {
+            cmbSortTypeProduct.SelectedItem = null;
+        }
+
+        private void cmbSortTypeProduct_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (cmbSortTypeProduct.SelectedItem != null)
+            {
+                Page_Loaded(null, null);
+
+                listViewData.ItemsSource = ConnectClass.db.ClientAndOrder.Where(item => item.OrderRegister.TypeProduct.Title.Contains(cmbSortTypeProduct.Text) && item.ClientRegisterID == selectedItem.ID).ToList();
+            }
+
+            else
+            {
+                listViewData.ItemsSource = ConnectClass.db.ClientAndOrder.Where(x => x.ClientRegisterID == selectedItem.ID).ToList();
             }
         }
     }

@@ -27,8 +27,6 @@ namespace PastryShopApp.Views.Pages.User
             InitializeComponent();
         }
 
-        
-
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();
@@ -41,7 +39,7 @@ namespace PastryShopApp.Views.Pages.User
 
         private void btnViewOrder_Click(object sender, RoutedEventArgs e)
         {
-            var viewOorder = (ClientAndOrder)listViewData.SelectedItem;
+            ClientRegister viewOorder = (ClientRegister)dataView.SelectedItem;
 
             if (viewOorder != null)
             {
@@ -59,12 +57,25 @@ namespace PastryShopApp.Views.Pages.User
 
         private void txbSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
-             listViewData.ItemsSource = ConnectClass.db.ClientAndOrder.Where(item => item.ClientRegister.FirstName.Contains(txbSearch.Text) || item.ClientRegister.LastName.Contains(txbSearch.Text) || item.ClientRegister.ClientMoreInfo.Telephone.Contains(txbSearch.Text)).ToList();
+             dataView.ItemsSource = ConnectClass.db.ClientAndOrder.Where(item => item.ClientRegister.FirstName.Contains(txbSearch.Text) || item.ClientRegister.LastName.Contains(txbSearch.Text) || item.ClientRegister.ClientMoreInfo.Telephone.Contains(txbSearch.Text)).ToList();
         }
 
-        private void btnEdit_Click(object sender, RoutedEventArgs e)
+        private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            var selectedItem = (ClientAndOrder)listViewData.SelectedItem;
+            dataView.ItemsSource = ConnectClass.db.ClientRegister.ToList();
+        }
+
+        private void btnExit_Click(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("Вы уверены что хотите закрыть программу?", "Уведомление", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                Application.Current.Shutdown();
+            }
+        }
+
+        private void btnEdit_Click_1(object sender, RoutedEventArgs e)
+        {
+            ClientRegister selectedItem = (ClientRegister)dataView.SelectedItem;
 
             if (selectedItem != null)
             {
@@ -72,19 +83,19 @@ namespace PastryShopApp.Views.Pages.User
             }
         }
 
-        private void btnRemove_Click(object sender, RoutedEventArgs e)
+        private void btnRemove_Click_1(object sender, RoutedEventArgs e)
         {
-            ClientAndOrder RemoveClient = (ClientAndOrder)listViewData.SelectedItem;
+            ClientRegister RemoveClient = (ClientRegister)dataView.SelectedItem;
 
             if (RemoveClient != null)
             {
                 if (MessageBox.Show("Вы действительно хотите удалить данный элемент?", "Уведомление", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                 {
 
-
-                    ConnectClass.db.ClientAndOrder.Remove(RemoveClient);
+                    ConnectClass.db.ClientRegister.Remove(RemoveClient);
                     ConnectClass.db.SaveChanges();
                     Page_Loaded(null, null);
+
                 }
 
             }
@@ -95,16 +106,34 @@ namespace PastryShopApp.Views.Pages.User
             }
         }
 
-        private void Page_Loaded(object sender, RoutedEventArgs e)
+        private void addOrderBtn_Click(object sender, RoutedEventArgs e)
         {
-            listViewData.ItemsSource = ConnectClass.db.ClientAndOrder.ToList();
+            ClientRegister clientRegister = (ClientRegister)dataView.SelectedItem;
+            if (clientRegister != null)
+            {
+                NavigationService.Navigate(new AddOrderPageU(clientRegister));
+            }
+
+            else
+            {
+                MessageBox.Show("Вы не выбрали ни одного элемента!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
-        private void btnExit_Click(object sender, RoutedEventArgs e)
+        private void dtSortDataAccept_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (MessageBox.Show("Вы уверены что хотите закрыть программу?", "Уведомление", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            if (dtSortDataAccept.SelectedDate != null)
             {
-                Application.Current.Shutdown();
+
+                Page_Loaded(null, null);
+
+                dataView.ItemsSource = ConnectClass.db.ClientRegister.Where(item => item.DateAccept == dtSortDataAccept.SelectedDate).ToList();
+
+            }
+
+            else
+            {
+                dataView.ItemsSource = ConnectClass.db.ClientRegister.ToList();
             }
         }
     }

@@ -45,6 +45,7 @@ namespace PastryShopApp.Views.Pages.Admin
             NavigationService.Navigate(new ViewOrderAndClientPage());
         }
 
+  
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
             if (MessageBox.Show("Вы уверены что хотите закрыть программу?", "Уведомление", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)

@@ -1,0 +1,144 @@
+﻿<Page x:Class="ChocolateFabricApp.Views.Pages.User.UserNavigatePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ChocolateFabricApp.Views.Pages.User"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="UserNavigatePage">
+
+    <Grid>
+        <StackPanel HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch">
+
+            <Image Source="../../../Images/iBack2.jpg"  Stretch="Fill"/>
+
+        </StackPanel>
+
+        <StackPanel HorizontalAlignment="Right"
+                    VerticalAlignment="Top"
+                    Margin="0 20 20 0">
+
+            <Button x:Name="btnExit"
+                        Width="40"
+                        Height="30"
+                        Background="Red"
+                        Content="X"
+                        Foreground="White"
+                        FontSize="16"
+                        Click="btnExit_Click"/>
+
+        </StackPanel>
+
+        <StackPanel HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Margin="20 20 0 0">
+
+            <Button x:Name="btnBack"
+                        Width="40"
+                        Height="30"
+                        Background="Red"
+                        Content="ᐸ"
+                        Foreground="White"
+                        FontSize="16"
+                        Click="btnBack_Click"/>
+
+        </StackPanel>
+
+
+        <StackPanel HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Margin="0 30 0 0">
+
+            <Border Margin="0 10 0 0"
+                    Background="White"
+                    Width="220"
+                    Height="60"
+                   >
+
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="30" Color="Black"/>
+                </Border.Effect>
+
+                <Button x:Name="btnOrderAndClientAccouting"
+                        Width="200"
+                        Height="40"
+                        Background="Red"
+                        Foreground="White"
+                        FontSize="16"
+                        Content="Учёт заказов и клиентов"
+                        FontFamily="PT Sans"
+                        Click="btnOrderAndClientAccouting_Click"/>
+
+            </Border>
+
+            <Border Margin="0 10 0 0"
+                    Background="White"
+                    Width="220"
+                    Height="60" >
+
+
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="30" Color="Black"/>
+                </Border.Effect>
+
+                <Button x:Name="btnSupplyAccouting"
+                        Width="200"
+                        Height="40"
+                        Background="Red"
+                        Foreground="White"
+                        FontSize="16"
+                        Content="Учёт поставок"
+                        FontFamily="PT Sans"
+                        Click="btnSupplyAccouting_Click"/>
+
+            </Border>
+
+
+            <Border Margin="0 10 0 0"
+                    Background="White"
+                    Width="220"
+                    Height="60" >
+
+
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="30" Color="Black"/>
+                </Border.Effect>
+
+                <Button x:Name="btnpProductionAccouting"
+                        Width="200"
+                        Height="40"
+                        Background="Red"
+                        Foreground="White"
+                        FontSize="16"
+                        Content="Учёт производства"
+                        FontFamily="PT Sans"
+                        Click="btnpProductionAccouting_Click"/>
+
+            </Border>
+
+            <Border Margin="0 10 0 0"
+                    Background="White"
+                    Width="220"
+                    Height="60" >
+
+
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="30" Color="Black"/>
+                </Border.Effect>
+
+                <Button x:Name="btnEmployeesAccouting"
+                        Width="200"
+                        Height="40"
+                        Background="Red"
+                        Foreground="White"
+                        FontSize="16"
+                        Content="Учёт рабочих"
+                        FontFamily="PT Sans"
+                        Click="btnEmployeesAccouting_Click"/>
+
+            </Border>
+        </StackPanel>
+    </Grid>
+</Page>

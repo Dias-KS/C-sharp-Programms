@@ -1,0 +1,1111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище dbChocolateFabricModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameClient" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Adress" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="City" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ClientAndOrder">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDClient" Type="int" />
+          <Property Name="IDOrder" Type="int" />
+        </EntityType>
+        <EntityType Name="DepartmentEmpl">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DepartmentProd">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Employees">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Age" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IDGender" Type="int" />
+          <Property Name="IDPost" Type="int" />
+          <Property Name="MonthlySalary" Type="nvarchar(max)" />
+          <Property Name="IDDepartmentEmpl" Type="int" />
+        </EntityType>
+        <EntityType Name="EmployeesAndProduct">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDEmployees" Type="int" />
+          <Property Name="IDFinishedProducts" Type="int" />
+        </EntityType>
+        <EntityType Name="FinishedProducts">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Count" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IDPeriod" Type="int" />
+          <Property Name="DateProduction" Type="date" Nullable="false" />
+          <Property Name="IDDepartmentProd" Type="int" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MainTable">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDClientAndOrder" Type="int" />
+          <Property Name="IDSupply" Type="int" />
+          <Property Name="IDEmployeesAndProduct" Type="int" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameOrder" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Count" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Price" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DateOrdered" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Period">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Post">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="IDRole" />
+          </Key>
+          <Property Name="IDRole" Type="nchar" MaxLength="1" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SignIn">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="RoleID" Type="nchar" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Supply">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameProduct" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Count" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Price" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DateSupply" Type="date" Nullable="false" />
+          <Property Name="NameProvider" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IDWarehouse" Type="int" />
+        </EntityType>
+        <EntityType Name="Warehouse">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_ClientAndOrder_IDClient">
+          <End Role="Client" Type="Self.Client" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ClientAndOrder" Type="Self.ClientAndOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ClientAndOrder">
+              <PropertyRef Name="IDClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientAndOrder_IDOrder">
+          <End Role="Order" Type="Self.Order" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ClientAndOrder" Type="Self.ClientAndOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ClientAndOrder">
+              <PropertyRef Name="IDOrder" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Department_IDEmployees_Employees_ID">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="EmployeesAndProduct" Type="Self.EmployeesAndProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmployeesAndProduct">
+              <PropertyRef Name="IDEmployees" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Department_IDFinishedProducts_FinishedProducts_ID">
+          <End Role="FinishedProducts" Type="Self.FinishedProducts" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="EmployeesAndProduct" Type="Self.EmployeesAndProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FinishedProducts">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmployeesAndProduct">
+              <PropertyRef Name="IDFinishedProducts" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employees_IDDepartmentEmpl_DepartmentEmpl_ID">
+          <End Role="DepartmentEmpl" Type="Self.DepartmentEmpl" Multiplicity="0..1" />
+          <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DepartmentEmpl">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="IDDepartmentEmpl" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employees_IDDepartmentProd_DepartmentProd_ID">
+          <End Role="DepartmentProd" Type="Self.DepartmentProd" Multiplicity="0..1" />
+          <End Role="FinishedProducts" Type="Self.FinishedProducts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DepartmentProd">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FinishedProducts">
+              <PropertyRef Name="IDDepartmentProd" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employees_IDGender_Gender_ID">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="0..1" />
+          <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="IDGender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employees_IDPost_Post_ID">
+          <End Role="Post" Type="Self.Post" Multiplicity="0..1" />
+          <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="IDPost" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FinishedProducts_IDPeriod_Period_ID">
+          <End Role="Period" Type="Self.Period" Multiplicity="0..1" />
+          <End Role="FinishedProducts" Type="Self.FinishedProducts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Period">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FinishedProducts">
+              <PropertyRef Name="IDPeriod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MainTable_IDClientAndOrder_ClientAndOrder_ID">
+          <End Role="ClientAndOrder" Type="Self.ClientAndOrder" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MainTable" Type="Self.MainTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientAndOrder">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MainTable">
+              <PropertyRef Name="IDClientAndOrder" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MainTable_IDDepartment_Department_ID">
+          <End Role="EmployeesAndProduct" Type="Self.EmployeesAndProduct" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MainTable" Type="Self.MainTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeesAndProduct">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MainTable">
+              <PropertyRef Name="IDEmployeesAndProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MainTable_IDSupply_Supply_ID">
+          <End Role="Supply" Type="Self.Supply" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MainTable" Type="Self.MainTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supply">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MainTable">
+              <PropertyRef Name="IDSupply" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SignIn_RoleID_Role_IDRole">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="SignIn" Type="Self.SignIn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="IDRole" />
+            </Principal>
+            <Dependent Role="SignIn">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Supply_IDWarehouse_Warehouse_ID">
+          <End Role="Warehouse" Type="Self.Warehouse" Multiplicity="0..1" />
+          <End Role="Supply" Type="Self.Supply" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Warehouse">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Supply">
+              <PropertyRef Name="IDWarehouse" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="Хранилище dbChocolateFabricModelContainer">
+          <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClientAndOrder" EntityType="Self.ClientAndOrder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DepartmentEmpl" EntityType="Self.DepartmentEmpl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DepartmentProd" EntityType="Self.DepartmentProd" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeesAndProduct" EntityType="Self.EmployeesAndProduct" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FinishedProducts" EntityType="Self.FinishedProducts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MainTable" EntityType="Self.MainTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Period" EntityType="Self.Period" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Post" EntityType="Self.Post" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SignIn" EntityType="Self.SignIn" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Supply" EntityType="Self.Supply" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Warehouse" EntityType="Self.Warehouse" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ClientAndOrder_IDClient" Association="Self.FK_ClientAndOrder_IDClient">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="ClientAndOrder" EntitySet="ClientAndOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientAndOrder_IDOrder" Association="Self.FK_ClientAndOrder_IDOrder">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="ClientAndOrder" EntitySet="ClientAndOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Department_IDEmployees_Employees_ID" Association="Self.FK_Department_IDEmployees_Employees_ID">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="EmployeesAndProduct" EntitySet="EmployeesAndProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Department_IDFinishedProducts_FinishedProducts_ID" Association="Self.FK_Department_IDFinishedProducts_FinishedProducts_ID">
+            <End Role="FinishedProducts" EntitySet="FinishedProducts" />
+            <End Role="EmployeesAndProduct" EntitySet="EmployeesAndProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employees_IDDepartmentEmpl_DepartmentEmpl_ID" Association="Self.FK_Employees_IDDepartmentEmpl_DepartmentEmpl_ID">
+            <End Role="DepartmentEmpl" EntitySet="DepartmentEmpl" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employees_IDDepartmentProd_DepartmentProd_ID" Association="Self.FK_Employees_IDDepartmentProd_DepartmentProd_ID">
+            <End Role="DepartmentProd" EntitySet="DepartmentProd" />
+            <End Role="FinishedProducts" EntitySet="FinishedProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employees_IDGender_Gender_ID" Association="Self.FK_Employees_IDGender_Gender_ID">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employees_IDPost_Post_ID" Association="Self.FK_Employees_IDPost_Post_ID">
+            <End Role="Post" EntitySet="Post" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FinishedProducts_IDPeriod_Period_ID" Association="Self.FK_FinishedProducts_IDPeriod_Period_ID">
+            <End Role="Period" EntitySet="Period" />
+            <End Role="FinishedProducts" EntitySet="FinishedProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MainTable_IDClientAndOrder_ClientAndOrder_ID" Association="Self.FK_MainTable_IDClientAndOrder_ClientAndOrder_ID">
+            <End Role="ClientAndOrder" EntitySet="ClientAndOrder" />
+            <End Role="MainTable" EntitySet="MainTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MainTable_IDDepartment_Department_ID" Association="Self.FK_MainTable_IDDepartment_Department_ID">
+            <End Role="EmployeesAndProduct" EntitySet="EmployeesAndProduct" />
+            <End Role="MainTable" EntitySet="MainTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MainTable_IDSupply_Supply_ID" Association="Self.FK_MainTable_IDSupply_Supply_ID">
+            <End Role="Supply" EntitySet="Supply" />
+            <End Role="MainTable" EntitySet="MainTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SignIn_RoleID_Role_IDRole" Association="Self.FK_SignIn_RoleID_Role_IDRole">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="SignIn" EntitySet="SignIn" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Supply_IDWarehouse_Warehouse_ID" Association="Self.FK_Supply_IDWarehouse_Warehouse_ID">
+            <End Role="Warehouse" EntitySet="Warehouse" />
+            <End Role="Supply" EntitySet="Supply" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dbChocolateFabricModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameClient" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Adress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="City" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ClientAndOrder" Relationship="Self.FK_ClientAndOrder_IDClient" FromRole="Client" ToRole="ClientAndOrder" />
+        </EntityType>
+        <EntityType Name="ClientAndOrder">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDClient" Type="Int32" />
+          <Property Name="IDOrder" Type="Int32" />
+          <NavigationProperty Name="Client" Relationship="Self.FK_ClientAndOrder_IDClient" FromRole="ClientAndOrder" ToRole="Client" />
+          <NavigationProperty Name="Order" Relationship="Self.FK_ClientAndOrder_IDOrder" FromRole="ClientAndOrder" ToRole="Order" />
+          <NavigationProperty Name="MainTable" Relationship="Self.FK_MainTable_IDClientAndOrder_ClientAndOrder_ID" FromRole="ClientAndOrder" ToRole="MainTable" />
+        </EntityType>
+        <EntityType Name="DepartmentEmpl">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK_Employees_IDDepartmentEmpl_DepartmentEmpl_ID" FromRole="DepartmentEmpl" ToRole="Employees" />
+        </EntityType>
+        <EntityType Name="DepartmentProd">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="FinishedProducts" Relationship="Self.FK_Employees_IDDepartmentProd_DepartmentProd_ID" FromRole="DepartmentProd" ToRole="FinishedProducts" />
+        </EntityType>
+        <EntityType Name="Employees">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Age" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IDGender" Type="Int32" />
+          <Property Name="IDPost" Type="Int32" />
+          <Property Name="MonthlySalary" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IDDepartmentEmpl" Type="Int32" />
+          <NavigationProperty Name="DepartmentEmpl" Relationship="Self.FK_Employees_IDDepartmentEmpl_DepartmentEmpl_ID" FromRole="Employees" ToRole="DepartmentEmpl" />
+          <NavigationProperty Name="EmployeesAndProduct" Relationship="Self.FK_Department_IDEmployees_Employees_ID" FromRole="Employees" ToRole="EmployeesAndProduct" />
+          <NavigationProperty Name="Gender" Relationship="Self.FK_Employees_IDGender_Gender_ID" FromRole="Employees" ToRole="Gender" />
+          <NavigationProperty Name="Post" Relationship="Self.FK_Employees_IDPost_Post_ID" FromRole="Employees" ToRole="Post" />
+        </EntityType>
+        <EntityType Name="EmployeesAndProduct">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDEmployees" Type="Int32" />
+          <Property Name="IDFinishedProducts" Type="Int32" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK_Department_IDEmployees_Employees_ID" FromRole="EmployeesAndProduct" ToRole="Employees" />
+          <NavigationProperty Name="FinishedProducts" Relationship="Self.FK_Department_IDFinishedProducts_FinishedProducts_ID" FromRole="EmployeesAndProduct" ToRole="FinishedProducts" />
+          <NavigationProperty Name="MainTable" Relationship="Self.FK_MainTable_IDDepartment_Department_ID" FromRole="EmployeesAndProduct" ToRole="MainTable" />
+        </EntityType>
+        <EntityType Name="FinishedProducts">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Count" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IDPeriod" Type="Int32" />
+          <Property Name="DateProduction" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="IDDepartmentProd" Type="Int32" />
+          <NavigationProperty Name="DepartmentProd" Relationship="Self.FK_Employees_IDDepartmentProd_DepartmentProd_ID" FromRole="FinishedProducts" ToRole="DepartmentProd" />
+          <NavigationProperty Name="EmployeesAndProduct" Relationship="Self.FK_Department_IDFinishedProducts_FinishedProducts_ID" FromRole="FinishedProducts" ToRole="EmployeesAndProduct" />
+          <NavigationProperty Name="Period" Relationship="Self.FK_FinishedProducts_IDPeriod_Period_ID" FromRole="FinishedProducts" ToRole="Period" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK_Employees_IDGender_Gender_ID" FromRole="Gender" ToRole="Employees" />
+        </EntityType>
+        <EntityType Name="MainTable">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDClientAndOrder" Type="Int32" />
+          <Property Name="IDSupply" Type="Int32" />
+          <Property Name="IDEmployeesAndProduct" Type="Int32" />
+          <NavigationProperty Name="ClientAndOrder" Relationship="Self.FK_MainTable_IDClientAndOrder_ClientAndOrder_ID" FromRole="MainTable" ToRole="ClientAndOrder" />
+          <NavigationProperty Name="EmployeesAndProduct" Relationship="Self.FK_MainTable_IDDepartment_Department_ID" FromRole="MainTable" ToRole="EmployeesAndProduct" />
+          <NavigationProperty Name="Supply" Relationship="Self.FK_MainTable_IDSupply_Supply_ID" FromRole="MainTable" ToRole="Supply" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameOrder" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Count" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Price" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DateOrdered" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="ClientAndOrder" Relationship="Self.FK_ClientAndOrder_IDOrder" FromRole="Order" ToRole="ClientAndOrder" />
+        </EntityType>
+        <EntityType Name="Period">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="FinishedProducts" Relationship="Self.FK_FinishedProducts_IDPeriod_Period_ID" FromRole="Period" ToRole="FinishedProducts" />
+        </EntityType>
+        <EntityType Name="Post">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK_Employees_IDPost_Post_ID" FromRole="Post" ToRole="Employees" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="IDRole" />
+          </Key>
+          <Property Name="IDRole" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="SignIn" Relationship="Self.FK_SignIn_RoleID_Role_IDRole" FromRole="Role" ToRole="SignIn" />
+        </EntityType>
+        <EntityType Name="SignIn">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RoleID" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_SignIn_RoleID_Role_IDRole" FromRole="SignIn" ToRole="Role" />
+        </EntityType>
+        <EntityType Name="Supply">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameProduct" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Count" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Price" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DateSupply" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="NameProvider" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IDWarehouse" Type="Int32" />
+          <NavigationProperty Name="MainTable" Relationship="Self.FK_MainTable_IDSupply_Supply_ID" FromRole="Supply" ToRole="MainTable" />
+          <NavigationProperty Name="Warehouse" Relationship="Self.FK_Supply_IDWarehouse_Warehouse_ID" FromRole="Supply" ToRole="Warehouse" />
+        </EntityType>
+        <EntityType Name="Warehouse">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Supply" Relationship="Self.FK_Supply_IDWarehouse_Warehouse_ID" FromRole="Warehouse" ToRole="Supply" />
+        </EntityType>
+        <Association Name="FK_ClientAndOrder_IDClient">
+          <End Role="Client" Type="Self.Client" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ClientAndOrder" Type="Self.ClientAndOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ClientAndOrder">
+              <PropertyRef Name="IDClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientAndOrder_IDOrder">
+          <End Role="Order" Type="Self.Order" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ClientAndOrder" Type="Self.ClientAndOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ClientAndOrder">
+              <PropertyRef Name="IDOrder" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MainTable_IDClientAndOrder_ClientAndOrder_ID">
+          <End Role="ClientAndOrder" Type="Self.ClientAndOrder" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MainTable" Type="Self.MainTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientAndOrder">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MainTable">
+              <PropertyRef Name="IDClientAndOrder" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employees_IDDepartmentEmpl_DepartmentEmpl_ID">
+          <End Role="DepartmentEmpl" Type="Self.DepartmentEmpl" Multiplicity="0..1" />
+          <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DepartmentEmpl">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="IDDepartmentEmpl" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employees_IDDepartmentProd_DepartmentProd_ID">
+          <End Role="DepartmentProd" Type="Self.DepartmentProd" Multiplicity="0..1" />
+          <End Role="FinishedProducts" Type="Self.FinishedProducts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DepartmentProd">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FinishedProducts">
+              <PropertyRef Name="IDDepartmentProd" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Department_IDEmployees_Employees_ID">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="EmployeesAndProduct" Type="Self.EmployeesAndProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmployeesAndProduct">
+              <PropertyRef Name="IDEmployees" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employees_IDGender_Gender_ID">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="0..1" />
+          <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="IDGender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employees_IDPost_Post_ID">
+          <End Role="Post" Type="Self.Post" Multiplicity="0..1" />
+          <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="IDPost" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Department_IDFinishedProducts_FinishedProducts_ID">
+          <End Role="FinishedProducts" Type="Self.FinishedProducts" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="EmployeesAndProduct" Type="Self.EmployeesAndProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FinishedProducts">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EmployeesAndProduct">
+              <PropertyRef Name="IDFinishedProducts" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MainTable_IDDepartment_Department_ID">
+          <End Role="EmployeesAndProduct" Type="Self.EmployeesAndProduct" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MainTable" Type="Self.MainTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmployeesAndProduct">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MainTable">
+              <PropertyRef Name="IDEmployeesAndProduct" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FinishedProducts_IDPeriod_Period_ID">
+          <End Role="Period" Type="Self.Period" Multiplicity="0..1" />
+          <End Role="FinishedProducts" Type="Self.FinishedProducts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Period">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FinishedProducts">
+              <PropertyRef Name="IDPeriod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MainTable_IDSupply_Supply_ID">
+          <End Role="Supply" Type="Self.Supply" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MainTable" Type="Self.MainTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supply">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="MainTable">
+              <PropertyRef Name="IDSupply" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SignIn_RoleID_Role_IDRole">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="SignIn" Type="Self.SignIn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="IDRole" />
+            </Principal>
+            <Dependent Role="SignIn">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Supply_IDWarehouse_Warehouse_ID">
+          <End Role="Warehouse" Type="Self.Warehouse" Multiplicity="0..1" />
+          <End Role="Supply" Type="Self.Supply" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Warehouse">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Supply">
+              <PropertyRef Name="IDWarehouse" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dbChocolateFabricEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Client" EntityType="Self.Client" />
+          <EntitySet Name="ClientAndOrder" EntityType="Self.ClientAndOrder" />
+          <EntitySet Name="DepartmentEmpl" EntityType="Self.DepartmentEmpl" />
+          <EntitySet Name="DepartmentProd" EntityType="Self.DepartmentProd" />
+          <EntitySet Name="Employees" EntityType="Self.Employees" />
+          <EntitySet Name="EmployeesAndProduct" EntityType="Self.EmployeesAndProduct" />
+          <EntitySet Name="FinishedProducts" EntityType="Self.FinishedProducts" />
+          <EntitySet Name="Gender" EntityType="Self.Gender" />
+          <EntitySet Name="MainTable" EntityType="Self.MainTable" />
+          <EntitySet Name="Order" EntityType="Self.Order" />
+          <EntitySet Name="Period" EntityType="Self.Period" />
+          <EntitySet Name="Post" EntityType="Self.Post" />
+          <EntitySet Name="Role" EntityType="Self.Role" />
+          <EntitySet Name="SignIn" EntityType="Self.SignIn" />
+          <EntitySet Name="Supply" EntityType="Self.Supply" />
+          <EntitySet Name="Warehouse" EntityType="Self.Warehouse" />
+          <AssociationSet Name="FK_ClientAndOrder_IDClient" Association="Self.FK_ClientAndOrder_IDClient">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="ClientAndOrder" EntitySet="ClientAndOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientAndOrder_IDOrder" Association="Self.FK_ClientAndOrder_IDOrder">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="ClientAndOrder" EntitySet="ClientAndOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MainTable_IDClientAndOrder_ClientAndOrder_ID" Association="Self.FK_MainTable_IDClientAndOrder_ClientAndOrder_ID">
+            <End Role="ClientAndOrder" EntitySet="ClientAndOrder" />
+            <End Role="MainTable" EntitySet="MainTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employees_IDDepartmentEmpl_DepartmentEmpl_ID" Association="Self.FK_Employees_IDDepartmentEmpl_DepartmentEmpl_ID">
+            <End Role="DepartmentEmpl" EntitySet="DepartmentEmpl" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employees_IDDepartmentProd_DepartmentProd_ID" Association="Self.FK_Employees_IDDepartmentProd_DepartmentProd_ID">
+            <End Role="DepartmentProd" EntitySet="DepartmentProd" />
+            <End Role="FinishedProducts" EntitySet="FinishedProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Department_IDEmployees_Employees_ID" Association="Self.FK_Department_IDEmployees_Employees_ID">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="EmployeesAndProduct" EntitySet="EmployeesAndProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employees_IDGender_Gender_ID" Association="Self.FK_Employees_IDGender_Gender_ID">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employees_IDPost_Post_ID" Association="Self.FK_Employees_IDPost_Post_ID">
+            <End Role="Post" EntitySet="Post" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Department_IDFinishedProducts_FinishedProducts_ID" Association="Self.FK_Department_IDFinishedProducts_FinishedProducts_ID">
+            <End Role="FinishedProducts" EntitySet="FinishedProducts" />
+            <End Role="EmployeesAndProduct" EntitySet="EmployeesAndProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MainTable_IDDepartment_Department_ID" Association="Self.FK_MainTable_IDDepartment_Department_ID">
+            <End Role="EmployeesAndProduct" EntitySet="EmployeesAndProduct" />
+            <End Role="MainTable" EntitySet="MainTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FinishedProducts_IDPeriod_Period_ID" Association="Self.FK_FinishedProducts_IDPeriod_Period_ID">
+            <End Role="Period" EntitySet="Period" />
+            <End Role="FinishedProducts" EntitySet="FinishedProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MainTable_IDSupply_Supply_ID" Association="Self.FK_MainTable_IDSupply_Supply_ID">
+            <End Role="Supply" EntitySet="Supply" />
+            <End Role="MainTable" EntitySet="MainTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SignIn_RoleID_Role_IDRole" Association="Self.FK_SignIn_RoleID_Role_IDRole">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="SignIn" EntitySet="SignIn" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Supply_IDWarehouse_Warehouse_ID" Association="Self.FK_Supply_IDWarehouse_Warehouse_ID">
+            <End Role="Warehouse" EntitySet="Warehouse" />
+            <End Role="Supply" EntitySet="Supply" />
+          </AssociationSet>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(dbChocolateFabricModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(dbChocolateFabricModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+        </EntityContainer>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище dbChocolateFabricModelContainer" CdmEntityContainer="dbChocolateFabricEntities">
+          <EntitySetMapping Name="Client">
+            <EntityTypeMapping TypeName="dbChocolateFabricModel.Client">
+              <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NameClient" ColumnName="NameClient" />
+                <ScalarProperty Name="Adress" ColumnName="Adress" />
+                <ScalarProperty Name="City" ColumnName="City" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClientAndOrder">
+            <EntityTypeMapping TypeName="dbChocolateFabricModel.ClientAndOrder">
+              <MappingFragment StoreEntitySet="ClientAndOrder">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="IDClient" ColumnName="IDClient" />
+                <ScalarProperty Name="IDOrder" ColumnName="IDOrder" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DepartmentEmpl">
+            <EntityTypeMapping TypeName="dbChocolateFabricModel.DepartmentEmpl">
+              <MappingFragment StoreEntitySet="DepartmentEmpl">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DepartmentProd">
+            <EntityTypeMapping TypeName="dbChocolateFabricModel.DepartmentProd">
+              <MappingFragment StoreEntitySet="DepartmentProd">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="dbChocolateFabricModel.Employees">
+              <MappingFragment StoreEntitySet="Employees">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="IDGender" ColumnName="IDGender" />
+                <ScalarProperty Name="IDPost" ColumnName="IDPost" />
+                <ScalarProperty Name="MonthlySalary" ColumnName="MonthlySalary" />
+                <ScalarProperty Name="IDDepartmentEmpl" ColumnName="IDDepartmentEmpl" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeesAndProduct">
+            <EntityTypeMapping TypeName="dbChocolateFabricModel.EmployeesAndProduct">
+              <MappingFragment StoreEntitySet="EmployeesAndProduct">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="IDEmployees" ColumnName="IDEmployees" />
+                <ScalarProperty Name="IDFinishedProducts" ColumnName="IDFinishedProducts" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FinishedProducts">
+            <EntityTypeMapping TypeName="dbChocolateFabricModel.FinishedProducts">
+              <MappingFragment StoreEntitySet="FinishedProducts">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="IDPeriod" ColumnName="IDPeriod" />
+                <ScalarProperty Name="DateProduction" ColumnName="DateProduction" />
+                <ScalarProperty Name="IDDepartmentProd" ColumnName="IDDepartmentProd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Gender">
+            <EntityTypeMapping TypeName="dbChocolateFabricModel.Gender">
+              <MappingFragment StoreEntitySet="Gender">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MainTable">
+            <EntityTypeMapping TypeName="dbChocolateFabricModel.MainTable">
+              <MappingFragment StoreEntitySet="MainTable">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="IDClientAndOrder" ColumnName="IDClientAndOrder" />
+                <ScalarProperty Name="IDSupply" ColumnName="IDSupply" />
+                <ScalarProperty Name="IDEmployeesAndProduct" ColumnName="IDEmployeesAndProduct" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Order">
+            <EntityTypeMapping TypeName="dbChocolateFabricModel.Order">
+              <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NameOrder" ColumnName="NameOrder" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="DateOrdered" ColumnName="DateOrdered" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Period">
+            <EntityTypeMapping TypeName="dbChocolateFabricModel.Period">
+              <MappingFragment StoreEntitySet="Period">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Post">
+            <EntityTypeMapping TypeName="dbChocolateFabricModel.Post">
+              <MappingFragment StoreEntitySet="Post">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="dbChocolateFabricModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="IDRole" ColumnName="IDRole" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SignIn">
+            <EntityTypeMapping TypeName="dbChocolateFabricModel.SignIn">
+              <MappingFragment StoreEntitySet="SignIn">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Supply">
+            <EntityTypeMapping TypeName="dbChocolateFabricModel.Supply">
+              <MappingFragment StoreEntitySet="Supply">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NameProduct" ColumnName="NameProduct" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="DateSupply" ColumnName="DateSupply" />
+                <ScalarProperty Name="NameProvider" ColumnName="NameProvider" />
+                <ScalarProperty Name="IDWarehouse" ColumnName="IDWarehouse" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Warehouse">
+            <EntityTypeMapping TypeName="dbChocolateFabricModel.Warehouse">
+              <MappingFragment StoreEntitySet="Warehouse">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Хранилище dbChocolateFabricModel.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Хранилище dbChocolateFabricModel.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Хранилище dbChocolateFabricModel.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Хранилище dbChocolateFabricModel.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dbChocolateFabricModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Хранилище dbChocolateFabricModel.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dbChocolateFabricModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Хранилище dbChocolateFabricModel.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Хранилище dbChocolateFabricModel.sp_upgraddiagrams" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

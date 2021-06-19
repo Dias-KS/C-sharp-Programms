@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ab99a6db3fed49c3ae8d326405a1f746" Name="Diagram1">
+        <EntityTypeShape EntityType="dbChocolateFabricModel.Client" Width="1.5" PointX="3" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbChocolateFabricModel.ClientAndOrder" Width="1.5" PointX="5.25" PointY="17" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbChocolateFabricModel.DepartmentEmpl" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbChocolateFabricModel.DepartmentProd" Width="1.5" PointX="0.75" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbChocolateFabricModel.Employees" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbChocolateFabricModel.EmployeesAndProduct" Width="1.5" PointX="5.25" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbChocolateFabricModel.FinishedProducts" Width="1.5" PointX="3" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbChocolateFabricModel.Gender" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbChocolateFabricModel.MainTable" Width="1.5" PointX="7.5" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbChocolateFabricModel.Order" Width="1.5" PointX="3" PointY="18.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbChocolateFabricModel.Period" Width="1.5" PointX="0.75" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbChocolateFabricModel.Post" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbChocolateFabricModel.Role" Width="1.5" PointX="7.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbChocolateFabricModel.SignIn" Width="1.5" PointX="10" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbChocolateFabricModel.Supply" Width="1.5" PointX="5.25" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbChocolateFabricModel.Warehouse" Width="1.5" PointX="3" PointY="7.75" IsExpanded="true" />
+        <AssociationConnector Association="dbChocolateFabricModel.FK_ClientAndOrder_IDClient" ManuallyRouted="false" />
+        <AssociationConnector Association="dbChocolateFabricModel.FK_ClientAndOrder_IDOrder" ManuallyRouted="false" />
+        <AssociationConnector Association="dbChocolateFabricModel.FK_MainTable_IDClientAndOrder_ClientAndOrder_ID" ManuallyRouted="false" />
+        <AssociationConnector Association="dbChocolateFabricModel.FK_Employees_IDDepartmentEmpl_DepartmentEmpl_ID" ManuallyRouted="false" />
+        <AssociationConnector Association="dbChocolateFabricModel.FK_Employees_IDDepartmentProd_DepartmentProd_ID" ManuallyRouted="false" />
+        <AssociationConnector Association="dbChocolateFabricModel.FK_Department_IDEmployees_Employees_ID" ManuallyRouted="false" />
+        <AssociationConnector Association="dbChocolateFabricModel.FK_Employees_IDGender_Gender_ID" ManuallyRouted="false" />
+        <AssociationConnector Association="dbChocolateFabricModel.FK_Employees_IDPost_Post_ID" ManuallyRouted="false" />
+        <AssociationConnector Association="dbChocolateFabricModel.FK_Department_IDFinishedProducts_FinishedProducts_ID" ManuallyRouted="false" />
+        <AssociationConnector Association="dbChocolateFabricModel.FK_MainTable_IDDepartment_Department_ID" ManuallyRouted="false" />
+        <AssociationConnector Association="dbChocolateFabricModel.FK_FinishedProducts_IDPeriod_Period_ID" ManuallyRouted="false" />
+        <AssociationConnector Association="dbChocolateFabricModel.FK_MainTable_IDSupply_Supply_ID" ManuallyRouted="false" />
+        <AssociationConnector Association="dbChocolateFabricModel.FK_SignIn_RoleID_Role_IDRole" ManuallyRouted="false" />
+        <AssociationConnector Association="dbChocolateFabricModel.FK_Supply_IDWarehouse_Warehouse_ID" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

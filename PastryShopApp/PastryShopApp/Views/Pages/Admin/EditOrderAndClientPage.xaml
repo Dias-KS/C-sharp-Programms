@@ -5,15 +5,11 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:PastryShopApp.Views.Pages.Admin"
       mc:Ignorable="d" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-      d:DesignHeight="450" d:DesignWidth="800" Loaded="Page_Loaded"
+      d:DesignHeight="600" d:DesignWidth="1200" Loaded="Page_Loaded"
       Title="EditOrderAndClientPage">
 
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="278*"/>
-            <ColumnDefinition Width="417*"/>
-            <ColumnDefinition Width="115*"/>
-        </Grid.ColumnDefinitions>
+        
 
         <StackPanel HorizontalAlignment="Stretch"
                     VerticalAlignment="Stretch"
@@ -43,188 +39,96 @@
 
         </StackPanel>
 
-
-        <Grid Grid.Column="0">
-
-            <Border Width="200"
+        <Border Width="200"
                     Background="White"
                     Height="Auto"
-                    Margin="60 0 0 0">
+                    Margin="0 0 0 0"
+                    HorizontalAlignment="Center">
+
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="20" Color="Black" ShadowDepth="0"/>
+            </Border.Effect>
 
 
-
-                <Border.Effect>
-                    <DropShadowEffect BlurRadius="20" Color="Black" ShadowDepth="0"/>
-                </Border.Effect>
-
-
-
-
-                <StackPanel Orientation="Vertical"
+            <StackPanel Orientation="Vertical"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
-                        Height="360">
+                        Height="420">
 
 
-                    <TextBlock Text="Данные о клиенте : "
+                <TextBlock Text="Данные о клиенте : "
                                Margin="20 0 0 0"
                                FontSize="15"
                                Style="{StaticResource MaterialDesignHeadline6TextBlock}"/>
 
-                    <TextBox x:Name="txbFirstname"
+                <TextBox x:Name="txbFirstname"
                          Width="150"
                          materialDesign:HintAssist.Hint = "Имя "
                          Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
 
-                    <TextBox x:Name="txbLastName"
+                <TextBox x:Name="txbLastName"
                          Width="150"
                          Margin="0 10 0 10"
                          materialDesign:HintAssist.Hint = "Фамилия "
                          Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
 
-                    <TextBox x:Name="txbAdress"
+                <TextBox x:Name="txbAdress"
                          Width="150"
                          materialDesign:HintAssist.Hint = "Адресс "
                          Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
 
-                    <TextBox x:Name="txbTelephone"
+                <TextBox x:Name="txbTelephone"
                          Width="150"
                          materialDesign:HintAssist.Hint = "Телефон "
                          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                              Margin="0 10 0 10"/>
 
 
-                    <DatePicker x:Name="dtDateRegistration"
+                <DatePicker x:Name="dtDateRegistration"
                             Width="150"
                             materialDesign:HintAssist.Hint = "Дата регистрации "
                             Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
                             />
 
-                    <DatePicker x:Name="dtDateAccept"
+                <DatePicker x:Name="dtDateAccept"
                             Width="150"
                             Margin="0 10 0 10"
                             materialDesign:HintAssist.Hint = "Дата принятия заказа "
                             Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
                             />
 
+                <DatePicker x:Name="dtDateReadness"
+                            Width="150"
+                            materialDesign:HintAssist.Hint = "Дата готовности заказа "
+                            Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
+                            Margin="0 10 0 10"/>
 
-                    <StackPanel Orientation="Horizontal"
+
+                <StackPanel Orientation="Horizontal"
                                 HorizontalAlignment="Right"
-                                Margin="0 5 0 0">
+                                Margin="0 10 0 0">
 
-                        <Button x:Name="btnCleanOne"
+                    <Button x:Name="btnCleanOne"
                                  Width="30"
                                  Height="30"
                                  FontSize="10"
                                  Click="btnCleanOne_Click"
                                  Style="{StaticResource MaterialDesignFloatingActionButton}">
 
-                            <materialDesign:PackIcon 
+                        <materialDesign:PackIcon 
                                         Kind="Cached" 
                                         Height="24" 
                                         Width="24"/>
 
-                        </Button>
-
-                    </StackPanel>
+                    </Button>
 
                 </StackPanel>
 
-            </Border>
-        </Grid>
+            </StackPanel>
 
-        <Grid Grid.Column="1" Grid.ColumnSpan="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="103*"/>
-                <ColumnDefinition Width="160*"/>
-            </Grid.ColumnDefinitions>
+        </Border>
 
-            <Border  Width="200"
-                     Background="White"
-                     Height="Auto"
-                     Margin="3,0" >
-
-
-                <Border.Effect>
-                    <DropShadowEffect BlurRadius="30" Color="Black" ShadowDepth="0"/>
-                </Border.Effect>
-
-                <StackPanel Orientation="Vertical"
-                         HorizontalAlignment="Center"
-                         VerticalAlignment="Center" 
-                         Height="360">
-
-                    <TextBlock Text="Данные о заказе :   "
-                               Margin="20 0 0 0"
-                               FontSize="15"
-                               Style="{StaticResource MaterialDesignHeadline6TextBlock}"/>
-
-                    <TextBox x:Name="txbNameProduct"
-                         Width="150"
-                         materialDesign:HintAssist.Hint = "Название продукта "
-                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                         />
-
-                    <TextBox x:Name="txbCount"
-                         Width="150"
-                         materialDesign:HintAssist.Hint = "Количество "
-                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                         Margin="0 10 0 10"/>
-
-                    <TextBox x:Name="txbPrice"
-                         Width="150"
-                         materialDesign:HintAssist.Hint = "Цена "
-                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-
-                    <ComboBox x:Name="cmbTypeProduct"
-                          Width="150"
-                          materialDesign:HintAssist.Hint = "Тип продукта "
-                          Style="{StaticResource MaterialDesignFloatingHintComboBox}"
-                          Margin="0 10 0 10"/>
-
-                    <ComboBox x:Name="cmbStatus"
-                          Width="150"
-                          materialDesign:HintAssist.Hint = "Статус заказа "
-                          Style="{StaticResource MaterialDesignFloatingHintComboBox}"
-                          />
-
-                    <DatePicker x:Name="dtDateReadness"
-                            Width="150"
-                            materialDesign:HintAssist.Hint = "Дата готовности заказа "
-                            Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
-                            Margin="0 10 0 10"/>
-
-                    <StackPanel Orientation="Horizontal"
-                                HorizontalAlignment="Right">
-
-                        <Button x:Name="btnCleanTwo"
-                                Width="30"
-                                Height="30"
-                                FontSize="10"
-                                Margin="0 5 0 0"
-                                Click="btnCleanTwo_Click"
-                                Style="{StaticResource MaterialDesignFloatingActionButton}">
-
-                            <materialDesign:PackIcon 
-                                        Kind="Cached" 
-                                        Height="24" 
-                                        Width="24"/>
-
-                        </Button>
-
-
-
-
-                    </StackPanel>
-
-                </StackPanel>
-
-            </Border>
-
-            <Grid Grid.Column="2">
-
-
-                <StackPanel HorizontalAlignment="Right"
+        <StackPanel HorizontalAlignment="Right"
                         VerticalAlignment="Top"
                         Margin="0 10 10 0">
 
@@ -242,87 +146,9 @@
 
                     </Button>
 
-                </StackPanel>
+        </StackPanel>
 
-                <Border Background="White"
-                    Width="200"
-                    Height="Auto"
-                    Margin="7,0,113,0"
-                    CornerRadius="0"
-                    BorderThickness="0" Grid.Column="1">
-
-                    <Border.Effect>
-                        <DropShadowEffect BlurRadius="30" Color="Black" ShadowDepth="0"/>
-                    </Border.Effect>
-
-                    <StackPanel HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                            Height="360">
-
-
-                        <TextBlock Text="Фото заказа : "
-                               Margin="50 0 0 0"
-                               FontSize="15"
-                               Style="{StaticResource MaterialDesignHeadline6TextBlock}"/>
-
-                        <Image x:Name="PictureBox"
-                            Width="190"
-                            Height="190"
-                            Margin="0 40 0 0"
-                           Source="../../../Images/Order.png" />
-
-
-                        <StackPanel Orientation="Horizontal">
-
-
-
-
-                            <Button x:Name="btnCleanThree"
-                                Width="30"
-                                Height="30"
-                                Margin="10 55 0 0"
-                                Click="btnCleanThree_Click"
-                                Style="{StaticResource MaterialDesignFloatingActionButton}"  >
-
-
-                                <materialDesign:PackIcon 
-                                        Kind="Cached" 
-                                        Height="24" 
-                                        Width="24"/>
-
-                            </Button>
-
-                            <Button x:Name="btnLoad"
-                                     Width="30"
-                                     Height="30"
-                                     Style="{StaticResource MaterialDesignFloatingActionButton}"
-                                     Margin="105 55 0 0"
-                                     Click="btnLoad_Click">
-
-                                <materialDesign:PackIcon 
-                                    Kind="Folder" 
-                                    Height="20" 
-                                    Width="24"
-                                    />
-
-                            </Button>
-
-
-                        </StackPanel>
-
-                    </StackPanel>
-
-                </Border>
-
-
-            </Grid>
-
-
-
-        </Grid>
-
-        <Grid Grid.Column="3">
-            <Border Height="60"
+           <Border  Height="60"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Bottom"
                     Background="White"
@@ -333,9 +159,6 @@
                     <DropShadowEffect BlurRadius="20" Color="Black" ShadowDepth="0"/>
                 </Border.Effect>
 
-
-
-
                 <Button x:Name="btnAddOne"
                         Width="75"
                         Padding="0 0 0 0"
@@ -345,9 +168,8 @@
                         Click="btnAddOne_Click"
                         Margin="5 10 0 0"/>
 
-
-            </Border>
-        </Grid>
-
+           </Border>
+       
     </Grid>
+    
 </Page>

@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:PastryShopApp.Views.Pages.User"
       mc:Ignorable="d" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-      d:DesignHeight="450" d:DesignWidth="800" Loaded="Page_Loaded"
+      d:DesignHeight="600" d:DesignWidth="1200" Loaded="Page_Loaded"
       Title="ViewOrderAndClientMorePageU">
 
     <Grid>
@@ -69,13 +69,14 @@
 
                 <StackPanel HorizontalAlignment="Center"
                             VerticalAlignment="Center"
-                            Orientation="Horizontal">
+                            Orientation="Horizontal"
+                             Margin="0 15 180 0">
 
                     <Border Width="250"
                             Height="50"
                             Background="White"
                             CornerRadius="30"
-                            Margin="0 15 0 0">
+                            Margin="0 0 0 0">
 
                         <Border.Effect>
                             <DropShadowEffect BlurRadius="20" Color="Black" ShadowDepth="0"/>
@@ -96,7 +97,7 @@
                             Height="40"
                             Style="{StaticResource MaterialDesignFloatingActionButton}"
                             ToolTip="Clean"
-                            Margin="10 15 0 0"
+                            Margin="10 0 0 0"
                             Click="btnClean_Click">
 
 
@@ -107,6 +108,47 @@
 
                     </Button>
 
+                </StackPanel>
+
+
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Margin="400 20 0 0">
+
+                    <Border Background="White"
+                            Width="140"
+                            Height="40"
+                            CornerRadius="20">
+
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="20" Color="Black" ShadowDepth="0"/>
+                        </Border.Effect>
+
+                        <ComboBox x:Name="cmbSortTypeProduct"
+                                  Width="100"
+                                  materialDesign:HintAssist.Hint="Тип продукта "  
+                                  Style="{StaticResource MaterialDesignComboBox}"
+                                  SelectionChanged="cmbSortTypeProduct_SelectionChanged"/>
+
+                    </Border>
+
+
+                    <Button x:Name="btnCleanTwo"
+                            Width="40"
+                            Height="40"
+                            Style="{StaticResource MaterialDesignFloatingActionButton}"
+                            ToolTip="Clean"
+                            Margin="10 0 0 0"
+                            Click="btnCleanTwo_Click">
+
+
+                        <materialDesign:PackIcon 
+                        Kind="Cached" 
+                        Height="24" 
+                        Width="24"/>
+
+                    </Button>
                 </StackPanel>
 
             </Grid>
