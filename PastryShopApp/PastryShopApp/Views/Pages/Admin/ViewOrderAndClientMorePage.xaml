@@ -179,7 +179,7 @@
 
                                     <Grid Grid.Column="0">
                                         
-                                        <Ellipse Width="120" Height="120">
+                                        <Ellipse Width="150" Height="140">
 
                                             <Ellipse.Fill>
 

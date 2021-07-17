@@ -57,7 +57,7 @@ namespace PastryShopApp.Views.Pages.User
 
         private void txbSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
-             dataView.ItemsSource = ConnectClass.db.ClientAndOrder.Where(item => item.ClientRegister.FirstName.Contains(txbSearch.Text) || item.ClientRegister.LastName.Contains(txbSearch.Text) || item.ClientRegister.ClientMoreInfo.Telephone.Contains(txbSearch.Text)).ToList();
+             dataView.ItemsSource = ConnectClass.db.ClientRegister.Where(item => item.FirstName.Contains(txbSearch.Text) || item.LastName.Contains(txbSearch.Text) || item.ClientMoreInfo.Telephone.Contains(txbSearch.Text)).ToList();
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)

@@ -37,7 +37,7 @@
             </Button>
 
         </StackPanel>
-        
+
 
         <Grid Grid.Column="0">
             <Grid.RowDefinitions>
@@ -107,7 +107,7 @@
                         Kind="Cached" 
                         Height="24" 
                         Width="24"/>
-                        
+
                     </Button>
 
 
@@ -130,17 +130,17 @@
                     <ListView x:Name="listViewData"
                            Grid.RowSpan="3">
 
-                    <ListView.ItemTemplate>
-                        
-                        <DataTemplate >
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="300"/>
-                                    <ColumnDefinition Width="650"/>
-                                </Grid.ColumnDefinitions>
+                        <ListView.ItemTemplate>
 
-                                <Grid Grid.Column="0">
+                            <DataTemplate >
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="300"/>
+                                        <ColumnDefinition Width="650"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Grid Grid.Column="0">
                                         <Ellipse Width="120" Height="120">
 
                                             <Ellipse.Fill>
@@ -148,20 +148,20 @@
 
                                                 <ImageBrush Stretch="Fill"
                                                             ImageSource="{Binding PictureUA}"/>
-                                                
+
 
                                             </Ellipse.Fill>
 
                                         </Ellipse>
 
-                                </Grid>
+                                    </Grid>
 
-                                <Grid Grid.Column="1">
-                                    <Label Content="{Binding FirstName}" ContentStringFormat="Имя: {0}" FontSize="12" Margin="10 10 0 30" />
-                                    <Label Content="{Binding LastName}" ContentStringFormat="Фамилия: {0}" FontSize="12" Margin="10 30 0 10" />
-                                    <Label Content="{Binding Password}" ContentStringFormat="Пароль: {0}" FontSize="12" Margin="10 50 0 10"/>
-                                    <Label Content="{Binding Role.Title}" ContentStringFormat="Роль: {0}" FontSize="12" Margin="10 70 0 10"/>
-                                </Grid>
+                                    <Grid Grid.Column="1">
+                                        <Label Content="{Binding FirstName}" ContentStringFormat="Имя: {0}" FontSize="12" Margin="10 10 0 30" />
+                                        <Label Content="{Binding LastName}" ContentStringFormat="Фамилия: {0}" FontSize="12" Margin="10 30 0 10" />
+                                        <Label Content="{Binding Password}" ContentStringFormat="Пароль: {0}" FontSize="12" Margin="10 50 0 10"/>
+                                        <Label Content="{Binding Role.Title}" ContentStringFormat="Роль: {0}" FontSize="12" Margin="10 70 0 10"/>
+                                    </Grid>
 
                                     <Grid Grid.Column="2"
                                           HorizontalAlignment="Right">
@@ -170,7 +170,7 @@
                                         <StackPanel Orientation="Vertical" >
 
 
-                                        <Button x:Name="btnEdit"
+                                            <Button x:Name="btnEdit"
                                             Width="30"
                                             Height="30"
                                             Style="{StaticResource MaterialDesignFloatingActionButton}"
@@ -179,14 +179,14 @@
                                             Margin="0 10 0 0"
                                             Click="btnEdit_Click">
 
-                                            <materialDesign:PackIcon 
+                                                <materialDesign:PackIcon 
                                                     Kind="Edit" 
                                                     Height="20" 
                                                     Width="20"/>
 
-                                        </Button>
+                                            </Button>
 
-                                        <Button x:Name="btnRemove"
+                                            <Button x:Name="btnRemove"
                                             Width="30"
                                             Height="30"
                                             Style="{StaticResource MaterialDesignFloatingActionButton}"
@@ -195,29 +195,29 @@
                                             Margin="0 40 0 0"
                                             Click="btnRemove_Click">
 
-                                            <materialDesign:PackIcon 
+                                                <materialDesign:PackIcon 
                                                     Kind="DeleteOutline" 
                                                     Height="20" 
                                                     Width="20"/>
 
-                                        </Button>
+                                            </Button>
 
                                         </StackPanel>
                                     </Grid>
 
 
                                 </Grid>
-                            
-                            
-                            
-                            
-                        </DataTemplate>
-                        
-                        
-                        
-                    </ListView.ItemTemplate>
 
-                        
+
+
+
+                            </DataTemplate>
+
+
+
+                        </ListView.ItemTemplate>
+
+
                     </ListView>
 
                 </Border>
@@ -225,14 +225,10 @@
 
             <Grid Grid.Row="2">
 
-                
+
             </Grid>
 
         </Grid>
-
-
-
-
 
     </Grid>
 </Page>

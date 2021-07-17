@@ -9,7 +9,6 @@
       Title="EditOrderAndClientPage">
 
     <Grid>
-        
 
         <StackPanel HorizontalAlignment="Stretch"
                     VerticalAlignment="Stretch"
@@ -49,12 +48,10 @@
                 <DropShadowEffect BlurRadius="20" Color="Black" ShadowDepth="0"/>
             </Border.Effect>
 
-
             <StackPanel Orientation="Vertical"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         Height="420">
-
 
                 <TextBlock Text="Данные о клиенте : "
                                Margin="20 0 0 0"
@@ -74,7 +71,7 @@
 
                 <TextBox x:Name="txbAdress"
                          Width="150"
-                         materialDesign:HintAssist.Hint = "Адресс "
+                         materialDesign:HintAssist.Hint = "Адрес "
                          Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
 
                 <TextBox x:Name="txbTelephone"
@@ -82,7 +79,6 @@
                          materialDesign:HintAssist.Hint = "Телефон "
                          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                              Margin="0 10 0 10"/>
-
 
                 <DatePicker x:Name="dtDateRegistration"
                             Width="150"
@@ -102,7 +98,6 @@
                             materialDesign:HintAssist.Hint = "Дата готовности заказа "
                             Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
                             Margin="0 10 0 10"/>
-
 
                 <StackPanel Orientation="Horizontal"
                                 HorizontalAlignment="Right"

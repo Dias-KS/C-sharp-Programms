@@ -29,7 +29,7 @@
             <StackPanel HorizontalAlignment="Stretch"
                         VerticalAlignment="Stretch">
 
-                <Image Source="../../Images/BackForAuth2.jpg" Stretch="Fill"/>
+                <Image Source="../../Images/BackForAuth2.jpg" />
 
             </StackPanel>
 

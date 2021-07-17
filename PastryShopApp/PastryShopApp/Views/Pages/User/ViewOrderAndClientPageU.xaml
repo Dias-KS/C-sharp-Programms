@@ -1,4 +1,4 @@
-﻿<Page x:Class="PastryShopApp.Views.Pages.User.ViewOrderAndClientPageU"
+﻿    <Page x:Class="PastryShopApp.Views.Pages.User.ViewOrderAndClientPageU"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -124,6 +124,10 @@
                             Height="40"
                             CornerRadius="20">
 
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="20" Color="Black" ShadowDepth="0"/>
+                        </Border.Effect>
+
                         <DatePicker  x:Name="dtSortDataAccept"
                                      SelectedDateFormat="Short"
                                      Width="100"
@@ -155,11 +159,11 @@
                             <DataGridTextColumn Header="ID" Binding="{Binding ID}" Width="10*"/>
                             <DataGridTextColumn Header="Имя" Binding="{Binding FirstName}" Width="20*"/>
                             <DataGridTextColumn Header="Фамилия" Binding="{Binding LastName}" Width="20*"/>
-                            <DataGridTextColumn Header="Дата регистрации" Binding="{Binding DateRegistration}" Width="30*"/>
-                            <DataGridTextColumn Header="Дата принятия заказа" Binding="{Binding DateAccept}" Width="30*"/>
-                            <DataGridTextColumn Header="Адресс" Binding="{Binding ClientMoreInfo.Adress}" Width="20*"/>
+                            <DataGridTextColumn Header="Дата регистрации" Binding="{Binding DateRegistration, StringFormat={}{0: dd.MM.yyyy}}" Width="30*"/>
+                            <DataGridTextColumn Header="Дата принятия заказа" Binding="{Binding DateAccept, StringFormat={}{0: dd.MM.yyyy}}" Width="30*"/>
+                            <DataGridTextColumn Header="Адрес" Binding="{Binding ClientMoreInfo.Adress}" Width="20*"/>
                             <DataGridTextColumn Header="Телефон" Binding="{Binding ClientMoreInfo.Telephone}" Width="25*"/>
-                            <DataGridTextColumn Header="Дата готовности заказа" Binding="{Binding DateReadness, StringFormat={}}"  Width="30*"/>
+                            <DataGridTextColumn Header="Дата готовности заказа" Binding="{Binding DateReadness, StringFormat={}{0: dd.MM.yyyy}}"  Width="30*"/>
                             
                         </DataGrid.Columns>
 

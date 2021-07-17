@@ -69,7 +69,7 @@
 
                 <TextBox x:Name="txbAdress"
                          Width="150"
-                         materialDesign:HintAssist.Hint = "Адресс "
+                         materialDesign:HintAssist.Hint = "Адрес "
                          Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
 
                 <TextBox x:Name="txbTelephone"
